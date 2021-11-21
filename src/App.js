@@ -46,10 +46,9 @@ function App() {
 						<Route
 							path='/dashboard'
 							element={
-								<DashBoard />
-								/* <AdminRoute>
+								<AdminRoute>
 									<DashBoard />
-								</AdminRoute> */
+								</AdminRoute>
 							}>
 							<Route exact path='/dashboard' element={<AllUsers />} />
 							<Route path='/dashboard/:id' element={<EditProject />} />

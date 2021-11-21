@@ -32,7 +32,7 @@ const AddReview = () => {
 			userReview,
 		};
 		axios
-			.post("http://localhost:5000/reviews", data)
+			.post("https://fast-savannah-56016.herokuapp.com/reviews", data)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("Your Review Added Successfully!");

@@ -65,7 +65,7 @@ const EditProject = () => {
 			projectPhoto: imageUrl,
 		};
 		axios
-			.put(`http://localhost:5000/projects/${id}`, data)
+			.put(`https://fast-savannah-56016.herokuapp.com/projects/${id}`, data)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("Project Successfully Updated!");
@@ -78,10 +78,12 @@ const EditProject = () => {
 	};
 	const [data, setData] = useState();
 	useEffect(() => {
-		axios.get(`http://localhost:5000/projects/${id}`).then((res) => {
-			reset(res.data);
-			setData(res.data);
-		});
+		axios
+			.get(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
+			.then((res) => {
+				reset(res.data);
+				setData(res.data);
+			});
 	}, [id, reset]);
 
 	return (

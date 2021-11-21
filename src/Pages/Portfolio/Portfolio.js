@@ -11,7 +11,7 @@ import { Box } from "@mui/system";
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
 	React.useEffect(() => {
-		fetch(`http://localhost:5000/projects`)
+		fetch(`https://fast-savannah-56016.herokuapp.com/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data));
 	}, []);

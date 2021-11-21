@@ -23,14 +23,14 @@ const AllReviews = () => {
 	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
 	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews`)
+		fetch(`https://fast-savannah-56016.herokuapp.com/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [openSuccessMsg]);
 
 	const handleAlertAgreeClose = (id) => {
 		axios
-			.delete(`http://localhost:5000/reviews/${id}`)
+			.delete(`https://fast-savannah-56016.herokuapp.com/reviews/${id}`)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("This Reviews Deleted Successfully");

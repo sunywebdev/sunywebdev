@@ -50,7 +50,7 @@ const useFirebase = () => {
 	) => {
 		const user = { email, displayName, photoURL };
 		axios
-			.put("http://localhost:5000/users", user)
+			.put("https://fast-savannah-56016.herokuapp.com/users", user)
 			.then(function (response) {
 				setOpen(true);
 				setTimeout(function () {
@@ -65,7 +65,7 @@ const useFirebase = () => {
 
 	/*------ to findout user is admin or not---------- */
 	useEffect(() => {
-		fetch(`http://localhost:5000/users/${user?.email}`)
+		fetch(`https://fast-savannah-56016.herokuapp.com/users/${user?.email}`)
 			.then((res) => res.json())
 			.then((data) => setAdmin(data?.admin));
 	}, [user?.email]);

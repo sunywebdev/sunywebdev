@@ -55,7 +55,7 @@ const AddProjects = () => {
 			projectPhoto: imageUrl,
 		};
 		axios
-			.post("http://localhost:5000/projects", data)
+			.post("https://fast-savannah-56016.herokuapp.com/projects", data)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("Successfully added new project !");

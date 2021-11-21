@@ -11,7 +11,7 @@ const Contact = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		axios
-			.post("http://localhost:5000/mails", data)
+			.post("https://fast-savannah-56016.herokuapp.com/mails", data)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("Your Mail Sent Successfully!");

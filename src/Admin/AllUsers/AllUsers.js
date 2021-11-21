@@ -23,14 +23,14 @@ const AllUsers = () => {
 	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
 	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
-		fetch(`http://localhost:5000/users`)
+		fetch(`https://fast-savannah-56016.herokuapp.com/users`)
 			.then((res) => res.json())
 			.then((data) => setUsers(data));
 	}, [openSuccessMsg]);
 
 	const handleAlertAgreeClose = (id) => {
 		axios
-			.delete(`http://localhost:5000/users/${id}`)
+			.delete(`https://fast-savannah-56016.herokuapp.com/users/${id}`)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("This User Deleted Successfully");

@@ -23,14 +23,14 @@ const AllMails = () => {
 	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
 	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
-		fetch(`http://localhost:5000/mails`)
+		fetch(`https://fast-savannah-56016.herokuapp.com/mails`)
 			.then((res) => res.json())
 			.then((data) => setMails(data));
 	}, [openSuccessMsg]);
 
 	const handleAlertAgreeClose = (id) => {
 		axios
-			.delete(`http://localhost:5000/mails/${id}`)
+			.delete(`https://fast-savannah-56016.herokuapp.com/mails/${id}`)
 			.then(function (response) {
 				setOpenSuccessMsg(true);
 				setSuccessMsg("This Mail Deleted Successfully");

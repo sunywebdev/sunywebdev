@@ -1,0 +1,142 @@
+import {
+	Button,
+	CircularProgress,
+	Container,
+	Grid,
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableRow,
+	Typography,
+} from "@mui/material";
+import Paper from "@mui/material/Paper";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import AlertDialog from "../../Shared/AlertDialog/AlertDialog";
+import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+
+const AllReviews = () => {
+	const [reviews, setReviews] = useState([]);
+	const [alert, setAlert] = React.useState(false);
+	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
+	const [successMsg, setSuccessMsg] = useState("");
+	useEffect(() => {
+		fetch(`http://localhost:5000/reviews`)
+			.then((res) => res.json())
+			.then((data) => setReviews(data));
+	}, [openSuccessMsg]);
+
+	const handleAlertAgreeClose = (id) => {
+		axios
+			.delete(`http://localhost:5000/reviews/${id}`)
+			.then(function (response) {
+				setOpenSuccessMsg(true);
+				setSuccessMsg("This Reviews Deleted Successfully");
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+		setAlert(false);
+	};
+	let count = 1;
+	return (
+		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+			<Grid>
+				<Typography
+					sx={{ mb: 3, fw: "bold" }}
+					variant='h4'
+					component='div'
+					gutterBottom>
+					All Reviews
+				</Typography>
+				<Grid item xs={12} md={12}>
+					<Paper
+						className='container'
+						sx={{ overflow: "auto", maxHeight: "75vh" }}>
+						<Table size='small' aria-label='a dense table'>
+							<TableHead sx={{ th: { fontWeight: "bold" } }}>
+								<TableRow>
+									<TableCell align='left'>No</TableCell>
+									<TableCell align='left'>Photo</TableCell>
+									<TableCell align='left'>Name</TableCell>
+									<TableCell align='left'>Email</TableCell>
+									<TableCell align='left'>Star</TableCell>
+									<TableCell align='left'>Reviews</TableCell>
+									<TableCell align='left'>Action</TableCell>
+								</TableRow>
+							</TableHead>
+							{reviews?.length > 0 ? (
+								<TableBody sx={{ td: { py: 1 } }}>
+									{reviews.map((review) => (
+										<TableRow
+											key={review?._id}
+											sx={{
+												"&:last-child td, &:last-child th": { border: 0 },
+											}}>
+											<TableCell align='left'>{count++}</TableCell>
+											<TableCell>
+												<img
+													src={review?.userPhoto || "N/A"}
+													alt=''
+													width='35px'
+													height='35px'
+													style={{ borderRadius: "50%" }}
+												/>
+											</TableCell>
+											<TableCell align='left'>
+												{review?.userName || "N/A"}
+											</TableCell>
+											<TableCell align='left'>
+												{review?.userEmail || "N/A"}
+											</TableCell>
+											<TableCell align='left'>
+												{review?.star || "N/A"}
+											</TableCell>
+											<TableCell align='left'>
+												{review?.userReview || "N/A"}
+											</TableCell>
+											<TableCell align='left'>
+												<Button
+													onClick={() => setAlert(true)}
+													classes={{ root: "bg-1" }}
+													sx={{ mx: 1 }}
+													variant='contained'>
+													<CloseIcon />
+												</Button>
+											</TableCell>
+											<AlertDialog
+												alert={alert}
+												setAlert={setAlert}
+												handleAlertAgreeClose={handleAlertAgreeClose}
+												id={review?._id}></AlertDialog>
+										</TableRow>
+									))}
+								</TableBody>
+							) : (
+								<TableHead sx={{ th: { fontWeight: "bold" } }}>
+									<TableRow>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell>
+									</TableRow>
+								</TableHead>
+							)}
+						</Table>
+					</Paper>
+				</Grid>
+			</Grid>
+			<AlertSuccess
+				successMsg={successMsg}
+				openSuccessMsg={openSuccessMsg}
+				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
+		</Container>
+	);
+};
+
+export default AllReviews;

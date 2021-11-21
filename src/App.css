@@ -1,0 +1,7 @@
+.App {
+	text-align: center;
+	background-color: #f5f7ff !important;
+	height: 100vh !important;
+	border: 15px solid #1565c0;
+	overflow-y: auto;
+}

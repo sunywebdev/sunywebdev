@@ -6,9 +6,7 @@ import useAuth from "../context/useAuth";
 const AdminRoute = ({ children }) => {
 	const { user, admin, isLoading } = useAuth();
 	const location = useLocation();
-	console.log(user?.email);
-	console.log(admin);
-	if (isLoading) {
+	if (isLoading || !admin) {
 		return (
 			<>
 				<LinearProgress />

@@ -23,89 +23,126 @@ const Portfolio = () => {
 				alignItems='center'
 				justifyContent='center'
 				style={{ minHeight: "95vh" }}>
-				<Typography sx={{ mb: 0 }} variant='h3' component='div' gutterBottom>
+				<Typography
+					data-aos='fade-down'
+					sx={{ mb: 0, fontWeight: 900 }}
+					variant='h3'
+					component='div'
+					gutterBottom>
 					PORTFOLIO
 				</Typography>
-				<Typography sx={{ mb: 4 }} variant='h5' component='div' gutterBottom>
+				<Typography
+					data-aos='fade-down'
+					sx={{ mb: 4 }}
+					variant='h5'
+					component='div'
+					gutterBottom>
 					Check out some of my latest works.
 				</Typography>
 				<Grid container spacing={2}>
 					{projects?.length > 0 ? (
 						<>
 							{projects?.map((project) => (
-								<Grid item md={4} xs={12}>
-									<Card>
+								<Grid item md={12} xs={12}>
+									<Card
+										sx={{
+											display: "flex",
+											flexDirection: { md: "row", sm: "column", xs: "column" },
+										}}>
 										<CardMedia
+											sx={{
+												height: "250px",
+												width: "350px",
+												m: "auto",
+												pl: { md: 0.5, xs: 0 },
+											}}
 											component='img'
-											alt='green iguana'
-											height='140'
 											image={project?.projectPhoto}
+											alt=''
 										/>
-										<CardContent sx={{}}>
-											<Typography gutterBottom variant='h5' component='div'>
-												{project?.projectName}
-											</Typography>
-											<Typography variant='body2'>
-												{project?.projectDetails}
-											</Typography>
-										</CardContent>
-										<CardActions>
-											<Button
-												variant='contained'
-												sx={{ px: 0.5 }}
-												size='small'
-												onClick={() =>
-													window.open(`${project?.liveLink}`, "_blank")
-												}>
-												Live
-											</Button>
-											<Button
-												variant='contained'
-												sx={{ px: 0.5 }}
-												size='small'
-												onClick={() =>
-													window.open(`${project?.gitClientLink}`, "_blank")
-												}>
-												GitHub Client
-											</Button>
-											<Button
-												variant='contained'
-												sx={{ px: 0.5 }}
-												size='small'
-												onClick={() =>
-													window.open(`${project?.gitServerLink}`, "_blank")
-												}>
-												GitHub Server
-											</Button>
-										</CardActions>
+										<Box sx={{ display: "flex", flexDirection: "column" }}>
+											<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
+												<Typography component='div' variant='h5'>
+													{project?.projectName}
+												</Typography>
+												<Typography
+													variant='subtitle1'
+													color='text.secondary'
+													component='div'>
+													{project?.projectDetails}
+												</Typography>
+											</CardContent>
+											<Box
+												sx={{
+													display: "flex",
+													alignItems: "center",
+													pl: 1,
+													pb: 1,
+												}}>
+												<CardActions sx={{ justifyContent: "center" }}>
+													<Button
+														variant='contained'
+														sx={{
+															px: 1.5,
+															fontWeight: "bold",
+															backgroundColor: "#222222",
+															"&:hover": {
+																backgroundColor: "#222222",
+															},
+														}}
+														size='small'
+														onClick={() =>
+															window.open(`${project?.liveLink}`, "_blank")
+														}>
+														Live
+													</Button>
+													<Button
+														variant='contained'
+														sx={{
+															px: 1,
+															fontWeight: "bold",
+															backgroundColor: "#222222",
+															"&:hover": {
+																backgroundColor: "#222222",
+															},
+														}}
+														size='small'
+														onClick={() =>
+															window.open(`${project?.gitClientLink}`, "_blank")
+														}>
+														Client Code
+													</Button>
+													<Button
+														variant='contained'
+														sx={{
+															px: 1,
+															fontWeight: "bold",
+															backgroundColor: "#222222",
+															"&:hover": {
+																backgroundColor: "#222222",
+															},
+														}}
+														size='small'
+														onClick={() =>
+															window.open(`${project?.gitServerLink}`, "_blank")
+														}>
+														Server Code
+													</Button>
+												</CardActions>
+											</Box>
+										</Box>
 									</Card>
 								</Grid>
 							))}
 						</>
 					) : (
-						<>
-							{Array.from({ length: 4 }).map((_, idx) => (
-								<Card
-									sx={{
-										maxWidth: 345,
-										mt: 5,
-										mx: "auto",
-										mb: 1,
-										pb: 2,
-										display: "flex",
-										flexDirection: "column",
-										alignItems: "center",
-										alignContent: "center",
-										overflow: "visible",
-									}}>
-									<Skeleton variant='rectangular' width={210} height={118} />
-									<Box sx={{ mt: 2 }}>
-										<Skeleton animation='wave' width={200} />
-										<Skeleton animation='wave' width={200} />
-									</Box>
-								</Card>
+						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
+							{Array.from({ length: 5 }).map((_, idx) => (
+								<>
+									<Skeleton animation='wave' />
+								</>
 							))}
-						</>
+						</Grid>
 					)}
 				</Grid>
 			</Grid>

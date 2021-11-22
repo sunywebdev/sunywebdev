@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import initializeAuth from "./firebase.init";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 initializeAuth();
 
@@ -19,7 +20,7 @@ const useFirebase = () => {
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
 
-	const signInUsingGoogle = (navigate, location, setOpen) => {
+	const signInUsingGoogle = (navigate, location) => {
 		setIsloading(true);
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
@@ -28,7 +29,6 @@ const useFirebase = () => {
 					user?.email,
 					user?.displayName,
 					user?.photoURL,
-					setOpen,
 					navigate,
 					location,
 				);
@@ -44,7 +44,6 @@ const useFirebase = () => {
 		email,
 		displayName,
 		photoURL,
-		setOpen,
 		navigate,
 		location,
 	) => {
@@ -52,11 +51,14 @@ const useFirebase = () => {
 		axios
 			.put("https://fast-savannah-56016.herokuapp.com/users", user)
 			.then(function (response) {
-				setOpen(true);
-				setTimeout(function () {
-					const destination = location?.state?.from || "/";
-					navigate(destination);
-				}, 3000);
+				Swal.fire({
+					icon: "success",
+					title: "Login Successfull",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+				const destination = location?.state?.from || "/";
+				navigate(destination);
 			})
 			.catch(function (error) {
 				console.log(error);

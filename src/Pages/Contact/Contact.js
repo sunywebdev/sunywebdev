@@ -2,19 +2,28 @@ import { Button, Container, Grid, TextField, Typography } from "@mui/material";
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
 import "./form";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import CallIcon from "@mui/icons-material/Call";
+import SmsIcon from "@mui/icons-material/Sms";
+import EmailIcon from "@mui/icons-material/Email";
+import Swal from "sweetalert2";
 
 const Contact = () => {
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = React.useState("");
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		axios
 			.post("https://fast-savannah-56016.herokuapp.com/mails", data)
 			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("Your Mail Sent Successfully!");
+				Swal.fire({
+					icon: "success",
+					title: "Your Messsage Sent Successfully",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 				reset();
 			})
 			.catch(function (error) {
@@ -29,15 +38,85 @@ const Contact = () => {
 				alignItems='center'
 				justifyContent='center'
 				style={{ minHeight: "95vh" }}>
-				<Typography sx={{ mb: 0 }} variant='h3' component='div' gutterBottom>
-					CONTACT
-				</Typography>
-				<Typography sx={{ mb: 4 }} variant='h5' component='div' gutterBottom>
-					Do you speak Alien Language? It's ok if you don't, I speak English
-					too.
-				</Typography>
-				<Grid container spacing={2}>
-					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
+				<Grid container>
+					<Grid
+						data-aos='fade-right'
+						item
+						md={6}
+						xs={12}
+						sx={{ textAlign: "left" }}>
+						<Typography
+							sx={{ mb: 0, fontWeight: 900 }}
+							variant='h3'
+							component='div'
+							gutterBottom>
+							CONTACT
+						</Typography>
+						<Typography
+							sx={{ mb: 4 }}
+							variant='h5'
+							component='div'
+							gutterBottom>
+							Do you speak Alien Language? It's ok if you don't, I speak English
+							too.
+						</Typography>
+					</Grid>
+					<Grid data-aos='fade-left' item md={6} xs={12}>
+						<Grid direction='row' sx={{ justifyContent: "center", mb: 3 }}>
+							<GitHubIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#292E34" }}
+								onClick={() =>
+									window.open("https://github.com/sunywebdev", "_blank")
+								}></GitHubIcon>
+							<LinkedInIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#0073B2" }}
+								onClick={() =>
+									window.open(
+										"https://www.linkedin.com/in/sunywebdev",
+										"_blank",
+									)
+								}></LinkedInIcon>
+							<FacebookIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#0D8BF0" }}
+								onClick={() =>
+									window.open("https://www.facebook.com/sunywebdev", "_blank")
+								}></FacebookIcon>
+							<WhatsAppIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#0F9D58" }}
+								onClick={() =>
+									window.open(
+										"https://api.whatsapp.com/send?phone=+8801861917938",
+										"_blank",
+									)
+								}></WhatsAppIcon>
+							<CallIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#3CC886" }}
+								onClick={() =>
+									window.open("tel:01861917938", "_blank")
+								}></CallIcon>
+							<SmsIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#2C97AA" }}
+								onClick={() =>
+									window.open("sms:01861917938", "_blank")
+								}></SmsIcon>
+							<EmailIcon
+								fontSize='large'
+								sx={{ mx: 0.5, cursor: "pointer", color: "#EB4436" }}
+								onClick={() =>
+									window.open("mailto:suny.webdev@gmail.com", "_blank")
+								}></EmailIcon>
+						</Grid>
+					</Grid>
+				</Grid>
+
+				<Grid data-aos='fade-up' container spacing={2}>
+					<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
 						<form
 							onSubmit={handleSubmit(onSubmit)}
 							action={process.env.REACT_APP_GFORM_ID}
@@ -45,56 +124,67 @@ const Contact = () => {
 							id='gform'
 							className='gform'>
 							<Grid container spacing={2}>
-								<Grid item md={6} xs={12} /* style={{ paddingLeft: "0" }} */>
-									<TextField
-										sx={{ width: "100%", mb: 2 }}
-										id='outlined-basic'
-										name='UserName'
-										label='Enter Your Name'
-										{...register("userName", { required: true })}
-									/>
+								<Grid item md={6} xs={12}>
+									<Grid container spacing={2}>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%" }}
+												id='outlined-basic'
+												name='UserName'
+												label='Enter Your Name'
+												{...register("userName", { required: true })}
+											/>
+										</Grid>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%" }}
+												id='outlined-basic'
+												name='UserEmail'
+												label='Enter Your Email'
+												{...register("userEmail", { required: true })}
+											/>
+										</Grid>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
+												id='outlined-basic'
+												label='Subject'
+												name='Subject'
+												{...register("subject", { required: true })}
+											/>
+										</Grid>
+									</Grid>
 								</Grid>
 								<Grid item md={6} xs={12}>
 									<TextField
 										sx={{ width: "100%", mb: 2 }}
-										id='outlined-basic'
-										name='UserEmail'
-										label='Enter Your Email'
-										{...register("userEmail", { required: true })}
+										id='"outlined-multiline-flexible'
+										label='Details'
+										name='details'
+										multiline
+										rows={7.3}
+										{...register("details", { required: true })}
 									/>
 								</Grid>
 							</Grid>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='outlined-basic'
-								label='Subject'
-								name='Subject'
-								{...register("subject", { required: true })}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Details'
-								name='details'
-								multiline
-								rows={4}
-								{...register("details", { required: true })}
-							/>
-
 							<Button
 								type='submit'
 								variant='contained'
-								sx={{ width: "100%", mb: 2 }}>
+								sx={{
+									width: "100%",
+									mb: 2,
+									fontWeight: "bold",
+									backgroundColor: "#222222",
+									"&:hover": {
+										backgroundColor: "#222222",
+									},
+								}}>
 								SEND EMAIL
 							</Button>
 						</form>
 					</Grid>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

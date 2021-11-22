@@ -15,13 +15,11 @@ import { useForm } from "react-hook-form";
 import StarIcon from "@mui/icons-material/Star";
 import useAuth from "../../context/useAuth";
 import axios from "axios";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const AddReview = () => {
 	const [value, setValue] = React.useState(2.3);
 	const [hover, setHover] = React.useState(-1);
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = React.useState("");
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({ userName, userEmail, userReview }) => {
 		const data = {
@@ -34,8 +32,12 @@ const AddReview = () => {
 		axios
 			.post("https://fast-savannah-56016.herokuapp.com/reviews", data)
 			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("Your Review Added Successfully!");
+				Swal.fire({
+					icon: "success",
+					title: "Your Review Successfully Added",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 				reset();
 			})
 			.catch(function (error) {
@@ -51,9 +53,18 @@ const AddReview = () => {
 				alignItems='center'
 				justifyContent='center'
 				sx={{ minHeight: { md: "95vh", xs: "70vh" } }}>
-				<Typography sx={{ mb: 4 }} variant='h3' component='div' gutterBottom>
+				<Typography
+					sx={{ mb: 4, fontWeight: 900 }}
+					variant='h3'
+					component='div'
+					gutterBottom
+					data-aos='fade-right'>
 					ADD REVIEW
-					<Typography variant='caption' display='block' gutterBottom>
+					<Typography
+						variant='caption'
+						display='block'
+						gutterBottom
+						sx={{ color: "red" }}>
 						Your posts will appear publicly with your profile name and picture.
 						Your posts will appear across the web.
 					</Typography>
@@ -61,7 +72,7 @@ const AddReview = () => {
 
 				<Grid container spacing={2}>
 					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						<form onSubmit={handleSubmit(onSubmit)}>
+						<form data-aos='fade-left' onSubmit={handleSubmit(onSubmit)}>
 							<List
 								sx={{
 									width: "100%",
@@ -115,7 +126,7 @@ const AddReview = () => {
 									alignItems: "center",
 								}}>
 								<Rating
-									sx={{ float: "left", mb: 2 }}
+									sx={{ float: "left", mb: 2, fontSize: 50 }}
 									name='hover-feedback'
 									value={value}
 									size='large'
@@ -131,7 +142,7 @@ const AddReview = () => {
 									}
 								/>
 								<Typography
-									variant='h5'
+									variant='h4'
 									component='div'
 									sx={{ ml: 2, mb: 1.7 }}>
 									{hover !== -1 ? hover : value}
@@ -148,17 +159,21 @@ const AddReview = () => {
 							<Button
 								type='submit'
 								variant='contained'
-								sx={{ width: "100%", mb: 2 }}>
+								sx={{
+									width: "100%",
+									mb: 2,
+									fontWeight: "bold",
+									backgroundColor: "#222222",
+									"&:hover": {
+										backgroundColor: "#222222",
+									},
+								}}>
 								POST REVIEW
 							</Button>
 						</form>
 					</Grid>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

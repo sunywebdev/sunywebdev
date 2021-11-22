@@ -1,6 +1,5 @@
 import {
 	Button,
-	CircularProgress,
 	Container,
 	Grid,
 	Table,
@@ -14,32 +13,39 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import AlertDialog from "../../Shared/AlertDialog/AlertDialog";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const AllReviews = () => {
 	const [reviews, setReviews] = useState([]);
-	const [alert, setAlert] = React.useState(false);
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
 		fetch(`https://fast-savannah-56016.herokuapp.com/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
-	}, [openSuccessMsg]);
+	});
 
-	const handleAlertAgreeClose = (id) => {
-		axios
-			.delete(`https://fast-savannah-56016.herokuapp.com/reviews/${id}`)
-			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("This Reviews Deleted Successfully");
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		setAlert(false);
+	const handleDelete = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.delete(`https://fast-savannah-56016.herokuapp.com/reviews/${id}`)
+					.then(function (response) {
+						Swal.fire("Deleted!", "That Review has been deleted.", "success");
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
 	};
+
 	let count = 1;
 	return (
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
@@ -99,18 +105,13 @@ const AllReviews = () => {
 											</TableCell>
 											<TableCell align='left'>
 												<Button
-													onClick={() => setAlert(true)}
+													onClick={() => handleDelete(review?._id)}
 													classes={{ root: "bg-1" }}
 													sx={{ mx: 1 }}
 													variant='contained'>
 													<CloseIcon />
 												</Button>
 											</TableCell>
-											<AlertDialog
-												alert={alert}
-												setAlert={setAlert}
-												handleAlertAgreeClose={handleAlertAgreeClose}
-												id={review?._id}></AlertDialog>
 										</TableRow>
 									))}
 								</TableBody>
@@ -131,10 +132,6 @@ const AllReviews = () => {
 					</Paper>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

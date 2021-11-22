@@ -11,12 +11,10 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Outlet, Link } from "react-router-dom";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
 import { Grid } from "@mui/material";
-import useAuth from "../../../context/useAuth";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
@@ -31,8 +29,6 @@ function DashBoard(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
-	const { user, logOut, admin } = useAuth();
-	console.log(admin);
 	const drawer = (
 		<Box sx={{ m: "auto" }}>
 			<Grid
@@ -40,12 +36,13 @@ function DashBoard(props) {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ my: 3 }}>
+				sx={{ my: 2 }}>
 				<img
 					style={{
-						width: "111px",
-						height: "111px",
+						width: "150px",
+						height: "150px",
 						borderRadius: "50%",
+						border: "5px solid white",
 						my: 2,
 					}}
 					src={image}
@@ -64,14 +61,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/dashboard'>
 				<ListItem button>
 					<ListItemIcon>
-						<PeopleAltIcon fontSize='large' />
+						<PeopleAltIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					All Users
 				</ListItem>
@@ -79,14 +76,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to={`/dashboard/allmails`}>
 				<ListItem button>
 					<ListItemIcon>
-						<AllInboxIcon fontSize='large' />
+						<AllInboxIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					All Mails
 				</ListItem>
@@ -94,14 +91,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/dashboard/allprojects'>
 				<ListItem button>
 					<ListItemIcon>
-						<LaptopChromebookIcon fontSize='large' />
+						<LaptopChromebookIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					All Projects
 				</ListItem>
@@ -109,14 +106,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/dashboard/allreviews'>
 				<ListItem button>
 					<ListItemIcon>
-						<ReviewsOutlinedIcon fontSize='large' />
+						<ReviewsOutlinedIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					All Reviews
 				</ListItem>
@@ -124,14 +121,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/dashboard/addprojects'>
 				<ListItem button>
 					<ListItemIcon>
-						<AddToQueueIcon fontSize='large' />
+						<AddToQueueIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Add Projects
 				</ListItem>
@@ -140,14 +137,14 @@ function DashBoard(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/'>
 				<ListItem button>
 					<ListItemIcon>
-						<HomeIcon fontSize='large' />
+						<HomeIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Home
 				</ListItem>
@@ -202,13 +199,14 @@ function DashBoard(props) {
 						display: { xs: "block", sm: "none" },
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
-							width: "90vw",
-							maxHeight: "95vh",
+							width: "92%",
+							maxHeight: "94.8%",
 							my: 2,
 							mx: 2,
 							borderRadius: 7,
+							backgroundColor: "#111111",
+							color: "white",
 						},
-						px: 3,
 					}}>
 					{drawer}
 				</Drawer>
@@ -219,10 +217,11 @@ function DashBoard(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
-							px: 3,
-							maxHeight: "95vh",
+							maxHeight: "94.8%",
 							my: 2,
 							ml: 2,
+							backgroundColor: "#111111",
+							color: "white",
 						},
 					}}
 					open>

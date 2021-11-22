@@ -13,35 +13,42 @@ import {
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import AlertDialog from "../../Shared/AlertDialog/AlertDialog";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
 import { Link } from "react-router-dom";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Swal from "sweetalert2";
 
 const AllProjects = () => {
 	const [projects, setProjects] = useState([]);
-	const [alert, setAlert] = React.useState(false);
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
 		fetch(`https://fast-savannah-56016.herokuapp.com/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data));
-	}, [openSuccessMsg]);
+	});
 
-	const handleAlertAgreeClose = (id) => {
-		axios
-			.delete(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
-			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("This Project Deleted Successfully");
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		setAlert(false);
+	const handleDelete = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.delete(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
+					.then(function (response) {
+						Swal.fire("Deleted!", "That Project has been deleted.", "success");
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
 	};
+
 	let count = 1;
 	return (
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
@@ -88,7 +95,7 @@ const AllProjects = () => {
 														</Button>
 													</Link>
 													<Button
-														onClick={() => setAlert(true)}
+														onClick={() => handleDelete(project?._id)}
 														classes={{ root: "bg-1" }}
 														sx={{ mx: 1 }}
 														variant='contained'>
@@ -96,11 +103,6 @@ const AllProjects = () => {
 													</Button>
 												</ButtonGroup>
 											</TableCell>
-											<AlertDialog
-												alert={alert}
-												setAlert={setAlert}
-												handleAlertAgreeClose={handleAlertAgreeClose}
-												id={project?._id}></AlertDialog>
 										</TableRow>
 									))}
 								</TableBody>
@@ -117,10 +119,6 @@ const AllProjects = () => {
 					</Paper>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

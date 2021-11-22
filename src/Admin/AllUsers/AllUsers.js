@@ -1,6 +1,5 @@
 import {
 	Button,
-	CircularProgress,
 	Container,
 	Grid,
 	Table,
@@ -14,32 +13,39 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import AlertDialog from "../../Shared/AlertDialog/AlertDialog";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const AllUsers = () => {
 	const [users, setUsers] = useState([]);
-	const [alert, setAlert] = React.useState(false);
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
 		fetch(`https://fast-savannah-56016.herokuapp.com/users`)
 			.then((res) => res.json())
 			.then((data) => setUsers(data));
-	}, [openSuccessMsg]);
+	});
 
-	const handleAlertAgreeClose = (id) => {
-		axios
-			.delete(`https://fast-savannah-56016.herokuapp.com/users/${id}`)
-			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("This User Deleted Successfully");
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		setAlert(false);
+	const handleDelete = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.delete(`https://fast-savannah-56016.herokuapp.com/users/${id}`)
+					.then(function (response) {
+						Swal.fire("Deleted!", "That User has been removed.", "success");
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
 	};
+
 	let count = 1;
 	return (
 		<Container
@@ -92,18 +98,13 @@ const AllUsers = () => {
 											<TableCell align='left'>{user?.email || "N/A"}</TableCell>
 											<TableCell align='left'>
 												<Button
-													onClick={() => setAlert(true)}
+													onClick={() => handleDelete(user?._id)}
 													classes={{ root: "bg-1" }}
 													sx={{ mx: 1 }}
 													variant='contained'>
 													<CloseIcon />
 												</Button>
 											</TableCell>
-											<AlertDialog
-												alert={alert}
-												setAlert={setAlert}
-												handleAlertAgreeClose={handleAlertAgreeClose}
-												id={user?._id}></AlertDialog>
 										</TableRow>
 									))}
 								</TableBody>
@@ -122,10 +123,6 @@ const AllUsers = () => {
 					</Paper>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

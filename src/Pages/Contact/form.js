@@ -12,6 +12,7 @@
 				}
 				return true;
 			})
+			// eslint-disable-next-line array-callback-return
 			.map(function (k) {
 				if (elements[k].name !== undefined) {
 					return elements[k].name;
@@ -21,7 +22,7 @@
 				}
 			})
 			.filter(function (item, pos, self) {
-				return self.indexOf(item) == pos && item;
+				return self.indexOf(item) === pos && item;
 			});
 
 		var formData = {};

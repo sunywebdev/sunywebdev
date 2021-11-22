@@ -20,6 +20,9 @@ import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import LoginAdmin from "./Shared/Login/LoginAdmin";
 import EditProject from "./Admin/EditProject/EditProject";
+import AOS from "aos";
+import "aos/dist/aos.css"; 
+AOS.init();
 
 function App() {
 	return (
@@ -42,6 +45,7 @@ function App() {
 							/>
 							<Route path='/contact' element={<Contact />} />
 							<Route path='/login' element={<Login />} />
+							<Route path='*' element={<NotFound404 />} />
 						</Route>
 						<Route
 							path='/dashboard'

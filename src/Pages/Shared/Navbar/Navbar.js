@@ -30,21 +30,22 @@ function Navbar(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
-	const { user, logOut, admin } = useAuth();
+	const {admin } = useAuth();
 
 	const drawer = (
-		<Box>
+		<Box sx={{ m: "auto" }}>
 			<Grid
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ my: 3 }}>
+				sx={{ my: 2 }}>
 				<img
 					style={{
-						width: "111px",
-						height: "111px",
+						width: "150px",
+						height: "150px",
 						borderRadius: "50%",
+						border: "5px solid white",
 						my: 2,
 					}}
 					src={image}
@@ -63,14 +64,14 @@ function Navbar(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='/'>
 				<ListItem button>
 					<ListItemIcon>
-						<HomeIcon fontSize='large' />
+						<HomeIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Home
 				</ListItem>
@@ -78,14 +79,14 @@ function Navbar(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='about'>
 				<ListItem button>
 					<ListItemIcon>
-						<PersonOutlineIcon fontSize='large' />
+						<PersonOutlineIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					About
 				</ListItem>
@@ -93,14 +94,14 @@ function Navbar(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='portfolio'>
 				<ListItem button>
 					<ListItemIcon>
-						<LaptopChromebookIcon fontSize='large' />
+						<LaptopChromebookIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Portfolio
 				</ListItem>
@@ -108,14 +109,14 @@ function Navbar(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='reviews'>
 				<ListItem button>
 					<ListItemIcon>
-						<ReviewsOutlinedIcon fontSize='large' />
+						<ReviewsOutlinedIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Reviews
 				</ListItem>
@@ -123,14 +124,14 @@ function Navbar(props) {
 			<Link
 				style={{
 					textDecoration: "none",
-					color: "black",
+					color: "white",
 					fontWeight: "bold",
-					fontSize: "21px",
+					fontSize: "15px",
 				}}
 				to='contact'>
 				<ListItem button>
 					<ListItemIcon>
-						<ContactPageIcon fontSize='large' />
+						<ContactPageIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Contact
 				</ListItem>
@@ -139,14 +140,14 @@ function Navbar(props) {
 				<Link
 					style={{
 						textDecoration: "none",
-						color: "black",
+						color: "white",
 						fontWeight: "bold",
-						fontSize: "21px",
+						fontSize: "15px",
 					}}
 					to='/dashboard'>
 					<ListItem button>
 						<ListItemIcon>
-							<DashboardIcon fontSize='large' />
+							<DashboardIcon sx={{ color: "white" }} fontSize='medium' />
 						</ListItemIcon>
 						Dashboard
 					</ListItem>
@@ -203,11 +204,13 @@ function Navbar(props) {
 						display: { xs: "block", sm: "none" },
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
-							width: "90vw",
-							maxHeight: "95vh",
+							width: "92%",
+							maxHeight: "94.8%",
 							my: 2,
 							mx: 2,
 							borderRadius: 7,
+							backgroundColor: "#111111",
+							color: "white",
 						},
 						px: 3,
 					}}>
@@ -221,9 +224,11 @@ function Navbar(props) {
 							boxSizing: "border-box",
 							width: drawerWidth,
 							px: 3,
-							maxHeight: "95vh",
+							maxHeight: "94.8%",
 							my: 2,
 							ml: 2,
+							backgroundColor: "#111111",
+							color: "white",
 						},
 					}}
 					open>

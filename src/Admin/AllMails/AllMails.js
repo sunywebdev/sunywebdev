@@ -1,6 +1,5 @@
 import {
 	Button,
-	CircularProgress,
 	Container,
 	Grid,
 	Table,
@@ -14,32 +13,39 @@ import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
-import AlertDialog from "../../Shared/AlertDialog/AlertDialog";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const AllMails = () => {
 	const [mails, setMails] = useState([]);
-	const [alert, setAlert] = React.useState(false);
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = useState("");
 	useEffect(() => {
 		fetch(`https://fast-savannah-56016.herokuapp.com/mails`)
 			.then((res) => res.json())
 			.then((data) => setMails(data));
-	}, [openSuccessMsg]);
+	});
 
-	const handleAlertAgreeClose = (id) => {
-		axios
-			.delete(`https://fast-savannah-56016.herokuapp.com/mails/${id}`)
-			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("This Mail Deleted Successfully");
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
-		setAlert(false);
+	const handleDelete = (id) => {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				axios
+					.delete(`https://fast-savannah-56016.herokuapp.com/mails/${id}`)
+					.then(function (response) {
+						Swal.fire("Deleted!", "Your mail has been deleted.", "success");
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+			}
+		});
 	};
+
 	let count = 1;
 	return (
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
@@ -58,6 +64,7 @@ const AllMails = () => {
 						<TableHead sx={{ th: { fontWeight: "bold" } }}>
 							<TableRow>
 								<TableCell align='left'>No</TableCell>
+								<TableCell align='left'>id</TableCell>
 								<TableCell align='left'>Name</TableCell>
 								<TableCell align='left'>Email</TableCell>
 								<TableCell align='left'>Subject</TableCell>
@@ -74,24 +81,20 @@ const AllMails = () => {
 											"&:last-child td, &:last-child th": { border: 0 },
 										}}>
 										<TableCell align='left'>{count++}</TableCell>
+										<TableCell align='left'>{mail?._id}</TableCell>
 										<TableCell align='left'>{mail?.userName}</TableCell>
 										<TableCell align='left'>{mail?.userEmail}</TableCell>
 										<TableCell align='left'>{mail?.subject}</TableCell>
 										<TableCell align='left'>{mail?.details}</TableCell>
 										<TableCell align='left'>
 											<Button
-												onClick={() => setAlert(true)}
+												onClick={() => handleDelete(mail?._id)}
 												classes={{ root: "bg-1" }}
 												sx={{ mx: 1 }}
 												variant='contained'>
 												<CloseIcon />
 											</Button>
 										</TableCell>
-										<AlertDialog
-											alert={alert}
-											setAlert={setAlert}
-											handleAlertAgreeClose={handleAlertAgreeClose}
-											id={mail?._id}></AlertDialog>
 									</TableRow>
 								))}
 							</TableBody>
@@ -110,10 +113,6 @@ const AllMails = () => {
 					</Table>
 				</Paper>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

@@ -1,30 +1,44 @@
 import {
-	Alert,
 	Avatar,
 	Button,
+	CircularProgress,
 	Container,
 	Grid,
-	Snackbar,
 } from "@mui/material";
-import React from "react";
+import { Box } from "@mui/system";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
+import Swal from "sweetalert2";
 import useAuth from "../../context/useAuth";
 import googleLogo from "./google-logo.png";
 
 const LoginAdmin = () => {
-	const { signInUsingGoogle, admin } = useAuth();
+	const { signInUsingGoogle, admin, isLoading } = useAuth();
 	const location = useLocation();
 	const navigate = useNavigate();
-	const [open, setOpen] = React.useState(false);
-	const handleClose = (event, reason) => {
-		if (reason === "clickaway") {
-			return;
-		}
-		setOpen(false);
-	};
 	const handleGoogleLogin = () => {
-		signInUsingGoogle(navigate, location, setOpen);
+		signInUsingGoogle(navigate, location);
 	};
+	useEffect(() => {
+		// eslint-disable-next-line no-lone-blocks
+		{
+			admin === true
+				? Swal.fire({
+						icon: "success",
+						title: "Hello!",
+						text: "Welcome Admin!",
+						showConfirmButton: false,
+						timer: 2000,
+				  })
+				: Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "You Are Not An Admin!",
+						showConfirmButton: false,
+						timer: 2000,
+				  });
+		}
+	}, [admin]);
 
 	return (
 		<Container>
@@ -34,46 +48,29 @@ const LoginAdmin = () => {
 				alignItems='center'
 				justifyContent='center'
 				style={{ minHeight: "95vh" }}>
-				<Button
-					onClick={handleGoogleLogin}
-					sx={{
-						borderRadius: "40px",
-						backgroundColor: "white",
-						color: "#4D82E5",
-						fontWeight: "bold",
-						px: 5,
-						"&.MuiButtonBase-root:hover": {
-							bgcolor: "transparent",
-						},
-					}}
-					variant='contained'
-					startIcon={<Avatar sx={{ mr: 1 }} src={googleLogo} />}>
-					Continue With Google
-				</Button>
+				{!isLoading ? (
+					<Button
+						onClick={handleGoogleLogin}
+						sx={{
+							borderRadius: "40px",
+							backgroundColor: "white",
+							color: "#4D82E5",
+							fontWeight: "bold",
+							px: 5,
+							"&.MuiButtonBase-root:hover": {
+								bgcolor: "transparent",
+							},
+						}}
+						variant='contained'
+						startIcon={<Avatar sx={{ mr: 1 }} src={googleLogo} />}>
+						Continue With Google
+					</Button>
+				) : (
+					<Box sx={{ display: "flex" }}>
+						<CircularProgress />
+					</Box>
+				)}
 			</Grid>
-			{admin === true ? (
-				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-					<Alert
-						onClose={handleClose}
-						severity='success'
-						classes={{ root: "bg-1" }}
-						variant='filled'
-						sx={{ width: "100%" }}>
-						Login Successfull, Going Back To Desired Page.
-					</Alert>
-				</Snackbar>
-			) : (
-				<Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-					<Alert
-						onClose={handleClose}
-						severity='error'
-						classes={{ root: "bg-1" }}
-						variant='filled'
-						sx={{ width: "100%" }}>
-						You Are Not An Admin
-					</Alert>
-				</Snackbar>
-			)}
 		</Container>
 	);
 };

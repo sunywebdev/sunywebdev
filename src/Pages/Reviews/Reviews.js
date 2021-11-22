@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import RateReviewIcon from "@mui/icons-material/RateReview";
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
@@ -32,8 +33,6 @@ const Reviews = () => {
 		autoplaySpeed: 3000,
 		cssEase: "linear",
 		swipeToSlide: true,
-		rows: 2,
-		slidesPerRow: 1,
 		responsive: [
 			{
 				breakpoint: 992,
@@ -69,23 +68,22 @@ const Reviews = () => {
 				mx: "auto",
 				overflow: "hidden",
 				textAlign: "center",
-				mt: { md: 0, xs: 7 },
 			}}>
 			<Grid
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ minHeight: { md: "95vh", xs: "70vh" } }}>
+				sx={{ minHeight: "95vh" }}>
 				<>
-					<Typography sx={{ mb: 0 }} variant='h3' component='div' gutterBottom>
+					<Typography
+						data-aos='fade-down'
+						sx={{ mb: 0, fontWeight: 900 }}
+						variant='h3'
+						component='div'
+						gutterBottom>
 						TESTIMONIAL
 					</Typography>
-					<Typography
-						sx={{ mb: 4 }}
-						variant='h5'
-						component='div'
-						gutterBottom></Typography>
 					<Container sx={{ mx: "auto" }}>
 						{reviews?.length > 0 ? (
 							<Slider {...settings}>
@@ -99,7 +97,7 @@ const Reviews = () => {
 												mx: 1.5,
 												mb: 1,
 												pb: 2,
-												minHeight: "170px",
+												minHeight: "250px",
 												display: "flex",
 												flexDirection: "column",
 												alignItems: "center",
@@ -109,7 +107,7 @@ const Reviews = () => {
 											<CardMedia
 												component='img'
 												style={{
-													width: "70px",
+													width: "80px",
 													marginTop: -35,
 													borderRadius: "50%",
 													border: "7px solid white",
@@ -145,43 +143,26 @@ const Reviews = () => {
 								))}
 							</Slider>
 						) : (
-							<Slider {...settings}>
-								{Array.from({ length: 6 }).map((_, idx) => (
+							<Box sx={{ mx: "auto", width: "72vw", mt: 3 }}>
+								{Array.from({ length: 5 }).map((_, idx) => (
 									<>
-										<Card
-											sx={{
-												height: "170px",
-												mt: 5,
-												mx: 1.5,
-												mb: 1,
-												pb: 2,
-												display: "flex",
-												flexDirection: "column",
-												alignItems: "center",
-												alignContent: "center",
-												overflow: "visible",
-											}}>
-											<Skeleton variant='circular' width={40} height={40} />
-											<Box>
-												<Skeleton animation='wave' width={200} />
-												<Skeleton
-													animation='wave'
-													width={50}
-													sx={{ mx: "auto" }}
-												/>
-											</Box>
-											<Skeleton
-												variant='rectangular'
-												width={210}
-												height={118}
-											/>
-										</Card>
+										<Skeleton animation='wave' />
 									</>
 								))}
-							</Slider>
+							</Box>
 						)}
 						<Link to='addreview' style={{ textDecoration: "none" }}>
-							<Button variant='contained' sx={{ mt: 3.5 }}>
+							<Button
+								variant='contained'
+								sx={{
+									mt: 3.7,
+									fontWeight: "bold",
+									backgroundColor: "#222222",
+									"&:hover": {
+										backgroundColor: "#222222",
+									},
+								}}>
+								<RateReviewIcon sx={{ mr: 1.5 }} />
 								Leave A Review
 							</Button>
 						</Link>

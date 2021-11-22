@@ -7,9 +7,9 @@ import {
 	Typography,
 } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const AddProjects = () => {
 	const [selectedImage, setSelectedImage] = useState(null);
@@ -25,19 +25,14 @@ const AddProjects = () => {
 				payload,
 			)
 			.then((response) => {
-				console.log("response", response);
-				console.log("Links", response.data.data);
 				setImageUrl(response?.data?.data?.url);
 				setError();
 			})
 			.catch((error) => {
-				console.log("error", error);
 				setError("Photo Upload Unsuccessful, Try again.");
 			});
 	};
 
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = React.useState("");
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({
 		projectName,
@@ -57,11 +52,16 @@ const AddProjects = () => {
 		axios
 			.post("https://fast-savannah-56016.herokuapp.com/projects", data)
 			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("Successfully added new project !");
+				Swal.fire({
+					icon: "success",
+					title: "Your Project Successfully Added",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 				reset();
 			})
 			.catch(function (error) {
+				console.log("error", error);
 				console.log(error);
 			});
 	};
@@ -138,16 +138,12 @@ const AddProjects = () => {
 								type='submit'
 								variant='contained'
 								sx={{ width: "100%", mb: 2 }}>
-								SEND
+								Add Project
 							</Button>
 						</form>
 					</Grid>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

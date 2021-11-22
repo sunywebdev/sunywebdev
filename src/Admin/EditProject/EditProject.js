@@ -10,14 +10,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router";
-import AlertSuccess from "../../Shared/AlertSuccess/AlertSuccess";
+import Swal from "sweetalert2";
 
 const EditProject = () => {
 	const { id } = useParams();
-	const [openSuccessMsg, setOpenSuccessMsg] = React.useState(false);
-	const [successMsg, setSuccessMsg] = useState("");
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [imageUrl, setImageUrl] = useState(null);
+	const [error, setError] = useState("");
 	const uploadImage = (selectedImage) => {
 		let payload = new FormData();
 		payload.append("image", selectedImage);
@@ -28,15 +27,15 @@ const EditProject = () => {
 				payload,
 			)
 			.then((response) => {
-				console.log("response", response);
-				console.log("Links", response.data.data);
 				setImageUrl(response?.data?.data?.url);
+				setError();
 			})
 			.catch((error) => {
 				console.log("error", error);
+				setError("Photo Upload Unsuccessful, Try again.");
 			});
 	};
-	const [error, setError] = useState("");
+
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			projectName: "",
@@ -47,7 +46,15 @@ const EditProject = () => {
 			projectPhoto: "",
 		},
 	});
-
+	const [data, setData] = useState();
+	useEffect(() => {
+		axios
+			.get(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
+			.then((res) => {
+				reset(res.data);
+				setData(res.data);
+			});
+	}, [id, reset]);
 	const onSubmit = ({
 		projectName,
 		projectDetails,
@@ -62,29 +69,22 @@ const EditProject = () => {
 			liveLink,
 			gitClientLink,
 			gitServerLink,
-			projectPhoto: imageUrl,
+			projectPhoto: imageUrl || projectPhoto,
 		};
 		axios
 			.put(`https://fast-savannah-56016.herokuapp.com/projects/${id}`, data)
 			.then(function (response) {
-				setOpenSuccessMsg(true);
-				setSuccessMsg("Project Successfully Updated!");
-				setError();
+				Swal.fire({
+					icon: "success",
+					title: "Your Project Successfully updated",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 			})
 			.catch((error) => {
-				console.log("error", error);
-				setError("Photo Upload Unsuccessful, Try again.");
+				console.log(error);
 			});
 	};
-	const [data, setData] = useState();
-	useEffect(() => {
-		axios
-			.get(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
-			.then((res) => {
-				reset(res.data);
-				setData(res.data);
-			});
-	}, [id, reset]);
 
 	return (
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
@@ -181,16 +181,12 @@ const EditProject = () => {
 								type='submit'
 								variant='contained'
 								sx={{ width: "100%", mb: 2 }}>
-								SEND
+								Update Project
 							</Button>
 						</form>
 					</Grid>
 				</Grid>
 			</Grid>
-			<AlertSuccess
-				successMsg={successMsg}
-				openSuccessMsg={openSuccessMsg}
-				setOpenSuccessMsg={setOpenSuccessMsg}></AlertSuccess>
 		</Container>
 	);
 };

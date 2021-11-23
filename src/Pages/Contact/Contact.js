@@ -16,7 +16,7 @@ const Contact = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		axios
-			.post("https://fast-savannah-56016.herokuapp.com/mails", data)
+			.post(`https://${process.env.REACT_APP_SERVER_API}/mails`, data)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",
@@ -46,7 +46,7 @@ const Contact = () => {
 						xs={12}
 						sx={{ textAlign: "left" }}>
 						<Typography
-							sx={{ mb: 0, fontWeight: 900 }}
+							sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
 							variant='h3'
 							component='div'
 							gutterBottom>
@@ -62,6 +62,12 @@ const Contact = () => {
 						</Typography>
 					</Grid>
 					<Grid data-aos='fade-left' item md={6} xs={12}>
+						<Typography
+							sx={{ mb: 1, fontWeight: 900, color: "#8444DF" }}
+							variant='h6'
+							component='div'>
+							Click To Reach Me
+						</Typography>
 						<Grid direction='row' sx={{ justifyContent: "center", mb: 3 }}>
 							<GitHubIcon
 								fontSize='large'
@@ -131,7 +137,7 @@ const Contact = () => {
 												sx={{ width: "100%" }}
 												id='outlined-basic'
 												name='UserName'
-												label='Enter Your Name'
+												label='Enter Your Name*'
 												{...register("userName", { required: true })}
 											/>
 										</Grid>
@@ -140,7 +146,8 @@ const Contact = () => {
 												sx={{ width: "100%" }}
 												id='outlined-basic'
 												name='UserEmail'
-												label='Enter Your Email'
+												type='email'
+												label='Enter Your Email*'
 												{...register("userEmail", { required: true })}
 											/>
 										</Grid>
@@ -148,7 +155,7 @@ const Contact = () => {
 											<TextField
 												sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
 												id='outlined-basic'
-												label='Subject'
+												label='Subject*'
 												name='Subject'
 												{...register("subject", { required: true })}
 											/>
@@ -159,11 +166,11 @@ const Contact = () => {
 									<TextField
 										sx={{ width: "100%", mb: 2 }}
 										id='"outlined-multiline-flexible'
-										label='Details'
-										name='details'
+										label='Your Message*'
+										name='Message'
 										multiline
 										rows={7.3}
-										{...register("details", { required: true })}
+										{...register("message", { required: true })}
 									/>
 								</Grid>
 							</Grid>
@@ -173,11 +180,13 @@ const Contact = () => {
 								sx={{
 									width: "100%",
 									mb: 2,
+									px: 3,
 									fontWeight: "bold",
-									backgroundColor: "#222222",
+									backgroundColor: "#8444DF",
 									"&:hover": {
-										backgroundColor: "#222222",
+										backgroundColor: "#8444DF",
 									},
+									borderRadius: "25px",
 								}}>
 								SEND EMAIL
 							</Button>

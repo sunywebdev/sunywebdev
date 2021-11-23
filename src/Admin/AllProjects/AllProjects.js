@@ -21,7 +21,7 @@ import Swal from "sweetalert2";
 const AllProjects = () => {
 	const [projects, setProjects] = useState([]);
 	useEffect(() => {
-		fetch(`https://fast-savannah-56016.herokuapp.com/projects`)
+		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data));
 	});
@@ -38,7 +38,7 @@ const AllProjects = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://fast-savannah-56016.herokuapp.com/projects/${id}`)
+					.delete(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "That Project has been deleted.", "success");
 					})
@@ -54,7 +54,7 @@ const AllProjects = () => {
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
 			<Grid>
 				<Typography
-					sx={{ mb: 3, fw: "bold" }}
+					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -65,7 +65,7 @@ const AllProjects = () => {
 						className='container'
 						sx={{ overflow: "auto", maxHeight: "75vh" }}>
 						<Table size='small' aria-label='a dense table'>
-							<TableHead sx={{ th: { fontWeight: "bold" } }}>
+							<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
 								<TableRow>
 									<TableCell align='left'>No</TableCell>
 									<TableCell align='left'>ProjectName</TableCell>
@@ -89,15 +89,30 @@ const AllProjects = () => {
 												<ButtonGroup>
 													<Link to={`/dashboard/${project?._id}`}>
 														<Button
-															classes={{ root: "bg-1" }}
+															sx={{
+																mr: 0.5,
+																fontWeight: "bold",
+																backgroundColor: "#8444DF",
+																"&:hover": {
+																	backgroundColor: "#8444DF",
+																},
+																borderRadius: "25px",
+															}}
 															variant='contained'>
 															<EditIcon />
 														</Button>
 													</Link>
 													<Button
 														onClick={() => handleDelete(project?._id)}
-														classes={{ root: "bg-1" }}
-														sx={{ mx: 1 }}
+														sx={{
+															ml: 0.5,
+															fontWeight: "bold",
+															backgroundColor: "#8444DF",
+															"&:hover": {
+																backgroundColor: "#8444DF",
+															},
+															borderRadius: "25px",
+														}}
 														variant='contained'>
 														<DeleteIcon />
 													</Button>

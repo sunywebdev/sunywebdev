@@ -30,7 +30,7 @@ function Navbar(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
-	const {admin } = useAuth();
+	const { admin } = useAuth();
 
 	const drawer = (
 		<Box sx={{ m: "auto" }}>
@@ -168,7 +168,7 @@ function Navbar(props) {
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
 					display: { xs: "block", sm: "none" },
-					backgroundColor: "#1565c0",
+					backgroundColor: "#8444DF",
 				}}>
 				<Toolbar>
 					<IconButton
@@ -209,7 +209,7 @@ function Navbar(props) {
 							my: 2,
 							mx: 2,
 							borderRadius: 7,
-							backgroundColor: "#111111",
+							backgroundColor: "#8444DF",
 							color: "white",
 						},
 						px: 3,
@@ -227,7 +227,7 @@ function Navbar(props) {
 							maxHeight: "94.8%",
 							my: 2,
 							ml: 2,
-							backgroundColor: "#111111",
+							backgroundColor: "#8444DF",
 							color: "white",
 						},
 					}}

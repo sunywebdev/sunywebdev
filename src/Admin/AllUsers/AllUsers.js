@@ -12,13 +12,13 @@ import {
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 
 const AllUsers = () => {
 	const [users, setUsers] = useState([]);
 	useEffect(() => {
-		fetch(`https://fast-savannah-56016.herokuapp.com/users`)
+		fetch(`https://${process.env.REACT_APP_SERVER_API}/users`)
 			.then((res) => res.json())
 			.then((data) => setUsers(data));
 	});
@@ -35,7 +35,7 @@ const AllUsers = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://fast-savannah-56016.herokuapp.com/users/${id}`)
+					.delete(`https://${process.env.REACT_APP_SERVER_API}/users/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "That User has been removed.", "success");
 					})
@@ -54,7 +54,7 @@ const AllUsers = () => {
 			}}>
 			<Grid>
 				<Typography
-					sx={{ mb: 3, fw: "bold" }}
+					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -65,7 +65,7 @@ const AllUsers = () => {
 						className='container'
 						sx={{ overflow: "auto", maxHeight: "75vh" }}>
 						<Table size='small' aria-label='a dense table'>
-							<TableHead sx={{ th: { fontWeight: "bold" } }}>
+							<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
 								<TableRow>
 									<TableCell align='left'>No</TableCell>
 									<TableCell align='left'>Photo</TableCell>
@@ -99,10 +99,16 @@ const AllUsers = () => {
 											<TableCell align='left'>
 												<Button
 													onClick={() => handleDelete(user?._id)}
-													classes={{ root: "bg-1" }}
-													sx={{ mx: 1 }}
+													sx={{
+														fontWeight: "bold",
+														backgroundColor: "#8444DF",
+														"&:hover": {
+															backgroundColor: "#8444DF",
+														},
+														borderRadius: "25px",
+													}}
 													variant='contained'>
-													<CloseIcon />
+													<DeleteIcon />
 												</Button>
 											</TableCell>
 										</TableRow>

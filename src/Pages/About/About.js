@@ -19,7 +19,7 @@ const About = () => {
 							component='div'
 							gutterBottom
 							data-aos='fade-right'
-							sx={{ fontWeight: 900 }}>
+							sx={{ fontWeight: 900, color: "#8444DF" }}>
 							ABOUT ME
 						</Typography>
 						<Typography
@@ -28,12 +28,13 @@ const About = () => {
 							component='div'
 							gutterBottom
 							sx={{ my: 2 }}>
-							My name is <b>Shoyeb Mohammed Suny</b>,I am a Web Developer,
-							specialized in Front-End technologies like HTML5, CSS3,
-							JavaScript, ES6, React JS, CURD, REST API, Bootstrap, MUI, etc. I
-							have also worked with Node JS, MongoDB, Firebase, Tailwind. My
-							main strength is I have a positive attitude and my weakness is I
-							don't feel ok until I finish my work properly.
+							I'm
+							<b style={{ color: "#8444DF" }}> Shoyeb Mohammed Suny</b>,I am a
+							Web Developer, specialized in Front-End technologies like HTML5,
+							CSS3, JavaScript, ES6, React JS, CURD, REST API, Bootstrap, MUI,
+							etc. I have also worked with Node JS, MongoDB, Firebase, Tailwind.
+							My main strength is I have a positive attitude and my weakness is
+							I don't feel ok until I finish my work properly.
 						</Typography>
 						<Box data-aos='fade-up'>
 							<Typography
@@ -41,14 +42,14 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b>SKILLS:</b>
+								<b style={{ color: "#8444DF" }}>SKILLS:</b>
 							</Typography>
 							<Typography
 								variant='body1'
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b>Expertise:</b>
+								<b style={{ color: "#8444DF" }}>Expertise:</b>
 								<br />
 								HTML5, CSS3, JavaScript, ES6, React JS, CURD, REST API,
 								Bootstrap, MUI
@@ -58,7 +59,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b>Comfortable:</b>
+								<b style={{ color: "#8444DF" }}>Comfortable:</b>
 								<br />
 								Node JS, Mongodb, Firebase, Tailwind
 							</Typography>
@@ -68,7 +69,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b>Familiar:</b>
+								<b style={{ color: "#8444DF" }}>Familiar:</b>
 								<br />
 								TypeScript
 							</Typography>
@@ -77,7 +78,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b>Tools:</b>
+								<b style={{ color: "#8444DF" }}>Tools:</b>
 								<br />
 								VS Code, GitHub, Brackets, Heroku, Netlify,Photoshop,
 								Illustrator, Figma, MS Office
@@ -88,7 +89,7 @@ const About = () => {
 						<img
 							src={image}
 							alt=''
-							style={{ width: "100%", border: " 7px solid #1565c0" }}
+							style={{ width: "100%", border: " 7px solid #8444DF" }}
 						/>
 					</Grid>
 				</Grid>

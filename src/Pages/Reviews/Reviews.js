@@ -19,7 +19,7 @@ import RateReviewIcon from "@mui/icons-material/RateReview";
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch(`https://fast-savannah-56016.herokuapp.com/reviews`)
+		fetch(`https://${process.env.REACT_APP_SERVER_API}/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [reviews]);
@@ -78,7 +78,7 @@ const Reviews = () => {
 				<>
 					<Typography
 						data-aos='fade-down'
-						sx={{ mb: 0, fontWeight: 900 }}
+						sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
 						variant='h3'
 						component='div'
 						gutterBottom>
@@ -88,9 +88,8 @@ const Reviews = () => {
 						{reviews?.length > 0 ? (
 							<Slider {...settings}>
 								{reviews?.map((review) => (
-									<>
+									<Box key={review?._id}>
 										<Card
-											key={review?._id}
 											sx={{
 												maxWidth: 345,
 												mt: 5,
@@ -110,16 +109,16 @@ const Reviews = () => {
 													width: "80px",
 													marginTop: -35,
 													borderRadius: "50%",
-													border: "7px solid white",
+													border: "5px solid #8444DF",
 												}}
 												image={review?.userPhoto}
 												alt=''
 											/>
 											<Typography
-												sx={{}}
 												gutterBottom
 												variant='h6'
-												component='div'>
+												component='div'
+												sx={{ color: "#8444DF" }}>
 												{review?.userName}
 											</Typography>
 											<Box
@@ -128,7 +127,7 @@ const Reviews = () => {
 													alignItems: "center",
 												}}>
 												<Rating
-													sx={{}}
+													sx={{ color: "#8444DF" }}
 													name='half-rating-read'
 													defaultValue={review?.star}
 													precision={0.1}
@@ -139,15 +138,13 @@ const Reviews = () => {
 												{review?.userReview}
 											</Typography>
 										</Card>
-									</>
+									</Box>
 								))}
 							</Slider>
 						) : (
 							<Box sx={{ mx: "auto", width: "72vw", mt: 3 }}>
 								{Array.from({ length: 5 }).map((_, idx) => (
-									<>
-										<Skeleton animation='wave' />
-									</>
+									<Skeleton key={idx} animation='wave' />
 								))}
 							</Box>
 						)}
@@ -156,11 +153,13 @@ const Reviews = () => {
 								variant='contained'
 								sx={{
 									mt: 3.7,
+									px: 3,
 									fontWeight: "bold",
-									backgroundColor: "#222222",
+									backgroundColor: "#8444DF",
 									"&:hover": {
-										backgroundColor: "#222222",
+										backgroundColor: "#8444DF",
 									},
+									borderRadius: "25px",
 								}}>
 								<RateReviewIcon sx={{ mr: 1.5 }} />
 								Leave A Review

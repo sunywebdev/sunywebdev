@@ -30,7 +30,7 @@ const AddReview = () => {
 			userReview,
 		};
 		axios
-			.post("https://fast-savannah-56016.herokuapp.com/reviews", data)
+			.post(`https://${process.env.REACT_APP_SERVER_API}/reviews`, data)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",
@@ -54,7 +54,7 @@ const AddReview = () => {
 				justifyContent='center'
 				sx={{ minHeight: { md: "95vh", xs: "70vh" } }}>
 				<Typography
-					sx={{ mb: 4, fontWeight: 900 }}
+					sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}
 					variant='h3'
 					component='div'
 					gutterBottom
@@ -102,6 +102,7 @@ const AddReview = () => {
 												pointerEvents: "none",
 												my: 2,
 												fontWeight: "bold",
+												color: "#8444DF",
 											}}
 											{...register("userName", { required: true })}
 										/>
@@ -126,7 +127,7 @@ const AddReview = () => {
 									alignItems: "center",
 								}}>
 								<Rating
-									sx={{ float: "left", mb: 2, fontSize: 50 }}
+									sx={{ float: "left", mb: 2, fontSize: 50, color: "#8444DF" }}
 									name='hover-feedback'
 									value={value}
 									size='large'
@@ -144,7 +145,7 @@ const AddReview = () => {
 								<Typography
 									variant='h4'
 									component='div'
-									sx={{ ml: 2, mb: 1.7 }}>
+									sx={{ ml: 2, mb: 1.7, color: "#8444DF" }}>
 									{hover !== -1 ? hover : value}
 								</Typography>
 							</Box>
@@ -162,11 +163,13 @@ const AddReview = () => {
 								sx={{
 									width: "100%",
 									mb: 2,
+									px: 3,
 									fontWeight: "bold",
-									backgroundColor: "#222222",
+									backgroundColor: "#8444DF",
 									"&:hover": {
-										backgroundColor: "#222222",
+										backgroundColor: "#8444DF",
 									},
+									borderRadius: "25px",
 								}}>
 								POST REVIEW
 							</Button>

@@ -164,6 +164,7 @@ function DashBoard(props) {
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
 					display: { xs: "block", sm: "none" },
+					backgroundColor: "#8444DF",
 				}}>
 				<Toolbar>
 					<IconButton
@@ -204,7 +205,7 @@ function DashBoard(props) {
 							my: 2,
 							mx: 2,
 							borderRadius: 7,
-							backgroundColor: "#111111",
+							backgroundColor: "#8444DF",
 							color: "white",
 						},
 					}}>
@@ -220,7 +221,7 @@ function DashBoard(props) {
 							maxHeight: "94.8%",
 							my: 2,
 							ml: 2,
-							backgroundColor: "#111111",
+							backgroundColor: "#8444DF",
 							color: "white",
 						},
 					}}

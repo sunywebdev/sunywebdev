@@ -24,7 +24,7 @@ const Home = () => {
 					variant='h1'
 					component='div'
 					gutterBottom
-					sx={{ fontWeight: 900 }}>
+					sx={{ fontWeight: 900, color: "#8444DF" }}>
 					Hello!
 				</Typography>
 				<Typography
@@ -33,8 +33,8 @@ const Home = () => {
 					component='div'
 					gutterBottom
 					sx={{ width: { md: "70%", sm: "90%" } }}>
-					My name is <b>Shoyeb Mohammed Suny</b>. I'm a MERN Stack Web Developer
-					from Chattogram, Bangladesh!
+					I'm <b style={{ color: "#8444DF" }}>Shoyeb Mohammed Suny</b>. I'm a
+					MERN Stack Web Developer from Chattogram, Bangladesh!
 				</Typography>
 				<Button
 					data-aos='fade-right'
@@ -46,15 +46,17 @@ const Home = () => {
 					}
 					sx={{
 						my: 1,
+						px: 3,
 						fontWeight: "bold",
-						backgroundColor: "#222222",
+						backgroundColor: "#8444DF",
 						"&:hover": {
-							backgroundColor: "#222222",
+							backgroundColor: "#8444DF",
 						},
+						borderRadius: "25px",
 					}}
 					variant='contained'>
 					<AssignmentIndIcon sx={{ mr: 1.5 }} />
-					Download My Resume
+					My Resume
 				</Button>
 				<Grid
 					data-aos='fade-up'

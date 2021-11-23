@@ -12,13 +12,13 @@ import {
 import Paper from "@mui/material/Paper";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CloseIcon from "@mui/icons-material/Close";
+import DeleteIcon from "@mui/icons-material/Delete";
 import Swal from "sweetalert2";
 
 const AllMails = () => {
 	const [mails, setMails] = useState([]);
 	useEffect(() => {
-		fetch(`https://fast-savannah-56016.herokuapp.com/mails`)
+		fetch(`https://${process.env.REACT_APP_SERVER_API}/mails`)
 			.then((res) => res.json())
 			.then((data) => setMails(data));
 	});
@@ -35,7 +35,7 @@ const AllMails = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://fast-savannah-56016.herokuapp.com/mails/${id}`)
+					.delete(`https://${process.env.REACT_APP_SERVER_API}/mails/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "Your mail has been deleted.", "success");
 					})
@@ -51,7 +51,7 @@ const AllMails = () => {
 		<Container sx={{ mt: { xs: 9, md: 2 } }}>
 			<Grid>
 				<Typography
-					sx={{ mb: 3, fw: "bold" }}
+					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -61,10 +61,9 @@ const AllMails = () => {
 					className='container'
 					sx={{ overflow: "auto", maxHeight: "75vh" }}>
 					<Table size='small' aria-label='a dense table'>
-						<TableHead sx={{ th: { fontWeight: "bold" } }}>
+						<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
 							<TableRow>
 								<TableCell align='left'>No</TableCell>
-								<TableCell align='left'>id</TableCell>
 								<TableCell align='left'>Name</TableCell>
 								<TableCell align='left'>Email</TableCell>
 								<TableCell align='left'>Subject</TableCell>
@@ -81,18 +80,23 @@ const AllMails = () => {
 											"&:last-child td, &:last-child th": { border: 0 },
 										}}>
 										<TableCell align='left'>{count++}</TableCell>
-										<TableCell align='left'>{mail?._id}</TableCell>
 										<TableCell align='left'>{mail?.userName}</TableCell>
 										<TableCell align='left'>{mail?.userEmail}</TableCell>
 										<TableCell align='left'>{mail?.subject}</TableCell>
-										<TableCell align='left'>{mail?.details}</TableCell>
+										<TableCell align='left'>{mail?.message}</TableCell>
 										<TableCell align='left'>
 											<Button
 												onClick={() => handleDelete(mail?._id)}
-												classes={{ root: "bg-1" }}
-												sx={{ mx: 1 }}
+												sx={{
+													fontWeight: "bold",
+													backgroundColor: "#8444DF",
+													"&:hover": {
+														backgroundColor: "#8444DF",
+													},
+													borderRadius: "25px",
+												}}
 												variant='contained'>
-												<CloseIcon />
+												<DeleteIcon />
 											</Button>
 										</TableCell>
 									</TableRow>

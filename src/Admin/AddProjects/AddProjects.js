@@ -37,6 +37,7 @@ const AddProjects = () => {
 	const onSubmit = ({
 		projectName,
 		projectDetails,
+		techUsed,
 		liveLink,
 		gitClientLink,
 		gitServerLink,
@@ -44,13 +45,14 @@ const AddProjects = () => {
 		const data = {
 			projectName,
 			projectDetails,
+			techUsed,
 			liveLink,
 			gitClientLink,
 			gitServerLink,
 			projectPhoto: imageUrl,
 		};
 		axios
-			.post("https://fast-savannah-56016.herokuapp.com/projects", data)
+			.post(`https://${process.env.REACT_APP_SERVER_API}/projects`, data)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",
@@ -75,7 +77,7 @@ const AddProjects = () => {
 				justifyContent='center'
 				style={{ minHeight: "95vh" }}>
 				<Typography
-					sx={{ mb: 3, fw: "bold" }}
+					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -117,6 +119,14 @@ const AddProjects = () => {
 							/>
 							<TextField
 								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Technologies Used'
+								multiline
+								rows={2}
+								{...register("techUsed", { required: true })}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project Live Link'
 								{...register("liveLink", { required: true })}
@@ -137,7 +147,17 @@ const AddProjects = () => {
 							<Button
 								type='submit'
 								variant='contained'
-								sx={{ width: "100%", mb: 2 }}>
+								sx={{
+									width: "100%",
+									mb: 2,
+									px: 3,
+									fontWeight: "bold",
+									backgroundColor: "#8444DF",
+									"&:hover": {
+										backgroundColor: "#8444DF",
+									},
+									borderRadius: "25px",
+								}}>
 								Add Project
 							</Button>
 						</form>

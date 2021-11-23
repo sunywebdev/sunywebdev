@@ -176,7 +176,6 @@ const Portfolio = () => {
 				</Grid>
 			</Grid>
 			<Button
-				data-aos='fade-right'
 				onClick={() => window.open("https://github.com/sunywebdev", "_blank")}
 				sx={{
 					my: 1,

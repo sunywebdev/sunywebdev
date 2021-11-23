@@ -21,7 +21,7 @@ import AdminRoute from "./AdminRoute/AdminRoute";
 import LoginAdmin from "./Shared/Login/LoginAdmin";
 import EditProject from "./Admin/EditProject/EditProject";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 AOS.init();
 
 function App() {

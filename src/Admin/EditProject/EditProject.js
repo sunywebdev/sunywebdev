@@ -1,11 +1,13 @@
 import {
 	Button,
+	CircularProgress,
 	Container,
 	Grid,
 	Input,
 	TextField,
 	Typography,
 } from "@mui/material";
+import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -14,12 +16,18 @@ import Swal from "sweetalert2";
 
 const EditProject = () => {
 	const { id } = useParams();
-	const [selectedImage, setSelectedImage] = useState(null);
-	const [imageUrl, setImageUrl] = useState(null);
-	const [error, setError] = useState("");
-	const uploadImage = (selectedImage) => {
+	const [inputImage, setInputImage] = useState(null);
+	const [imageLink, setImageLink] = useState(null);
+	const [uploading, setUploading] = useState(false);
+
+	const uploadImage = (e) => {
+		e.preventDefault();
+		if (!inputImage) {
+			return;
+		}
+		setUploading(true);
 		let payload = new FormData();
-		payload.append("image", selectedImage);
+		payload.append("image", inputImage);
 
 		axios
 			.post(
@@ -27,12 +35,24 @@ const EditProject = () => {
 				payload,
 			)
 			.then((response) => {
-				setImageUrl(response?.data?.data?.url);
-				setError();
+				setUploading(false);
+				setImageLink(response?.data?.data?.url);
+				Swal.fire({
+					icon: "success",
+					title: "Photo Uploaded",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 			})
 			.catch((error) => {
+				setUploading(false);
 				console.log("error", error);
-				setError("Photo Upload Unsuccessful, Try again.");
+				Swal.fire({
+					icon: "error",
+					title: "Uploading Failed, Try Again",
+					showConfirmButton: false,
+					timer: 1500,
+				});
 			});
 	};
 
@@ -71,8 +91,9 @@ const EditProject = () => {
 			liveLink,
 			gitClientLink,
 			gitServerLink,
-			projectPhoto: imageUrl || projectPhoto,
+			projectPhoto: imageLink,
 		};
+		console.log(data);
 		axios
 			.put(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`, data)
 			.then(function (response) {
@@ -115,31 +136,40 @@ const EditProject = () => {
 									shrink: true,
 								}}
 							/>
-							{imageUrl && selectedImage ? (
-								<div>
-									<img alt='not found' width={"250px"} src={imageUrl} />
-								</div>
-							) : (
-								<div>
-									<img
-										alt='not found'
-										width={"250px"}
-										src={data?.projectPhoto}
-									/>
-								</div>
-							)}
-							{error && <p style={{ color: "red" }}>{error}</p>}
-							<Input
-								sx={{ my: 2 }}
-								accept='image/*'
-								type='file'
-								name='myImage'
-								onChange={(event) => {
-									uploadImage(selectedImage);
-									setSelectedImage(event.target.files[0]);
-								}}
-								id='icon-button-file'
-							/>
+							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
+								<Input
+									accept='image/*'
+									type='file'
+									onChange={(e) => setInputImage(e.target.files[0])}
+								/>
+
+								{!uploading ? (
+									<>
+										{inputImage ? (
+											<>
+												<img
+													src={URL.createObjectURL(inputImage)}
+													alt=''
+													width='250px'
+												/>
+												<Button
+													onClick={uploadImage}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
+											</>
+										) : (
+											<img src={data?.projectPhoto} alt='' width='250px' />
+										)}
+									</>
+								) : (
+									<Box sx={{ my: 2 }}>
+										<CircularProgress />
+									</Box>
+								)}
+							</Box>
 							<TextField
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'

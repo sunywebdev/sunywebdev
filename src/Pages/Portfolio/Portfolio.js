@@ -48,6 +48,7 @@ const Portfolio = () => {
 										<Card
 											sx={{
 												display: "flex",
+												alignItems: "center",
 												flexDirection: {
 													md: "row",
 													sm: "column",
@@ -57,11 +58,9 @@ const Portfolio = () => {
 											}}>
 											<CardMedia
 												sx={{
-													maxHeight: "290px",
+													maxHeight: "350px",
 													maxWidth: "350px",
-													my: "auto",
 													borderRadius: "15px",
-													ml: { md: 1, xs: 0 },
 													border: "3px solid #8444DF",
 												}}
 												component='img'

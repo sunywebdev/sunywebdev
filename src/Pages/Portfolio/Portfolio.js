@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Container, Grid, Paper, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
+import GitHubIcon from "@mui/icons-material/GitHub";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
@@ -174,6 +175,23 @@ const Portfolio = () => {
 					)}
 				</Grid>
 			</Grid>
+			<Button
+				data-aos='fade-right'
+				onClick={() => window.open("https://github.com/sunywebdev", "_blank")}
+				sx={{
+					my: 1,
+					px: 3,
+					fontWeight: "bold",
+					backgroundColor: "#8444DF",
+					"&:hover": {
+						backgroundColor: "#8444DF",
+					},
+					borderRadius: "25px",
+				}}
+				variant='contained'>
+				<GitHubIcon sx={{ mr: 1.5 }} />
+				Explore More GitHub Repos
+			</Button>
 		</Container>
 	);
 };

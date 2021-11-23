@@ -141,7 +141,7 @@ const AddProjects = () => {
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project GitHub Server Link'
-								{...register("gitServerLink", { required: true })}
+								{...register("gitServerLink" /* , { required: true } */)}
 							/>
 
 							<Button

@@ -142,26 +142,28 @@ const Portfolio = () => {
 															}>
 															Client Git
 														</Button>
-														<Button
-															variant='contained'
-															sx={{
-																px: 1.5,
-																fontWeight: "bold",
-																backgroundColor: "#8444DF",
-																"&:hover": {
+														{project?.gitServerLink && (
+															<Button
+																variant='contained'
+																sx={{
+																	px: 1.5,
+																	fontWeight: "bold",
 																	backgroundColor: "#8444DF",
-																},
-																borderRadius: "25px",
-															}}
-															size='small'
-															onClick={() =>
-																window.open(
-																	`${project?.gitServerLink}`,
-																	"_blank",
-																)
-															}>
-															Server Git
-														</Button>
+																	"&:hover": {
+																		backgroundColor: "#8444DF",
+																	},
+																	borderRadius: "25px",
+																}}
+																size='small'
+																onClick={() =>
+																	window.open(
+																		`${project?.gitServerLink}`,
+																		"_blank",
+																	)
+																}>
+																Server Git
+															</Button>
+														)}
 													</CardActions>
 												</Box>
 											</Box>

@@ -24,22 +24,16 @@ const Portfolio = () => {
 				justifyContent='center'
 				style={{ minHeight: "95vh" }}>
 				<Typography
-					data-aos='fade-down'
 					sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
 					variant='h3'
 					component='div'
 					gutterBottom>
 					PORTFOLIO
 				</Typography>
-				<Typography
-					data-aos='fade-down'
-					sx={{ mb: 4 }}
-					variant='h5'
-					component='div'
-					gutterBottom>
+				<Typography sx={{ mb: 4 }} variant='h5' component='div' gutterBottom>
 					Check out some of my latest works.
 				</Typography>
-				<Grid container spacing={3}>
+				<Grid container spacing={3} sx={{ mb: 2 }}>
 					{projects?.length > 0 ? (
 						<>
 							{projects?.map((project) => (

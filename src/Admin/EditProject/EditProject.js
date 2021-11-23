@@ -158,6 +158,9 @@ const EditProject = () => {
 								multiline
 								rows={2}
 								{...register("techUsed", { required: true })}
+								InputLabelProps={{
+									shrink: true,
+								}}
 							/>
 							<TextField
 								sx={{ width: "100%", mb: 2 }}
@@ -181,7 +184,7 @@ const EditProject = () => {
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project GitHub Server Link'
-								{...register("gitServerLink", { required: true })}
+								{...register("gitServerLink" /* , { required: true } */)}
 								InputLabelProps={{
 									shrink: true,
 								}}

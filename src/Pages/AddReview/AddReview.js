@@ -18,7 +18,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddReview = () => {
-	const [value, setValue] = React.useState(2.3);
+	const [value, setValue] = React.useState(4);
 	const [hover, setHover] = React.useState(-1);
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({ userName, userEmail, userReview }) => {
@@ -131,7 +131,7 @@ const AddReview = () => {
 									name='hover-feedback'
 									value={value}
 									size='large'
-									precision={0.1}
+									precision={0.5}
 									onChange={(event, newValue) => {
 										setValue(newValue);
 									}}

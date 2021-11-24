@@ -77,12 +77,11 @@ const Reviews = () => {
 				sx={{ minHeight: "95vh" }}>
 				<>
 					<Typography
-						data-aos='fade-down'
-						sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
+						sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}
 						variant='h3'
 						component='div'
 						gutterBottom>
-						TESTIMONIAL
+						REVIEWS
 					</Typography>
 					<Container sx={{ mx: "auto" }}>
 						{reviews?.length > 0 ? (

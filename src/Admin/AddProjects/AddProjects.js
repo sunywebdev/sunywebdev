@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 const AddProjects = () => {
+	const [submitting, setSubmitting] = useState(false);
 	const [inputImage, setInputImage] = useState(null);
 	const [imageLink, setImageLink] = useState(null);
 	const [uploading, setUploading] = useState(false);
@@ -71,6 +72,7 @@ const AddProjects = () => {
 			gitServerLink,
 			projectPhoto: imageLink,
 		};
+		setSubmitting(true);
 		axios
 			.post(`https://${process.env.REACT_APP_SERVER_API}/projects`, data)
 			.then(function (response) {
@@ -80,6 +82,7 @@ const AddProjects = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
+				setSubmitting(false);
 				reset();
 			})
 			.catch(function (error) {
@@ -105,97 +108,103 @@ const AddProjects = () => {
 				</Typography>
 				<Grid container spacing={2}>
 					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						<form onSubmit={handleSubmit(onSubmit)}>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='outlined-basic'
-								label='Enter Project Name'
-								{...register("projectName", { required: true })}
-							/>
-							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
-								<Input
-									accept='image/*'
-									type='file'
-									onChange={(e) => setInputImage(e.target.files[0])}
+						{!submitting ? (
+							<form onSubmit={handleSubmit(onSubmit)}>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='outlined-basic'
+									label='Enter Project Name'
+									{...register("projectName", { required: true })}
+								/>
+								<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
+									<Input
+										accept='image/*'
+										type='file'
+										onChange={(e) => setInputImage(e.target.files[0])}
+									/>
+
+									{!uploading ? (
+										<>
+											{inputImage && (
+												<>
+													<img
+														src={URL.createObjectURL(inputImage)}
+														alt=''
+														width='250px'
+													/>
+													<Button
+														onClick={uploadImage}
+														variant='contained'
+														component='span'
+														sx={{ my: 1, py: 0.5, width: "250px" }}>
+														Upload Image
+													</Button>
+												</>
+											)}
+										</>
+									) : (
+										<Box sx={{ my: 2 }}>
+											<CircularProgress />
+										</Box>
+									)}
+								</Box>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='"outlined-multiline-flexible'
+									label='Project Details'
+									multiline
+									rows={4}
+									{...register("projectDetails", { required: true })}
+								/>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='"outlined-multiline-flexible'
+									label='Technologies Used'
+									multiline
+									rows={2}
+									{...register("techUsed", { required: true })}
+								/>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='outlined-basic'
+									label='Project Live Link'
+									{...register("liveLink", { required: true })}
+								/>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='outlined-basic'
+									label='Project GitHub Client Link'
+									{...register("gitClientLink", { required: true })}
+								/>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='outlined-basic'
+									label='Project GitHub Server Link'
+									{...register("gitServerLink" /* , { required: true } */)}
 								/>
 
-								{!uploading ? (
-									<>
-										{inputImage && (
-											<>
-												<img
-													src={URL.createObjectURL(inputImage)}
-													alt=''
-													width='250px'
-												/>
-												<Button
-													onClick={uploadImage}
-													variant='contained'
-													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
-													Upload Image
-												</Button>
-											</>
-										)}
-									</>
-								) : (
-									<Box sx={{ my: 2 }}>
-										<CircularProgress />
-									</Box>
-								)}
-							</Box>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Project Details'
-								multiline
-								rows={4}
-								{...register("projectDetails", { required: true })}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Technologies Used'
-								multiline
-								rows={2}
-								{...register("techUsed", { required: true })}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='outlined-basic'
-								label='Project Live Link'
-								{...register("liveLink", { required: true })}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='outlined-basic'
-								label='Project GitHub Client Link'
-								{...register("gitClientLink", { required: true })}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='outlined-basic'
-								label='Project GitHub Server Link'
-								{...register("gitServerLink" /* , { required: true } */)}
-							/>
-
-							<Button
-								type='submit'
-								variant='contained'
-								sx={{
-									width: "100%",
-									mb: 2,
-									px: 3,
-									fontWeight: "bold",
-									backgroundColor: "#8444DF",
-									"&:hover": {
+								<Button
+									type='submit'
+									variant='contained'
+									sx={{
+										width: "100%",
+										mb: 2,
+										px: 3,
+										fontWeight: "bold",
 										backgroundColor: "#8444DF",
-									},
-									borderRadius: "25px",
-								}}>
-								Add Project
-							</Button>
-						</form>
+										"&:hover": {
+											backgroundColor: "#8444DF",
+										},
+										borderRadius: "25px",
+									}}>
+									Add Project
+								</Button>
+							</form>
+						) : (
+							<Box sx={{ my: 2 }}>
+								<CircularProgress />
+							</Box>
+						)}
 					</Grid>
 				</Grid>
 			</Grid>

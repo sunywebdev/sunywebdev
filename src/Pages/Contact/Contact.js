@@ -25,7 +25,7 @@ const Contact = () => {
 	const [formLink, setFormLink] = useState();
 	useEffect(() => {
 		setFormLink(process.env.REACT_APP_GFORM_ID);
-	}, []);
+	}, [submitting]);
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		setSubmitting(true);

@@ -8,9 +8,10 @@ import {
 	Rating,
 	TextField,
 	Typography,
+	CircularProgress,
 } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import StarIcon from "@mui/icons-material/Star";
 import useAuth from "../../context/useAuth";
@@ -18,6 +19,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddReview = () => {
+	const [submitting, setSubmitting] = useState(false);
 	const [value, setValue] = React.useState(4);
 	const [hover, setHover] = React.useState(-1);
 	const { register, handleSubmit, reset } = useForm();
@@ -29,6 +31,7 @@ const AddReview = () => {
 			star: value,
 			userReview,
 		};
+		setSubmitting(true);
 		axios
 			.post(`https://${process.env.REACT_APP_SERVER_API}/reviews`, data)
 			.then(function (response) {
@@ -38,6 +41,7 @@ const AddReview = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
+				setSubmitting(false);
 				reset();
 			})
 			.catch(function (error) {
@@ -72,108 +76,119 @@ const AddReview = () => {
 
 				<Grid container spacing={2}>
 					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						<form data-aos='fade-left' onSubmit={handleSubmit(onSubmit)}>
-							<List
-								sx={{
-									width: "100%",
-									maxWidth: 400,
-									bgcolor: "transparent",
-								}}>
-								<ListItem>
-									<ListItemAvatar>
-										<img
-											style={{
-												width: "50px",
-												height: "50px",
-												borderRadius: "50%",
-												my: 2,
-											}}
-											src={user?.photoURL}
-											alt=''
-										/>
-									</ListItemAvatar>
-									<Box item sx={{ textAlign: "left", ml: 2 }}>
-										<input
-											defaultValue={user?.displayName}
-											style={{
-												border: 0,
-												fontSize: "18px",
-												backgroundColor: "transparent",
-												pointerEvents: "none",
-												my: 2,
-												fontWeight: "bold",
-												color: "#8444DF",
-											}}
-											{...register("userName", { required: true })}
-										/>
-										<input
-											style={{
-												border: 0,
-												fontSize: "17px",
-												textAlign: "left",
-												backgroundColor: "transparent",
-												pointerEvents: "none",
-												my: 2,
-											}}
-											defaultValue={user?.email}
-											{...register("userEmail", { required: true })}
-										/>
-									</Box>
-								</ListItem>
-							</List>
-							<Box
-								sx={{
-									display: "flex",
-									alignItems: "center",
-								}}>
-								<Rating
-									sx={{ float: "left", mb: 2, fontSize: 50, color: "#8444DF" }}
-									name='hover-feedback'
-									value={value}
-									size='large'
-									precision={0.5}
-									onChange={(event, newValue) => {
-										setValue(newValue);
-									}}
-									onChangeActive={(event, newHover) => {
-										setHover(newHover);
-									}}
-									emptyIcon={
-										<StarIcon style={{ opacity: 0.55 }} fontSize='inherit' />
-									}
+						{!submitting ? (
+							<form data-aos='fade-left' onSubmit={handleSubmit(onSubmit)}>
+								<List
+									sx={{
+										width: "100%",
+										maxWidth: 400,
+										bgcolor: "transparent",
+									}}>
+									<ListItem>
+										<ListItemAvatar>
+											<img
+												style={{
+													width: "50px",
+													height: "50px",
+													borderRadius: "50%",
+													my: 2,
+												}}
+												src={user?.photoURL}
+												alt=''
+											/>
+										</ListItemAvatar>
+										<Box item sx={{ textAlign: "left", ml: 2 }}>
+											<input
+												defaultValue={user?.displayName}
+												style={{
+													border: 0,
+													fontSize: "18px",
+													backgroundColor: "transparent",
+													pointerEvents: "none",
+													my: 2,
+													fontWeight: "bold",
+													color: "#8444DF",
+												}}
+												{...register("userName", { required: true })}
+											/>
+											<input
+												style={{
+													border: 0,
+													fontSize: "17px",
+													textAlign: "left",
+													backgroundColor: "transparent",
+													pointerEvents: "none",
+													my: 2,
+												}}
+												defaultValue={user?.email}
+												{...register("userEmail", { required: true })}
+											/>
+										</Box>
+									</ListItem>
+								</List>
+								<Box
+									sx={{
+										display: "flex",
+										alignItems: "center",
+									}}>
+									<Rating
+										sx={{
+											float: "left",
+											mb: 2,
+											fontSize: 50,
+											color: "#8444DF",
+										}}
+										name='hover-feedback'
+										value={value}
+										size='large'
+										precision={0.5}
+										onChange={(event, newValue) => {
+											setValue(newValue);
+										}}
+										onChangeActive={(event, newHover) => {
+											setHover(newHover);
+										}}
+										emptyIcon={
+											<StarIcon style={{ opacity: 0.55 }} fontSize='inherit' />
+										}
+									/>
+									<Typography
+										variant='h4'
+										component='div'
+										sx={{ ml: 2, mb: 1.7, color: "#8444DF" }}>
+										{hover !== -1 ? hover : value}
+									</Typography>
+								</Box>
+								<TextField
+									sx={{ width: "100%", mb: 2 }}
+									id='"outlined-multiline-flexible'
+									label='Share Your Review'
+									multiline
+									rows={4}
+									{...register("userReview", { required: true })}
 								/>
-								<Typography
-									variant='h4'
-									component='div'
-									sx={{ ml: 2, mb: 1.7, color: "#8444DF" }}>
-									{hover !== -1 ? hover : value}
-								</Typography>
-							</Box>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Share Your Review'
-								multiline
-								rows={4}
-								{...register("userReview", { required: true })}
-							/>
-							<Button
-								type='submit'
-								variant='contained'
-								sx={{
-									width: "100%",
-									mb: 2,
-									px: 3,
-									fontWeight: "bold",
-									backgroundColor: "#8444DF",
-									"&:hover": {
+								<Button
+									type='submit'
+									variant='contained'
+									sx={{
+										width: "100%",
+										mb: 2,
+										px: 3,
+										fontWeight: "bold",
 										backgroundColor: "#8444DF",
-									},
-									borderRadius: "25px",
-								}}>
-								POST REVIEW
-							</Button>
-						</form>
+										"&:hover": {
+											backgroundColor: "#8444DF",
+										},
+										borderRadius: "25px",
+									}}>
+									POST REVIEW
+								</Button>
+							</form>
+						) : (
+							<Box sx={{ my: 2 }}>
+								<CircularProgress />
+							</Box>
+						)}
 					</Grid>
 				</Grid>
 			</Grid>

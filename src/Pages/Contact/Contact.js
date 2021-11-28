@@ -1,6 +1,14 @@
-import { Button, Container, Grid, TextField, Typography } from "@mui/material";
+import {
+	Button,
+	Container,
+	Grid,
+	TextField,
+	Typography,
+	Box,
+	CircularProgress,
+} from "@mui/material";
 import axios from "axios";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import "./form";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -13,8 +21,14 @@ import EmailIcon from "@mui/icons-material/Email";
 import Swal from "sweetalert2";
 
 const Contact = () => {
+	const [submitting, setSubmitting] = useState(false);
+	const [formLink, setFormLink] = useState();
+	useEffect(() => {
+		setFormLink(process.env.REACT_APP_GFORM_ID);
+	}, []);
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
+		setSubmitting(true);
 		axios
 			.post(`https://${process.env.REACT_APP_SERVER_API}/mails`, data)
 			.then(function (response) {
@@ -24,6 +38,7 @@ const Contact = () => {
 					showConfirmButton: false,
 					timer: 1500,
 				});
+				setSubmitting(false);
 				reset();
 			})
 			.catch(function (error) {
@@ -123,74 +138,83 @@ const Contact = () => {
 
 				<Grid data-aos='fade-up' container spacing={2}>
 					<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-						<form
-							onSubmit={handleSubmit(onSubmit)}
-							action={process.env.REACT_APP_GFORM_ID}
-							method='post'
-							id='gform'
-							className='gform'>
-							<Grid container spacing={2}>
-								<Grid item md={6} xs={12}>
-									<Grid container spacing={2}>
-										<Grid item md={12} xs={12}>
-											<TextField
-												sx={{ width: "100%" }}
-												id='outlined-basic'
-												name='UserName'
-												label='Enter Your Name*'
-												{...register("userName", { required: true })}
-											/>
-										</Grid>
-										<Grid item md={12} xs={12}>
-											<TextField
-												sx={{ width: "100%" }}
-												id='outlined-basic'
-												name='UserEmail'
-												type='email'
-												label='Enter Your Email*'
-												{...register("userEmail", { required: true })}
-											/>
-										</Grid>
-										<Grid item md={12} xs={12}>
-											<TextField
-												sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
-												id='outlined-basic'
-												label='Subject*'
-												name='Subject'
-												{...register("subject", { required: true })}
-											/>
+						{!submitting ? (
+							<form
+								onSubmit={handleSubmit(onSubmit)}
+								action={formLink}
+								method='post'
+								id='gform'
+								className='gform'>
+								<Box sx={{ display: "none" }}>
+									<input id='honeypot' type='text' name='honeypot' />
+								</Box>
+								<Grid container spacing={2}>
+									<Grid item md={6} xs={12}>
+										<Grid container spacing={2}>
+											<Grid item md={12} xs={12}>
+												<TextField
+													sx={{ width: "100%" }}
+													id='outlined-basic'
+													name='UserName'
+													label='Enter Your Name*'
+													{...register("userName", { required: true })}
+												/>
+											</Grid>
+											<Grid item md={12} xs={12}>
+												<TextField
+													sx={{ width: "100%" }}
+													id='outlined-basic'
+													name='UserEmail'
+													type='email'
+													label='Enter Your Email*'
+													{...register("userEmail", { required: true })}
+												/>
+											</Grid>
+											<Grid item md={12} xs={12}>
+												<TextField
+													sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
+													id='outlined-basic'
+													label='Subject*'
+													name='Subject'
+													{...register("subject", { required: true })}
+												/>
+											</Grid>
 										</Grid>
 									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											sx={{ width: "100%", mb: 2 }}
+											id='"outlined-multiline-flexible'
+											label='Your Message*'
+											name='Message'
+											multiline
+											rows={7.3}
+											{...register("message", { required: true })}
+										/>
+									</Grid>
 								</Grid>
-								<Grid item md={6} xs={12}>
-									<TextField
-										sx={{ width: "100%", mb: 2 }}
-										id='"outlined-multiline-flexible'
-										label='Your Message*'
-										name='Message'
-										multiline
-										rows={7.3}
-										{...register("message", { required: true })}
-									/>
-								</Grid>
-							</Grid>
-							<Button
-								type='submit'
-								variant='contained'
-								sx={{
-									width: "100%",
-									mb: 2,
-									px: 3,
-									fontWeight: "bold",
-									backgroundColor: "#8444DF",
-									"&:hover": {
+								<Button
+									type='submit'
+									variant='contained'
+									sx={{
+										width: "100%",
+										mb: 2,
+										px: 3,
+										fontWeight: "bold",
 										backgroundColor: "#8444DF",
-									},
-									borderRadius: "25px",
-								}}>
-								SEND EMAIL
-							</Button>
-						</form>
+										"&:hover": {
+											backgroundColor: "#8444DF",
+										},
+										borderRadius: "25px",
+									}}>
+									SEND EMAIL
+								</Button>
+							</form>
+						) : (
+							<Box sx={{ my: 2 }}>
+								<CircularProgress />
+							</Box>
+						)}
 					</Grid>
 				</Grid>
 			</Grid>

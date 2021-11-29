@@ -21,11 +21,14 @@ import EmailIcon from "@mui/icons-material/Email";
 import Swal from "sweetalert2";
 
 const Contact = () => {
+	const [submitted, setSubmitted] = useState("");
 	const [submitting, setSubmitting] = useState(false);
 	const [formLink, setFormLink] = useState();
 	useEffect(() => {
 		setFormLink(process.env.REACT_APP_GFORM_ID);
+		setSubmitted("SEND");
 	}, []);
+
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = (data) => {
 		setSubmitting(true);
@@ -39,6 +42,7 @@ const Contact = () => {
 					timer: 1500,
 				});
 				setSubmitting(false);
+				setSubmitted("Messsage Sent Successfully");
 				reset();
 			})
 			.catch(function (error) {
@@ -207,7 +211,7 @@ const Contact = () => {
 										},
 										borderRadius: "25px",
 									}}>
-									SEND EMAIL
+									{submitted}
 								</Button>
 							</form>
 						) : (

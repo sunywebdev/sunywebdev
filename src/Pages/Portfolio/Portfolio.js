@@ -18,7 +18,29 @@ const Portfolio = () => {
 			.then((data) => setProjects(data));
 	}, []);
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Grid
+			data-aos='zoom-in'
+			container
+			direction='column'
+			alignItems='center'
+			justifyContent='center'
+			style={{ minHeight: "100vh" }}>
+			<Typography
+				variant='h2'
+				component='div'
+				gutterBottom
+				sx={{ fontWeight: 900 }}>
+				Sorry!
+			</Typography>
+			<Typography
+				variant='h3'
+				component='div'
+				gutterBottom
+				sx={{ fontWeight: 900 }}>
+				Page is under maintenance
+			</Typography>
+		</Grid>
+		{/* <Container sx={{ mt: { md: 0, xs: 7 } }}>
 			<Grid
 				container
 				direction='column'
@@ -172,7 +194,7 @@ const Portfolio = () => {
 				<GitHubIcon sx={{ mr: 1.5 }} />
 				Explore More GitHub Repos
 			</Button>
-		</Container>
+		</Container> */}
 	);
 };
 

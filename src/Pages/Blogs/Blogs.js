@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import React from "react";
 
-const NotFound404 = () => {
+const Blogs = () => {
 	return (
 		<Grid
 			data-aos='zoom-in'
@@ -11,24 +11,17 @@ const NotFound404 = () => {
 			justifyContent='center'
 			style={{ minHeight: "100vh", color: "#8444DF" }}>
 			<Typography variant='h1' component='div' sx={{ fontWeight: 900 }}>
-				404
-			</Typography>
-			<Typography
-				variant='h2'
-				component='div'
-				gutterBottom
-				sx={{ fontWeight: 900 }}>
-				Opps!
+				Blogs
 			</Typography>
 			<Typography
 				variant='h3'
 				component='div'
 				gutterBottom
 				sx={{ fontWeight: 900 }}>
-				Page Not Found
+				Comming Soon!
 			</Typography>
 		</Grid>
 	);
 };
 
-export default NotFound404;
+export default Blogs;

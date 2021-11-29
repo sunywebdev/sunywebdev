@@ -16,6 +16,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
+import RssFeedIcon from "@mui/icons-material/RssFeed";
 import { Grid } from "@mui/material";
 import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
@@ -119,6 +120,21 @@ function Navbar(props) {
 						<ReviewsOutlinedIcon sx={{ color: "white" }} fontSize='medium' />
 					</ListItemIcon>
 					Reviews
+				</ListItem>
+			</Link>
+			<Link
+				style={{
+					textDecoration: "none",
+					color: "white",
+					fontWeight: "bold",
+					fontSize: "15px",
+				}}
+				to='blogs'>
+				<ListItem button>
+					<ListItemIcon>
+						<RssFeedIcon sx={{ color: "white" }} fontSize='medium' />
+					</ListItemIcon>
+					Blogs
 				</ListItem>
 			</Link>
 			<Link

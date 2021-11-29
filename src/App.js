@@ -23,6 +23,7 @@ import EditProject from "./Admin/EditProject/EditProject";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SingleProject from "./Pages/Portfolio/SingleProject";
+import Blogs from "./Pages/Blogs/Blogs";
 AOS.init();
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
 							<Route path='/portfolio' element={<Portfolio />} />
 							<Route path='/portfolio/:id' element={<SingleProject />} />
 							<Route path='/reviews' element={<Reviews />} />
+							<Route path='/blogs' element={<Blogs />} />
 							<Route
 								path='/reviews/addreview'
 								element={

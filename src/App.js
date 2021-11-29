@@ -22,6 +22,7 @@ import LoginAdmin from "./Shared/Login/LoginAdmin";
 import EditProject from "./Admin/EditProject/EditProject";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SingleProject from "./Pages/Portfolio/SingleProject";
 AOS.init();
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 							<Route exact path='/' element={<Home />} />
 							<Route path='/about' element={<About />} />
 							<Route path='/portfolio' element={<Portfolio />} />
+							<Route path='/portfolio/:id' element={<SingleProject />} />
 							<Route path='/reviews' element={<Reviews />} />
 							<Route
 								path='/reviews/addreview'

@@ -16,27 +16,138 @@ import Swal from "sweetalert2";
 
 const EditProject = () => {
 	const { id } = useParams();
-	const [inputImage, setInputImage] = useState(null);
-	const [imageLink, setImageLink] = useState(null);
-	const [uploading, setUploading] = useState(false);
 
-	const uploadImage = (e) => {
+	const [inputImage1, setInputImage1] = useState(null);
+	const [inputImage2, setInputImage2] = useState(null);
+	const [inputImage3, setInputImage3] = useState(null);
+	const [inputImage4, setInputImage4] = useState(null);
+	const [imageLink1, setImageLink1] = useState(null);
+	const [imageLink2, setImageLink2] = useState(null);
+	const [imageLink3, setImageLink3] = useState(null);
+	const [imageLink4, setImageLink4] = useState(null);
+	const [uploading, setUploading] = useState(false);
+	const uploadImage1 = (e) => {
 		e.preventDefault();
-		if (!inputImage) {
+		if (!inputImage1) {
 			return;
 		}
 		setUploading(true);
-		let payload = new FormData();
-		payload.append("image", inputImage);
+		let payload1 = new FormData();
+		payload1.append("image", inputImage1);
 
 		axios
 			.post(
 				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
-				payload,
+				payload1,
 			)
 			.then((response) => {
 				setUploading(false);
-				setImageLink(response?.data?.data?.url);
+				setImageLink1(response?.data?.data?.url);
+				Swal.fire({
+					icon: "success",
+					title: "Photo Uploaded",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			})
+			.catch((error) => {
+				setUploading(false);
+				console.log("error", error);
+				Swal.fire({
+					icon: "error",
+					title: "Uploading Failed, Try Again",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			});
+	};
+	const uploadImage2 = (e) => {
+		e.preventDefault();
+		if (!inputImage2) {
+			return;
+		}
+		setUploading(true);
+		let payload2 = new FormData();
+		payload2.append("image", inputImage2);
+
+		axios
+			.post(
+				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
+				payload2,
+			)
+			.then((response) => {
+				setUploading(false);
+				setImageLink2(response?.data?.data?.url);
+				Swal.fire({
+					icon: "success",
+					title: "Photo Uploaded",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			})
+			.catch((error) => {
+				setUploading(false);
+				console.log("error", error);
+				Swal.fire({
+					icon: "error",
+					title: "Uploading Failed, Try Again",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			});
+	};
+	const uploadImage3 = (e) => {
+		e.preventDefault();
+		if (!inputImage3) {
+			return;
+		}
+		setUploading(true);
+		let payload3 = new FormData();
+		payload3.append("image", inputImage3);
+
+		axios
+			.post(
+				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
+				payload3,
+			)
+			.then((response) => {
+				setUploading(false);
+				setImageLink3(response?.data?.data?.url);
+				Swal.fire({
+					icon: "success",
+					title: "Photo Uploaded",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			})
+			.catch((error) => {
+				setUploading(false);
+				console.log("error", error);
+				Swal.fire({
+					icon: "error",
+					title: "Uploading Failed, Try Again",
+					showConfirmButton: false,
+					timer: 1500,
+				});
+			});
+	};
+	const uploadImage4 = (e) => {
+		e.preventDefault();
+		if (!inputImage4) {
+			return;
+		}
+		setUploading(true);
+		let payload4 = new FormData();
+		payload4.append("image", inputImage4);
+
+		axios
+			.post(
+				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
+				payload4,
+			)
+			.then((response) => {
+				setUploading(false);
+				setImageLink4(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
 					title: "Photo Uploaded",
@@ -60,10 +171,18 @@ const EditProject = () => {
 		defaultValues: {
 			projectName: "",
 			projectDetails: "",
+			feature1: "",
+			feature2: "",
+			feature3: "",
+			feature4: "",
+			feature5: "",
 			liveLink: "",
 			gitClientLink: "",
 			gitServerLink: "",
-			projectPhoto: "",
+			projectPhoto1: "",
+			projectPhoto2: "",
+			projectPhoto3: "",
+			projectPhoto4: "",
 		},
 	});
 	const [data, setData] = useState();
@@ -71,6 +190,7 @@ const EditProject = () => {
 		axios
 			.get(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`)
 			.then((res) => {
+				console.log(res.data);
 				reset(res.data);
 				setData(res.data);
 			});
@@ -78,20 +198,36 @@ const EditProject = () => {
 	const onSubmit = ({
 		projectName,
 		projectDetails,
+		feature1,
+		feature2,
+		feature3,
+		feature4,
+		feature5,
 		techUsed,
 		liveLink,
 		gitClientLink,
 		gitServerLink,
-		projectPhoto,
+		projectPhoto1,
+		projectPhoto2,
+		projectPhoto3,
+		projectPhoto4,
 	}) => {
 		const data = {
 			projectName,
 			projectDetails,
+			feature1,
+			feature2,
+			feature3,
+			feature4,
+			feature5,
 			techUsed,
 			liveLink,
 			gitClientLink,
 			gitServerLink,
-			projectPhoto: imageLink,
+			projectPhoto1: imageLink1,
+			projectPhoto2: imageLink2,
+			projectPhoto3: imageLink3,
+			projectPhoto4: imageLink4,
 		};
 		console.log(data);
 		axios
@@ -116,7 +252,7 @@ const EditProject = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "95vh" }}>
+				style={{ minHeight: "100vh" }}>
 				<Typography
 					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
 					variant='h4'
@@ -140,20 +276,20 @@ const EditProject = () => {
 								<Input
 									accept='image/*'
 									type='file'
-									onChange={(e) => setInputImage(e.target.files[0])}
+									onChange={(e) => setInputImage1(e.target.files[0])}
 								/>
 
 								{!uploading ? (
 									<>
-										{inputImage ? (
+										{inputImage1 ? (
 											<>
 												<img
-													src={URL.createObjectURL(inputImage)}
+													src={URL.createObjectURL(inputImage1)}
 													alt=''
 													width='250px'
 												/>
 												<Button
-													onClick={uploadImage}
+													onClick={uploadImage1}
 													variant='contained'
 													component='span'
 													sx={{ my: 1, py: 0.5, width: "250px" }}>
@@ -161,7 +297,7 @@ const EditProject = () => {
 												</Button>
 											</>
 										) : (
-											<img src={data?.projectPhoto} alt='' width='250px' />
+											<img src={data?.projectPhoto1} alt='' width='250px' />
 										)}
 									</>
 								) : (
@@ -170,6 +306,145 @@ const EditProject = () => {
 									</Box>
 								)}
 							</Box>
+							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
+								<Input
+									accept='image/*'
+									type='file'
+									onChange={(e) => setInputImage2(e.target.files[0])}
+								/>
+
+								{!uploading ? (
+									<>
+										{inputImage2 ? (
+											<>
+												<img
+													src={URL.createObjectURL(inputImage2)}
+													alt=''
+													width='250px'
+												/>
+												<Button
+													onClick={uploadImage2}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
+											</>
+										) : (
+											<img src={data?.projectPhoto2} alt='' width='250px' />
+										)}
+									</>
+								) : (
+									<Box sx={{ my: 2 }}>
+										<CircularProgress />
+									</Box>
+								)}
+							</Box>
+							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
+								<Input
+									accept='image/*'
+									type='file'
+									onChange={(e) => setInputImage3(e.target.files[0])}
+								/>
+
+								{!uploading ? (
+									<>
+										{inputImage3 ? (
+											<>
+												<img
+													src={URL.createObjectURL(inputImage3)}
+													alt=''
+													width='250px'
+												/>
+												<Button
+													onClick={uploadImage3}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
+											</>
+										) : (
+											<img src={data?.projectPhoto3} alt='' width='250px' />
+										)}
+									</>
+								) : (
+									<Box sx={{ my: 2 }}>
+										<CircularProgress />
+									</Box>
+								)}
+							</Box>
+							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
+								<Input
+									accept='image/*'
+									type='file'
+									onChange={(e) => setInputImage4(e.target.files[0])}
+								/>
+
+								{!uploading ? (
+									<>
+										{inputImage4 ? (
+											<>
+												<img
+													src={URL.createObjectURL(inputImage4)}
+													alt=''
+													width='250px'
+												/>
+												<Button
+													onClick={uploadImage4}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
+											</>
+										) : (
+											<img src={data?.projectPhoto4} alt='' width='250px' />
+										)}
+									</>
+								) : (
+									<Box sx={{ my: 2 }}>
+										<CircularProgress />
+									</Box>
+								)}
+							</Box>
+
+							{/* <TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Project Details'
+								{...register("projectPhoto1", { required: true })}
+								InputLabelProps={{
+									shrink: true,
+								}}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Project Details'
+								{...register("projectPhoto2", { required: true })}
+								InputLabelProps={{
+									shrink: true,
+								}}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Project Details'
+								{...register("projectPhoto3", { required: true })}
+								InputLabelProps={{
+									shrink: true,
+								}}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Project Details'
+								{...register("projectPhoto4", { required: true })}
+								InputLabelProps={{
+									shrink: true,
+								}}
+							/> */}
 							<TextField
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
@@ -180,6 +455,51 @@ const EditProject = () => {
 								InputLabelProps={{
 									shrink: true,
 								}}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Feature 1'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								{...register("feature1", { required: true })}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Feature 2'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								{...register("feature2", { required: true })}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Feature 3'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								{...register("feature3", { required: true })}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Feature 4'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								{...register("feature4", { required: true })}
+							/>
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Feature 5'
+								InputLabelProps={{
+									shrink: true,
+								}}
+								{...register("feature5", { required: true })}
 							/>
 							<TextField
 								sx={{ width: "100%", mb: 2 }}

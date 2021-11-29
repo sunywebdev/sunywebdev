@@ -12,7 +12,6 @@
 				}
 				return true;
 			})
-			// eslint-disable-next-line array-callback-return
 			.map(function (k) {
 				if (elements[k].name !== undefined) {
 					return elements[k].name;

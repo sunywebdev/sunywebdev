@@ -59,7 +59,7 @@ const AllMails = () => {
 				</Typography>
 				<Paper
 					className='container'
-					sx={{ overflow: "auto", maxHeight: "75vh" }}>
+					sx={{ overflow: "auto", maxHeight: "80vh" }}>
 					<Table size='small' aria-label='a dense table'>
 						<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
 							<TableRow>

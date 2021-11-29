@@ -74,7 +74,7 @@ const Reviews = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ minHeight: "95vh" }}>
+				style={{ minHeight: "100vh" }}>
 				<>
 					<Typography
 						sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}

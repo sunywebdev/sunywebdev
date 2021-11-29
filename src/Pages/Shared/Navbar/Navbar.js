@@ -19,7 +19,7 @@ import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
 import { Grid } from "@mui/material";
 import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import image from "../../About/Shoyeb Mohammed Suny.png";
+import image from "../../Home/Shoyeb Mohammed Suny.png";
 
 const drawerWidth = 290;
 
@@ -205,14 +205,12 @@ function Navbar(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: "92%",
-							maxHeight: "94.8%",
-							my: 2,
-							mx: 2,
+							height: "96.5%",
+							m: 2,
 							borderRadius: 7,
 							backgroundColor: "#8444DF",
 							color: "white",
 						},
-						px: 3,
 					}}>
 					{drawer}
 				</Drawer>
@@ -223,10 +221,6 @@ function Navbar(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
-							px: 3,
-							maxHeight: "94.8%",
-							my: 2,
-							ml: 2,
 							backgroundColor: "#8444DF",
 							color: "white",
 						},

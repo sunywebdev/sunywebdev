@@ -9,7 +9,7 @@ const NotFound404 = () => {
 			direction='column'
 			alignItems='center'
 			justifyContent='center'
-			style={{ minHeight: "95vh" }}>
+			style={{ minHeight: "100vh" }}>
 			<Typography variant='h1' component='div' sx={{ fontWeight: 900 }}>
 				404
 			</Typography>

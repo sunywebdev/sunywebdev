@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import { Container, Grid, Paper, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
@@ -23,7 +24,7 @@ const Portfolio = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "95vh" }}>
+				style={{ minHeight: "100vh" }}>
 				<Typography
 					sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
 					variant='h3'
@@ -59,7 +60,7 @@ const Portfolio = () => {
 													border: "3px solid #8444DF",
 												}}
 												component='img'
-												image={project?.projectPhoto}
+												image={project?.projectPhoto1}
 												alt=''
 											/>
 											<Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -98,45 +99,8 @@ const Portfolio = () => {
 														pl: 1,
 														pb: 1,
 													}}>
-													<CardActions sx={{ justifyContent: "center" }}>
-														<Button
-															variant='contained'
-															sx={{
-																px: 1.5,
-																fontWeight: "bold",
-																backgroundColor: "#8444DF",
-																"&:hover": {
-																	backgroundColor: "#8444DF",
-																},
-																borderRadius: "25px",
-															}}
-															size='small'
-															onClick={() =>
-																window.open(`${project?.liveLink}`, "_blank")
-															}>
-															Live
-														</Button>
-														<Button
-															variant='contained'
-															sx={{
-																px: 1.5,
-																fontWeight: "bold",
-																backgroundColor: "#8444DF",
-																"&:hover": {
-																	backgroundColor: "#8444DF",
-																},
-																borderRadius: "25px",
-															}}
-															size='small'
-															onClick={() =>
-																window.open(
-																	`${project?.gitClientLink}`,
-																	"_blank",
-																)
-															}>
-															Client Git
-														</Button>
-														{project?.gitServerLink && (
+													<CardActions sx={{ justifyContent: "space-around" }}>
+														<Box>
 															<Button
 																variant='contained'
 																sx={{
@@ -150,14 +114,31 @@ const Portfolio = () => {
 																}}
 																size='small'
 																onClick={() =>
-																	window.open(
-																		`${project?.gitServerLink}`,
-																		"_blank",
-																	)
+																	window.open(`${project?.liveLink}`, "_blank")
 																}>
-																Server Git
+																Live
 															</Button>
-														)}
+														</Box>
+														<Box>
+															<Link
+																to={`/portfolio/${project?._id}`}
+																style={{ textDecoration: "none" }}>
+																<Button
+																	variant='contained'
+																	sx={{
+																		px: 1.5,
+																		fontWeight: "bold",
+																		backgroundColor: "#8444DF",
+																		"&:hover": {
+																			backgroundColor: "#8444DF",
+																		},
+																		borderRadius: "25px",
+																	}}
+																	size='small'>
+																	Show More
+																</Button>
+															</Link>
+														</Box>
 													</CardActions>
 												</Box>
 											</Box>

@@ -10,7 +10,6 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import "./form";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -50,13 +49,13 @@ const Contact = () => {
 			});
 	};
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ mt: { md: 0, xs: 7 }, overflow: "auto" }}>
 			<Grid
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "95vh" }}>
+				style={{ minHeight: "100vh" }}>
 				<Grid container>
 					<Grid
 						data-aos='fade-right'

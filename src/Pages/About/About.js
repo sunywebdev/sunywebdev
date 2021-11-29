@@ -1,19 +1,18 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
-import image from "./Shoyeb Mohammed Suny.png";
 
 const About = () => {
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ mt: { md: 0, xs: 7 }, overflow: "auto" }}>
 			<Grid
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "95vh" }}>
+				style={{ minHeight: "100vh" }}>
 				<Grid container spacing={2} alignItems='center' justifyContent='center'>
-					<Grid item md={8} xs={12} sx={{ textAlign: "left" }}>
+					<Grid item md={12} xs={12} sx={{ textAlign: "left" }}>
 						<Typography
 							variant='h3'
 							component='div'
@@ -84,13 +83,6 @@ const About = () => {
 								Illustrator, Figma, MS Office
 							</Typography>
 						</Box>
-					</Grid>
-					<Grid item md={4} xs={12}>
-						<img
-							src={image}
-							alt=''
-							style={{ width: "100%", border: " 7px solid #8444DF" }}
-						/>
 					</Grid>
 				</Grid>
 			</Grid>

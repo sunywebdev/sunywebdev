@@ -18,7 +18,7 @@ import { Grid } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
-import image from "../../../Pages/About/Shoyeb Mohammed Suny.png";
+import image from "../../../Pages/Home/Shoyeb Mohammed Suny.png";
 
 const drawerWidth = 290;
 
@@ -201,9 +201,8 @@ function DashBoard(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: "92%",
-							maxHeight: "94.8%",
-							my: 2,
-							mx: 2,
+							height: "96.5%",
+							m: 2,
 							borderRadius: 7,
 							backgroundColor: "#8444DF",
 							color: "white",
@@ -218,9 +217,6 @@ function DashBoard(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
-							maxHeight: "94.8%",
-							my: 2,
-							ml: 2,
 							backgroundColor: "#8444DF",
 							color: "white",
 						},

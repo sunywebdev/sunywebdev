@@ -56,7 +56,7 @@ const AddReview = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ minHeight: { md: "95vh", xs: "70vh" } }}>
+				sx={{ minHeight: { md: "100vh", xs: "90vh" } }}>
 				<Typography
 					sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}
 					variant='h3'

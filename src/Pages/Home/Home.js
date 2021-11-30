@@ -45,7 +45,6 @@ const Home = () => {
 						xs={12}
 						sx={{ textAlign: { md: "left", xs: "center" } }}>
 						<Typography
-							data-aos='fade-right'
 							variant='h1'
 							component='div'
 							gutterBottom
@@ -53,7 +52,6 @@ const Home = () => {
 							Hello!
 						</Typography>
 						<Typography
-							data-aos='fade-left'
 							variant='h5'
 							component='div'
 							gutterBottom>
@@ -61,7 +59,6 @@ const Home = () => {
 							a MERN Stack Web Developer from Chattogram, Bangladesh!
 						</Typography>
 						<Button
-							data-aos='fade-right'
 							onClick={() =>
 								window.open(
 									"https://drive.google.com/file/d/14k6XgLTRv71xTP5SL0xZKcLXdAt7iLxf/view?usp=sharing",

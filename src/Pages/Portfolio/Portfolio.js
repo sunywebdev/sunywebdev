@@ -1,38 +1,24 @@
 import * as React from "react";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Grid } from "@mui/material";
+import { Container, Grid, Paper, Skeleton } from "@mui/material";
+import { Box } from "@mui/system";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
-	const [ setProjects] = React.useState([]);
+	const [projects, setProjects] = React.useState([]);
 	React.useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data));
-	}, [setProjects]);
+	}, []);
 	return (
-		<Grid
-			data-aos='zoom-in'
-			container
-			direction='column'
-			alignItems='center'
-			justifyContent='center'
-			style={{ minHeight: "100vh" }}>
-			<Typography
-				variant='h2'
-				component='div'
-				gutterBottom
-				sx={{ fontWeight: 900 }}>
-				Sorry!
-			</Typography>
-			<Typography
-				variant='h3'
-				component='div'
-				gutterBottom
-				sx={{ fontWeight: 900 }}>
-				Page is under maintenance
-			</Typography>
-		</Grid>
-		/* 		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ mt: { md: 0, xs: 7 } }}>
 			<Grid
 				container
 				direction='column'
@@ -186,8 +172,30 @@ const Portfolio = () => {
 				<GitHubIcon sx={{ mr: 1.5 }} />
 				Explore More GitHub Repos
 			</Button>
-		</Container> */
+		</Container>
 	);
 };
 
 export default Portfolio;
+	/* <Grid
+		data-aos='zoom-in'
+		container
+		direction='column'
+		alignItems='center'
+		justifyContent='center'
+		style={{ minHeight: "100vh" }}>
+		<Typography
+			variant='h2'
+			component='div'
+			gutterBottom
+			sx={{ fontWeight: 900 }}>
+			Sorry!
+		</Typography>
+		<Typography
+			variant='h3'
+			component='div'
+			gutterBottom
+			sx={{ fontWeight: 900 }}>
+			Page is under maintenance
+		</Typography>
+	</Grid> */

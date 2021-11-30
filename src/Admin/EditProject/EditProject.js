@@ -25,13 +25,16 @@ const EditProject = () => {
 	const [imageLink2, setImageLink2] = useState(null);
 	const [imageLink3, setImageLink3] = useState(null);
 	const [imageLink4, setImageLink4] = useState(null);
-	const [uploading, setUploading] = useState(false);
+	const [uploading1, setUploading1] = useState(false);
+	const [uploading2, setUploading2] = useState(false);
+	const [uploading3, setUploading3] = useState(false);
+	const [uploading4, setUploading4] = useState(false);
 	const uploadImage1 = (e) => {
 		e.preventDefault();
 		if (!inputImage1) {
 			return;
 		}
-		setUploading(true);
+		setUploading1(true);
 		let payload1 = new FormData();
 		payload1.append("image", inputImage1);
 
@@ -41,7 +44,7 @@ const EditProject = () => {
 				payload1,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading1(false);
 				setImageLink1(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -51,7 +54,7 @@ const EditProject = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading1(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -66,7 +69,7 @@ const EditProject = () => {
 		if (!inputImage2) {
 			return;
 		}
-		setUploading(true);
+		setUploading2(true);
 		let payload2 = new FormData();
 		payload2.append("image", inputImage2);
 
@@ -76,7 +79,7 @@ const EditProject = () => {
 				payload2,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading2(false);
 				setImageLink2(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -86,7 +89,7 @@ const EditProject = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading2(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -101,7 +104,7 @@ const EditProject = () => {
 		if (!inputImage3) {
 			return;
 		}
-		setUploading(true);
+		setUploading3(true);
 		let payload3 = new FormData();
 		payload3.append("image", inputImage3);
 
@@ -111,7 +114,7 @@ const EditProject = () => {
 				payload3,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading3(false);
 				setImageLink3(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -121,7 +124,7 @@ const EditProject = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading3(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -136,7 +139,7 @@ const EditProject = () => {
 		if (!inputImage4) {
 			return;
 		}
-		setUploading(true);
+		setUploading4(true);
 		let payload4 = new FormData();
 		payload4.append("image", inputImage4);
 
@@ -146,7 +149,7 @@ const EditProject = () => {
 				payload4,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading4(false);
 				setImageLink4(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -156,7 +159,7 @@ const EditProject = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading4(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -224,10 +227,10 @@ const EditProject = () => {
 			liveLink,
 			gitClientLink,
 			gitServerLink,
-			projectPhoto1: imageLink1,
-			projectPhoto2: imageLink2,
-			projectPhoto3: imageLink3,
-			projectPhoto4: imageLink4,
+			projectPhoto1: imageLink1 || projectPhoto1,
+			projectPhoto2: imageLink2 || projectPhoto2,
+			projectPhoto3: imageLink3 || projectPhoto3,
+			projectPhoto4: imageLink4 || projectPhoto4,
 		};
 		console.log(data);
 		axios
@@ -279,7 +282,7 @@ const EditProject = () => {
 									onChange={(e) => setInputImage1(e.target.files[0])}
 								/>
 
-								{!uploading ? (
+								{!uploading1 ? (
 									<>
 										{inputImage1 ? (
 											<>
@@ -288,13 +291,15 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-												<Button
-													onClick={uploadImage1}
-													variant='contained'
-													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
-													Upload Image
-												</Button>
+											
+													<Button
+														onClick={uploadImage1}
+														variant='contained'
+														component='span'
+														sx={{ my: 1, py: 0.5, width: "250px" }}>
+														Upload Image
+													</Button>
+												
 											</>
 										) : (
 											<img src={data?.projectPhoto1} alt='' width='250px' />
@@ -313,7 +318,7 @@ const EditProject = () => {
 									onChange={(e) => setInputImage2(e.target.files[0])}
 								/>
 
-								{!uploading ? (
+								{!uploading2 ? (
 									<>
 										{inputImage2 ? (
 											<>
@@ -322,13 +327,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-												<Button
-													onClick={uploadImage2}
-													variant='contained'
-													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
-													Upload Image
-												</Button>
+													<Button
+														onClick={uploadImage2}
+														variant='contained'
+														component='span'
+														sx={{ my: 1, py: 0.5, width: "250px" }}>
+														Upload Image
+													</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto2} alt='' width='250px' />
@@ -347,7 +352,7 @@ const EditProject = () => {
 									onChange={(e) => setInputImage3(e.target.files[0])}
 								/>
 
-								{!uploading ? (
+								{!uploading3 ? (
 									<>
 										{inputImage3 ? (
 											<>
@@ -356,13 +361,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-												<Button
-													onClick={uploadImage3}
-													variant='contained'
-													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
-													Upload Image
-												</Button>
+													<Button
+														onClick={uploadImage3}
+														variant='contained'
+														component='span'
+														sx={{ my: 1, py: 0.5, width: "250px" }}>
+														Upload Image
+													</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto3} alt='' width='250px' />
@@ -381,7 +386,7 @@ const EditProject = () => {
 									onChange={(e) => setInputImage4(e.target.files[0])}
 								/>
 
-								{!uploading ? (
+								{!uploading4 ? (
 									<>
 										{inputImage4 ? (
 											<>
@@ -390,13 +395,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-												<Button
-													onClick={uploadImage4}
-													variant='contained'
-													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
-													Upload Image
-												</Button>
+													<Button
+														onClick={uploadImage4}
+														variant='contained'
+														component='span'
+														sx={{ my: 1, py: 0.5, width: "250px" }}>
+														Upload Image
+													</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto4} alt='' width='250px' />
@@ -409,42 +414,6 @@ const EditProject = () => {
 								)}
 							</Box>
 
-							{/* <TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Project Details'
-								{...register("projectPhoto1", { required: true })}
-								InputLabelProps={{
-									shrink: true,
-								}}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Project Details'
-								{...register("projectPhoto2", { required: true })}
-								InputLabelProps={{
-									shrink: true,
-								}}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Project Details'
-								{...register("projectPhoto3", { required: true })}
-								InputLabelProps={{
-									shrink: true,
-								}}
-							/>
-							<TextField
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Project Details'
-								{...register("projectPhoto4", { required: true })}
-								InputLabelProps={{
-									shrink: true,
-								}}
-							/> */}
 							<TextField
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'

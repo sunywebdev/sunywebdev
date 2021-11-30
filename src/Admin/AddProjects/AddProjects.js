@@ -23,13 +23,16 @@ const AddProjects = () => {
 	const [imageLink2, setImageLink2] = useState(null);
 	const [imageLink3, setImageLink3] = useState(null);
 	const [imageLink4, setImageLink4] = useState(null);
-	const [uploading, setUploading] = useState(false);
+	const [uploading1, setUploading1] = useState(false);
+	const [uploading2, setUploading2] = useState(false);
+	const [uploading3, setUploading3] = useState(false);
+	const [uploading4, setUploading4] = useState(false);
 	const uploadImage1 = (e) => {
 		e.preventDefault();
 		if (!inputImage1) {
 			return;
 		}
-		setUploading(true);
+		setUploading1(true);
 		let payload1 = new FormData();
 		payload1.append("image", inputImage1);
 
@@ -39,7 +42,7 @@ const AddProjects = () => {
 				payload1,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading1(false);
 				setImageLink1(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -49,7 +52,7 @@ const AddProjects = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading1(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -64,7 +67,7 @@ const AddProjects = () => {
 		if (!inputImage2) {
 			return;
 		}
-		setUploading(true);
+		setUploading2(true);
 		let payload2 = new FormData();
 		payload2.append("image", inputImage2);
 
@@ -74,7 +77,7 @@ const AddProjects = () => {
 				payload2,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading2(false);
 				setImageLink2(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -84,7 +87,7 @@ const AddProjects = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading2(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -99,7 +102,7 @@ const AddProjects = () => {
 		if (!inputImage3) {
 			return;
 		}
-		setUploading(true);
+		setUploading3(true);
 		let payload3 = new FormData();
 		payload3.append("image", inputImage3);
 
@@ -109,7 +112,7 @@ const AddProjects = () => {
 				payload3,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading3(false);
 				setImageLink3(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -119,7 +122,7 @@ const AddProjects = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading3(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -134,7 +137,7 @@ const AddProjects = () => {
 		if (!inputImage4) {
 			return;
 		}
-		setUploading(true);
+		setUploading4(true);
 		let payload4 = new FormData();
 		payload4.append("image", inputImage4);
 
@@ -144,7 +147,7 @@ const AddProjects = () => {
 				payload4,
 			)
 			.then((response) => {
-				setUploading(false);
+				setUploading4(false);
 				setImageLink4(response?.data?.data?.url);
 				Swal.fire({
 					icon: "success",
@@ -154,7 +157,7 @@ const AddProjects = () => {
 				});
 			})
 			.catch((error) => {
-				setUploading(false);
+				setUploading4(false);
 				console.log("error", error);
 				Swal.fire({
 					icon: "error",
@@ -164,7 +167,6 @@ const AddProjects = () => {
 				});
 			});
 	};
-
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({
 		projectName,
@@ -247,7 +249,7 @@ const AddProjects = () => {
 										onChange={(e) => setInputImage1(e.target.files[0])}
 									/>
 
-									{!uploading ? (
+									{!uploading1 ? (
 										<>
 											{inputImage1 && (
 												<>
@@ -279,7 +281,7 @@ const AddProjects = () => {
 										onChange={(e) => setInputImage2(e.target.files[0])}
 									/>
 
-									{!uploading ? (
+									{!uploading2 ? (
 										<>
 											{inputImage2 && (
 												<>
@@ -311,7 +313,7 @@ const AddProjects = () => {
 										onChange={(e) => setInputImage3(e.target.files[0])}
 									/>
 
-									{!uploading ? (
+									{!uploading3 ? (
 										<>
 											{inputImage3 && (
 												<>
@@ -343,7 +345,7 @@ const AddProjects = () => {
 										onChange={(e) => setInputImage4(e.target.files[0])}
 									/>
 
-									{!uploading ? (
+									{!uploading4 ? (
 										<>
 											{inputImage4 && (
 												<>

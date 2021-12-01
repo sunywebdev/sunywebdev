@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -17,12 +16,11 @@ import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
 import RssFeedIcon from "@mui/icons-material/RssFeed";
-import { Grid } from "@mui/material";
 import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import image from "../../Home/Shoyeb Mohammed Suny.png";
 
-const drawerWidth = 290;
+const drawerWidth = 190;
 
 function Navbar(props) {
 	const { window } = props;
@@ -34,13 +32,28 @@ function Navbar(props) {
 	const { admin } = useAuth();
 
 	const drawer = (
-		<Box sx={{ m: "auto" }}>
-			<Grid
+		<Box
+			sx={{
+				m: "auto",
+				textAlign: "center",
+				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root": {
+					borderRadius: 4,
+					transitionDuration: "0.2s",
+				},
+				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root:hover": {
+					backgroundColor: "#9D69E5",
+					boxShadow: "3px 3px 7px -2px #000000",
+				},
+			}}>
+			<Box
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ my: 2 }}>
+				sx={{
+					my: 2,
+					display: { md: "none", xs: "block" },
+				}}>
 				<img
 					style={{
 						width: "150px",
@@ -61,98 +74,15 @@ function Navbar(props) {
 				<Typography variant='body' component='div' sx={{ fontWeight: "bold" }}>
 					MERN Stack Web Developer
 				</Typography>
-			</Grid>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/'>
-				<ListItem button>
-					<ListItemIcon>
-						<HomeIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Home
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='about'>
-				<ListItem button>
-					<ListItemIcon>
-						<PersonOutlineIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					About
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='portfolio'>
-				<ListItem button>
-					<ListItemIcon>
-						<LaptopChromebookIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Portfolio
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='reviews'>
-				<ListItem button>
-					<ListItemIcon>
-						<ReviewsOutlinedIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Reviews
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='blogs'>
-				<ListItem button>
-					<ListItemIcon>
-						<RssFeedIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Blogs
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='contact'>
-				<ListItem button>
-					<ListItemIcon>
-						<ContactPageIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Contact
-				</ListItem>
-			</Link>
-			{admin && (
+			</Box>
+			<Box
+				sx={{
+					textAlign: "center",
+					display: "flex",
+					flexDirection: "column",
+					flexWrap: "wrap",
+					alignContent: "space-around",
+				}}>
 				<Link
 					style={{
 						textDecoration: "none",
@@ -160,15 +90,114 @@ function Navbar(props) {
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
-					to='/dashboard'>
+					to='/'>
 					<ListItem button>
-						<ListItemIcon>
-							<DashboardIcon sx={{ color: "white" }} fontSize='medium' />
-						</ListItemIcon>
-						Dashboard
+						<HomeIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Home
 					</ListItem>
 				</Link>
-			)}
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='about'>
+					<ListItem button>
+						<PersonOutlineIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						About
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='portfolio'>
+					<ListItem button>
+						<LaptopChromebookIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Portfolio
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='reviews'>
+					<ListItem button>
+						<ReviewsOutlinedIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Reviews
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='blogs'>
+					<ListItem button>
+						<RssFeedIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Blogs
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='contact'>
+					<ListItem button>
+						<ContactPageIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Contact
+					</ListItem>
+				</Link>
+				{admin && (
+					<Link
+						style={{
+							textDecoration: "none",
+							color: "white",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='/dashboard'>
+						<ListItem button>
+							<DashboardIcon
+								sx={{ color: "white", mr: 1.5, my: 0.7 }}
+								fontSize='medium'
+							/>
+							Dashboard
+						</ListItem>
+					</Link>
+				)}
+			</Box>
 		</Box>
 	);
 

@@ -291,15 +291,14 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-											
-													<Button
-														onClick={uploadImage1}
-														variant='contained'
-														component='span'
-														sx={{ my: 1, py: 0.5, width: "250px" }}>
-														Upload Image
-													</Button>
-												
+
+												<Button
+													onClick={uploadImage1}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto1} alt='' width='250px' />
@@ -327,13 +326,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-													<Button
-														onClick={uploadImage2}
-														variant='contained'
-														component='span'
-														sx={{ my: 1, py: 0.5, width: "250px" }}>
-														Upload Image
-													</Button>
+												<Button
+													onClick={uploadImage2}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto2} alt='' width='250px' />
@@ -361,13 +360,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-													<Button
-														onClick={uploadImage3}
-														variant='contained'
-														component='span'
-														sx={{ my: 1, py: 0.5, width: "250px" }}>
-														Upload Image
-													</Button>
+												<Button
+													onClick={uploadImage3}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto3} alt='' width='250px' />
@@ -395,13 +394,13 @@ const EditProject = () => {
 													alt=''
 													width='250px'
 												/>
-													<Button
-														onClick={uploadImage4}
-														variant='contained'
-														component='span'
-														sx={{ my: 1, py: 0.5, width: "250px" }}>
-														Upload Image
-													</Button>
+												<Button
+													onClick={uploadImage4}
+													variant='contained'
+													component='span'
+													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													Upload Image
+												</Button>
 											</>
 										) : (
 											<img src={data?.projectPhoto4} alt='' width='250px' />

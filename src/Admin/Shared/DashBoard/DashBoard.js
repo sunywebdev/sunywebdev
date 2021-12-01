@@ -6,7 +6,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -14,13 +13,12 @@ import { Outlet, Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
-import { Grid } from "@mui/material";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import image from "../../../Pages/Home/Shoyeb Mohammed Suny.png";
 
-const drawerWidth = 290;
+const drawerWidth = 190;
 
 function DashBoard(props) {
 	const { window } = props;
@@ -30,13 +28,28 @@ function DashBoard(props) {
 		setMobileOpen(!mobileOpen);
 	};
 	const drawer = (
-		<Box sx={{ m: "auto" }}>
-			<Grid
+		<Box
+			sx={{
+				m: "auto",
+				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root": {
+					borderRadius: 4,
+					transitionDuration: "0.2s",
+				},
+				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root:hover": {
+					backgroundColor: "#9D69E5",
+					boxShadow: "3px 3px 7px -2px #000000",
+				},
+			}}>
+			<Box
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ my: 2 }}>
+				sx={{
+					my: 2,
+					display: { md: "none", xs: "block" },
+					textAlign: "center",
+				}}>
 				<img
 					style={{
 						width: "150px",
@@ -57,98 +70,113 @@ function DashBoard(props) {
 				<Typography variant='body' component='div' sx={{ fontWeight: "bold" }}>
 					MERN Stack Web Developer
 				</Typography>
-			</Grid>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/dashboard'>
-				<ListItem button>
-					<ListItemIcon>
-						<PeopleAltIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					All Users
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to={`/dashboard/allmails`}>
-				<ListItem button>
-					<ListItemIcon>
-						<AllInboxIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					All Mails
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/dashboard/allprojects'>
-				<ListItem button>
-					<ListItemIcon>
-						<LaptopChromebookIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					All Projects
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/dashboard/allreviews'>
-				<ListItem button>
-					<ListItemIcon>
-						<ReviewsOutlinedIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					All Reviews
-				</ListItem>
-			</Link>
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/dashboard/addprojects'>
-				<ListItem button>
-					<ListItemIcon>
-						<AddToQueueIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Add Projects
-				</ListItem>
-			</Link>
+			</Box>
+			<Box
+				sx={{
+					textAlign: "center",
+					display: "flex",
+					flexDirection: "column",
+					flexWrap: "wrap",
+					alignContent: "space-around",
+				}}>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='/dashboard'>
+					<ListItem button>
+						<PeopleAltIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						All Users
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to={`/dashboard/allmails`}>
+					<ListItem button>
+						<AllInboxIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						All Mails
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='/dashboard/allprojects'>
+					<ListItem button>
+						<LaptopChromebookIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						All Projects
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='/dashboard/allreviews'>
+					<ListItem button>
+						<ReviewsOutlinedIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						All Reviews
+					</ListItem>
+				</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='/dashboard/addprojects'>
+					<ListItem button>
+						<AddToQueueIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Add Projects
+					</ListItem>
+				</Link>
 
-			<Link
-				style={{
-					textDecoration: "none",
-					color: "white",
-					fontWeight: "bold",
-					fontSize: "15px",
-				}}
-				to='/'>
-				<ListItem button>
-					<ListItemIcon>
-						<HomeIcon sx={{ color: "white" }} fontSize='medium' />
-					</ListItemIcon>
-					Home
-				</ListItem>
-			</Link>
+				<Link
+					style={{
+						textDecoration: "none",
+						color: "white",
+						fontWeight: "bold",
+						fontSize: "15px",
+					}}
+					to='/'>
+					<ListItem button>
+						<HomeIcon
+							sx={{ color: "white", mr: 1.5, my: 0.7 }}
+							fontSize='medium'
+						/>
+						Home
+					</ListItem>
+				</Link>
+			</Box>
 		</Box>
 	);
 

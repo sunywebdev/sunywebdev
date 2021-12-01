@@ -24,6 +24,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import SingleProject from "./Pages/Portfolio/SingleProject";
 import Blogs from "./Pages/Blogs/Blogs";
+
 AOS.init();
 
 function App() {

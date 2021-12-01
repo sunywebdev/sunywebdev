@@ -9,10 +9,16 @@ import SmsIcon from "@mui/icons-material/Sms";
 import EmailIcon from "@mui/icons-material/Email";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import image from "./Shoyeb Mohammed Suny.png";
+import { animations } from "react-animation";
 
 const Home = () => {
 	return (
-		<Container sx={{ mt: { md: 0, xs: 3 }, overflow: "auto" }}>
+		<Container
+			sx={{
+				mt: { md: 0, xs: 3 },
+				overflow: "auto",
+				animation: animations.popIn,
+			}}>
 			<Grid
 				container
 				direction='column'
@@ -51,10 +57,7 @@ const Home = () => {
 							sx={{ fontWeight: 900, color: "#8444DF" }}>
 							Hello!
 						</Typography>
-						<Typography
-							variant='h5'
-							component='div'
-							gutterBottom>
+						<Typography variant='h5' component='div' gutterBottom>
 							I'm <b style={{ color: "#8444DF" }}>Shoyeb Mohammed Suny</b>. I'm
 							a MERN Stack Web Developer from Chattogram, Bangladesh!
 						</Typography>

@@ -9,7 +9,6 @@ import { Container, Grid, Paper, Skeleton } from "@mui/material";
 import { Box } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
-import { animations } from "react-animation";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);

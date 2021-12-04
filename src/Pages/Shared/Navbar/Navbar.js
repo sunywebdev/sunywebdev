@@ -19,6 +19,7 @@ import RssFeedIcon from "@mui/icons-material/RssFeed";
 import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import image from "../../Home/Shoyeb Mohammed Suny.png";
+import ThemeChanger from "../../../Shared/Login/ThemeChanger";
 
 const drawerWidth = 190;
 
@@ -32,173 +33,156 @@ function Navbar(props) {
 	const { admin } = useAuth();
 
 	const drawer = (
-		<Box
-			sx={{
-				m: "auto",
-				textAlign: "center",
-				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root": {
-					borderRadius: 4,
-					transitionDuration: "0.2s",
-				},
-				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root:hover": {
-					backgroundColor: "#9D69E5",
-					boxShadow: "3px 3px 7px -2px #000000",
-				},
-			}}>
-			<Box
-				container
-				direction='column'
-				alignItems='center'
-				justifyContent='center'
-				sx={{
-					my: 2,
-					display: { md: "none", xs: "block" },
-				}}>
-				<img
-					style={{
-						width: "150px",
-						height: "150px",
-						borderRadius: "50%",
-						border: "5px solid white",
-						my: 2,
-					}}
-					src={image}
-					alt=''
-				/>
-				<Typography
-					variant='h6'
-					component='div'
-					sx={{ fontWeight: "bold", my: 1 }}>
-					Shoyeb Mohammed Suny
-				</Typography>
-				<Typography variant='body' component='div' sx={{ fontWeight: "bold" }}>
-					MERN Stack Web Developer
-				</Typography>
-			</Box>
+		<>
 			<Box
 				sx={{
+					m: "auto",
 					textAlign: "center",
-					display: "flex",
-					flexDirection: "column",
-					flexWrap: "wrap",
-					alignContent: "space-around",
 				}}>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='/'>
-					<ListItem button>
-						<HomeIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						Home
-					</ListItem>
-				</Link>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='about'>
-					<ListItem button>
-						<PersonOutlineIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						About
-					</ListItem>
-				</Link>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='portfolio'>
-					<ListItem button>
-						<LaptopChromebookIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						Portfolio
-					</ListItem>
-				</Link>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='reviews'>
-					<ListItem button>
-						<ReviewsOutlinedIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						Reviews
-					</ListItem>
-				</Link>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='blogs'>
-					<ListItem button>
-						<RssFeedIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						Blogs
-					</ListItem>
-				</Link>
-				<Link
-					style={{
-						textDecoration: "none",
-						color: "white",
-						fontWeight: "bold",
-						fontSize: "15px",
-					}}
-					to='contact'>
-					<ListItem button>
-						<ContactPageIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
-						Contact
-					</ListItem>
-				</Link>
-				{admin && (
+				<Box
+					container
+					direction='column'
+					alignItems='center'
+					justifyContent='center'
+					sx={{
+						my: 2,
+						display: { md: "none", sm: "none", xs: "block" },
+					}}>
+					<img
+						className='border'
+						style={{
+							width: "150px",
+							height: "150px",
+							borderRadius: "50%",
+							border: "5px solid",
+							my: 2,
+						}}
+						src={image}
+						alt=''
+					/>
+					<Typography
+						variant='h6'
+						component='div'
+						sx={{ fontWeight: "bold", my: 1 }}>
+						Shoyeb Mohammed Suny
+					</Typography>
+					<Typography
+						variant='body'
+						component='div'
+						sx={{ fontWeight: "bold" }}>
+						MERN Stack Web Developer
+					</Typography>
+				</Box>
+				<Box
+					sx={{
+						textAlign: "center",
+						display: "flex",
+						flexDirection: "column",
+						flexWrap: "wrap",
+						alignContent: "space-around",
+					}}>
 					<Link
+						className='color-theme'
 						style={{
 							textDecoration: "none",
-							color: "white",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						to='/dashboard'>
+						to='/'>
 						<ListItem button>
-							<DashboardIcon
-								sx={{ color: "white", mr: 1.5, my: 0.7 }}
-								fontSize='medium'
-							/>
-							Dashboard
+							<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+							Home
 						</ListItem>
 					</Link>
-				)}
+					<Link
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='about'>
+						<ListItem button>
+							<PersonOutlineIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+							About
+						</ListItem>
+					</Link>
+					<Link
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='portfolio'>
+						<ListItem button>
+							<LaptopChromebookIcon
+								sx={{ mr: 1.5, my: 0.7 }}
+								fontSize='medium'
+							/>
+							Portfolio
+						</ListItem>
+					</Link>
+					<Link
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='reviews'>
+						<ListItem button>
+							<ReviewsOutlinedIcon
+								sx={{ mr: 1.5, my: 0.7 }}
+								fontSize='medium'
+							/>
+							Reviews
+						</ListItem>
+					</Link>
+					<Link
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='blogs'>
+						<ListItem button>
+							<RssFeedIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+							Blogs
+						</ListItem>
+					</Link>
+					<Link
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						to='contact'>
+						<ListItem button>
+							<ContactPageIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+							Contact
+						</ListItem>
+					</Link>
+					{admin && (
+						<Link
+							className='color-theme'
+							style={{
+								textDecoration: "none",
+								fontWeight: "bold",
+								fontSize: "15px",
+							}}
+							to='/dashboard'>
+							<ListItem button>
+								<DashboardIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+								Dashboard
+							</ListItem>
+						</Link>
+					)}
+				</Box>
 			</Box>
-		</Box>
+		</>
 	);
 
 	const container =
@@ -208,12 +192,12 @@ function Navbar(props) {
 		<Box sx={{ display: "flex" }}>
 			<CssBaseline />
 			<AppBar
+				className='navbg'
 				position='fixed'
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
 					display: { xs: "block", sm: "none" },
-					backgroundColor: "#8444DF",
 				}}>
 				<Toolbar>
 					<IconButton
@@ -224,9 +208,16 @@ function Navbar(props) {
 						sx={{ mr: 2, display: { sm: "none" } }}>
 						<MenuIcon />
 					</IconButton>
-					<Typography variant='h6' noWrap component='div'>
-						sunywebdev
-					</Typography>
+					<Box
+						sx={{ width: "100%" }}
+						display='flex'
+						justifyContent='space-between'
+						alignItems='center'>
+						<Typography variant='h6' noWrap component='div'>
+							sunywebdev
+						</Typography>
+						<ThemeChanger />
+					</Box>
 				</Toolbar>
 			</AppBar>
 			<Box
@@ -245,6 +236,7 @@ function Navbar(props) {
 					ModalProps={{
 						keepMounted: true, // Better open performance on mobile.
 					}}
+					className='nav'
 					sx={{
 						display: { xs: "block", sm: "none" },
 						"& .MuiDrawer-paper": {
@@ -253,24 +245,24 @@ function Navbar(props) {
 							height: "96.5%",
 							m: 2,
 							borderRadius: 7,
-							backgroundColor: "#8444DF",
-							color: "white",
 						},
 					}}>
 					{drawer}
 				</Drawer>
 				<Drawer
+					className='nav'
 					variant='permanent'
 					sx={{
 						display: { xs: "none", sm: "block" },
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
-							backgroundColor: "#8444DF",
-							color: "white",
 						},
 					}}
 					open>
+					<Box sx={{ pt: 2 }}>
+						<ThemeChanger />
+					</Box>
 					{drawer}
 				</Drawer>
 			</Box>

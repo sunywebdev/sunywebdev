@@ -10,6 +10,7 @@ const About = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
+				className='color-text'
 				style={{ minHeight: "100vh" }}>
 				<Grid container spacing={2} alignItems='center' justifyContent='center'>
 					<Grid item md={12} xs={12} sx={{ textAlign: "left" }}>
@@ -18,7 +19,8 @@ const About = () => {
 							component='div'
 							gutterBottom
 							data-aos='fade-right'
-							sx={{ fontWeight: 900, color: "#8444DF" }}>
+							className='color-theme'
+							sx={{ fontWeight: 900 }}>
 							ABOUT ME
 						</Typography>
 						<Typography
@@ -28,12 +30,12 @@ const About = () => {
 							gutterBottom
 							sx={{ my: 2 }}>
 							I'm
-							<b style={{ color: "#8444DF" }}> Shoyeb Mohammed Suny</b>,I am a
-							Web Developer, specialized in Front-End technologies like HTML5,
-							CSS3, JavaScript, ES6, React JS, CURD, REST API, Bootstrap, MUI,
-							etc. I have also worked with Node JS, MongoDB, Firebase, Tailwind.
-							My main strength is I have a positive attitude and my weakness is
-							I don't feel ok until I finish my work properly.
+							<b className='color-theme'> Shoyeb Mohammed Suny</b>, I am a Web
+							Developer, specialized in Front-End technologies like HTML5, CSS3,
+							JavaScript, ES6, React JS, CURD, REST API, Bootstrap, MUI, etc. I
+							have also worked with Node JS, MongoDB, Firebase, Tailwind. My
+							main strength is I have a positive attitude and my weakness is I
+							don't feel ok until I finish my work properly.
 						</Typography>
 						<Box data-aos='fade-up'>
 							<Typography
@@ -41,14 +43,14 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b style={{ color: "#8444DF" }}>SKILLS:</b>
+								<b className='color-theme'>SKILLS:</b>
 							</Typography>
 							<Typography
 								variant='body1'
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b style={{ color: "#8444DF" }}>Expertise:</b>
+								<b className='color-theme'>Expertise:</b>
 								<br />
 								HTML5, CSS3, JavaScript, ES6, React JS, CURD, REST API,
 								Bootstrap, MUI
@@ -58,7 +60,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b style={{ color: "#8444DF" }}>Comfortable:</b>
+								<b className='color-theme'>Comfortable:</b>
 								<br />
 								Node JS, Mongodb, Firebase, Tailwind
 							</Typography>
@@ -68,7 +70,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b style={{ color: "#8444DF" }}>Familiar:</b>
+								<b className='color-theme'>Familiar:</b>
 								<br />
 								TypeScript
 							</Typography>
@@ -77,7 +79,7 @@ const About = () => {
 								component='div'
 								gutterBottom
 								sx={{ my: 2 }}>
-								<b style={{ color: "#8444DF" }}>Tools:</b>
+								<b className='color-theme'>Tools:</b>
 								<br />
 								VS Code, GitHub, Brackets, Heroku, Netlify,Photoshop,
 								Illustrator, Figma, MS Office

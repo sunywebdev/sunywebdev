@@ -17,6 +17,7 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import image from "../../../Pages/Home/Shoyeb Mohammed Suny.png";
+import ThemeChanger from "../../../Shared/Login/ThemeChanger";
 
 const drawerWidth = 190;
 
@@ -31,14 +32,7 @@ function DashBoard(props) {
 		<Box
 			sx={{
 				m: "auto",
-				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root": {
-					borderRadius: 4,
-					transitionDuration: "0.2s",
-				},
-				"& .css-bshv44-MuiButtonBase-root-MuiListItem-root:hover": {
-					backgroundColor: "#9D69E5",
-					boxShadow: "3px 3px 7px -2px #000000",
-				},
+				textAlign: "center",
 			}}>
 			<Box
 				container
@@ -47,15 +41,15 @@ function DashBoard(props) {
 				justifyContent='center'
 				sx={{
 					my: 2,
-					display: { md: "none", xs: "block" },
-					textAlign: "center",
+					display: { md: "none", sm: "none", xs: "block" },
 				}}>
 				<img
+					className='border'
 					style={{
 						width: "150px",
 						height: "150px",
 						borderRadius: "50%",
-						border: "5px solid white",
+						border: "5px solid",
 						my: 2,
 					}}
 					src={image}
@@ -80,99 +74,81 @@ function DashBoard(props) {
 					alignContent: "space-around",
 				}}>
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to='/dashboard'>
 					<ListItem button>
-						<PeopleAltIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<PeopleAltIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Users
 					</ListItem>
 				</Link>
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to={`/dashboard/allmails`}>
 					<ListItem button>
-						<AllInboxIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<AllInboxIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Mails
 					</ListItem>
 				</Link>
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to='/dashboard/allprojects'>
 					<ListItem button>
-						<LaptopChromebookIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<LaptopChromebookIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Projects
 					</ListItem>
 				</Link>
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to='/dashboard/allreviews'>
 					<ListItem button>
-						<ReviewsOutlinedIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<ReviewsOutlinedIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Reviews
 					</ListItem>
 				</Link>
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to='/dashboard/addprojects'>
 					<ListItem button>
-						<AddToQueueIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<AddToQueueIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						Add Projects
 					</ListItem>
 				</Link>
 
 				<Link
+					className='color-theme'
 					style={{
 						textDecoration: "none",
-						color: "white",
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
 					to='/'>
 					<ListItem button>
-						<HomeIcon
-							sx={{ color: "white", mr: 1.5, my: 0.7 }}
-							fontSize='medium'
-						/>
+						<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						Home
 					</ListItem>
 				</Link>
@@ -187,12 +163,12 @@ function DashBoard(props) {
 		<Box sx={{ display: "flex" }}>
 			<CssBaseline />
 			<AppBar
+				className='navbg'
 				position='fixed'
 				sx={{
 					width: { sm: `calc(100% - ${drawerWidth}px)` },
 					ml: { sm: `${drawerWidth}px` },
 					display: { xs: "block", sm: "none" },
-					backgroundColor: "#8444DF",
 				}}>
 				<Toolbar>
 					<IconButton
@@ -206,6 +182,7 @@ function DashBoard(props) {
 					<Typography variant='h6' noWrap component='div'>
 						Admin Dashboard
 					</Typography>
+					<ThemeChanger />
 				</Toolbar>
 			</AppBar>
 			<Box
@@ -224,6 +201,7 @@ function DashBoard(props) {
 					ModalProps={{
 						keepMounted: true, // Better open performance on mobile.
 					}}
+					className='nav'
 					sx={{
 						display: { xs: "block", sm: "none" },
 						"& .MuiDrawer-paper": {
@@ -232,24 +210,24 @@ function DashBoard(props) {
 							height: "96.5%",
 							m: 2,
 							borderRadius: 7,
-							backgroundColor: "#8444DF",
-							color: "white",
 						},
 					}}>
 					{drawer}
 				</Drawer>
 				<Drawer
+					className='nav'
 					variant='permanent'
 					sx={{
 						display: { xs: "none", sm: "block" },
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
-							backgroundColor: "#8444DF",
-							color: "white",
 						},
 					}}
 					open>
+					<Box sx={{ pt: 2 }}>
+						<ThemeChanger />
+					</Box>
 					{drawer}
 				</Drawer>
 			</Box>

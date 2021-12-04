@@ -257,7 +257,8 @@ const EditProject = () => {
 				justifyContent='center'
 				style={{ minHeight: "100vh" }}>
 				<Typography
-					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
+					className='color-theme'
+					sx={{ mb: 3, fw: "bold" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -267,6 +268,7 @@ const EditProject = () => {
 					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
 						<form onSubmit={handleSubmit(onSubmit)}>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Enter Project Name'
@@ -277,6 +279,7 @@ const EditProject = () => {
 							/>
 							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
 								<Input
+									className='color-theme'
 									accept='image/*'
 									type='file'
 									onChange={(e) => setInputImage1(e.target.files[0])}
@@ -296,7 +299,14 @@ const EditProject = () => {
 													onClick={uploadImage1}
 													variant='contained'
 													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													className='button border'
+													sx={{
+														my: 1,
+														py: 0.5,
+														width: "250px",
+														border: "2px solid",
+														backgroundColor: "transparent",
+													}}>
 													Upload Image
 												</Button>
 											</>
@@ -306,12 +316,13 @@ const EditProject = () => {
 									</>
 								) : (
 									<Box sx={{ my: 2 }}>
-										<CircularProgress />
+										<CircularProgress className='color-theme' />
 									</Box>
 								)}
 							</Box>
 							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
 								<Input
+									className='color-theme'
 									accept='image/*'
 									type='file'
 									onChange={(e) => setInputImage2(e.target.files[0])}
@@ -330,7 +341,14 @@ const EditProject = () => {
 													onClick={uploadImage2}
 													variant='contained'
 													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													className='button border'
+													sx={{
+														my: 1,
+														py: 0.5,
+														width: "250px",
+														border: "2px solid",
+														backgroundColor: "transparent",
+													}}>
 													Upload Image
 												</Button>
 											</>
@@ -340,12 +358,13 @@ const EditProject = () => {
 									</>
 								) : (
 									<Box sx={{ my: 2 }}>
-										<CircularProgress />
+										<CircularProgress className='color-theme' />
 									</Box>
 								)}
 							</Box>
 							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
 								<Input
+									className='color-theme'
 									accept='image/*'
 									type='file'
 									onChange={(e) => setInputImage3(e.target.files[0])}
@@ -364,7 +383,14 @@ const EditProject = () => {
 													onClick={uploadImage3}
 													variant='contained'
 													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													className='button border'
+													sx={{
+														my: 1,
+														py: 0.5,
+														width: "250px",
+														border: "2px solid",
+														backgroundColor: "transparent",
+													}}>
 													Upload Image
 												</Button>
 											</>
@@ -374,12 +400,13 @@ const EditProject = () => {
 									</>
 								) : (
 									<Box sx={{ my: 2 }}>
-										<CircularProgress />
+										<CircularProgress className='color-theme' />
 									</Box>
 								)}
 							</Box>
 							<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
 								<Input
+									className='color-theme'
 									accept='image/*'
 									type='file'
 									onChange={(e) => setInputImage4(e.target.files[0])}
@@ -398,7 +425,14 @@ const EditProject = () => {
 													onClick={uploadImage4}
 													variant='contained'
 													component='span'
-													sx={{ my: 1, py: 0.5, width: "250px" }}>
+													className='button border'
+													sx={{
+														my: 1,
+														py: 0.5,
+														width: "250px",
+														border: "2px solid",
+														backgroundColor: "transparent",
+													}}>
 													Upload Image
 												</Button>
 											</>
@@ -408,12 +442,13 @@ const EditProject = () => {
 									</>
 								) : (
 									<Box sx={{ my: 2 }}>
-										<CircularProgress />
+										<CircularProgress className='color-theme' />
 									</Box>
 								)}
 							</Box>
 
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Project Details'
@@ -425,6 +460,7 @@ const EditProject = () => {
 								}}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Feature 1'
@@ -434,6 +470,7 @@ const EditProject = () => {
 								{...register("feature1", { required: true })}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Feature 2'
@@ -443,6 +480,7 @@ const EditProject = () => {
 								{...register("feature2", { required: true })}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Feature 3'
@@ -452,6 +490,7 @@ const EditProject = () => {
 								{...register("feature3", { required: true })}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Feature 4'
@@ -461,6 +500,7 @@ const EditProject = () => {
 								{...register("feature4", { required: true })}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Feature 5'
@@ -470,6 +510,7 @@ const EditProject = () => {
 								{...register("feature5", { required: true })}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Technologies Used'
@@ -481,6 +522,7 @@ const EditProject = () => {
 								}}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project Live Link'
@@ -490,6 +532,7 @@ const EditProject = () => {
 								}}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project GitHub Client Link'
@@ -499,6 +542,7 @@ const EditProject = () => {
 								}}
 							/>
 							<TextField
+								className='color-theme'
 								sx={{ width: "100%", mb: 2 }}
 								id='outlined-basic'
 								label='Project GitHub Server Link'
@@ -511,15 +555,14 @@ const EditProject = () => {
 							<Button
 								type='submit'
 								variant='contained'
+								className='button border'
 								sx={{
 									width: "100%",
 									mb: 2,
 									px: 3,
 									fontWeight: "bold",
-									backgroundColor: "#8444DF",
-									"&:hover": {
-										backgroundColor: "#8444DF",
-									},
+									border: "2px solid",
+									backgroundColor: "transparent",
 									borderRadius: "25px",
 								}}>
 								Update Project

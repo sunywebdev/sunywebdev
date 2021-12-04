@@ -1,5 +1,58 @@
 .App {
 	text-align: center;
-	background-color: #f7f7f7 !important;
+	background-color: var(--bg-color) !important;
 }
-
+.color-theme {
+	color: var(--text-color) !important;
+}
+.bg {
+	background-color: var(--bg-color) !important;
+}
+.navbg {
+	background-color: var(--text-color) !important;
+}
+.border {
+	border-color: var(--border-color) !important;
+}
+.color-text {
+	color: var(--normal-text-color) !important;
+}
+.button {
+	color: var(--text-color) !important;
+}
+.button:hover {
+	background-color: var(--text-color) !important;
+	color: white !important;
+}
+.myphoto {
+	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
+}
+.Mui-focused {
+	background-color: white !important;
+}
+.MuiOutlinedInput-root {
+	background-color: white;
+	color: var(--text-color) !important;
+}
+.MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+	border-color: var(--border-color) !important;
+}
+.nav .MuiDrawer-paper {
+	background-color: var(--bg-color) !important;
+	color: var(--text-color) !important;
+	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
+}
+.css-bshv44-MuiButtonBase-root-MuiListItem-root {
+	border-radius: 5px !important;
+	transition-duration: 0.2s !important;
+}
+.css-bshv44-MuiButtonBase-root-MuiListItem-root:hover {
+	background-color: var(--text-color) !important;
+	color: white !important;
+	box-shadow: 3px 3px 7px -2px #000000 !important;
+}
+.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root {
+	padding: 2px 10px !important;
+	color: var(--text-color) !important;
+	background-color: white !important;
+}

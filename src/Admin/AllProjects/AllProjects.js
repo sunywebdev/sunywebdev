@@ -51,10 +51,11 @@ const AllProjects = () => {
 
 	let count = 1;
 	return (
-		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+		<Container sx={{ mt: { xs: 9, md: 2 }, minHeight: "100vh" }}>
 			<Grid>
 				<Typography
-					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
+					className='color-theme'
+					sx={{ mb: 3, fw: "bold" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -65,11 +66,17 @@ const AllProjects = () => {
 						className='container'
 						sx={{ overflow: "auto", maxHeight: "80vh" }}>
 						<Table size='small' aria-label='a dense table'>
-							<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
+							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
-									<TableCell align='left'>No</TableCell>
-									<TableCell align='left'>ProjectName</TableCell>
-									<TableCell align='left'>Action</TableCell>
+									<TableCell className='color-theme' align='left'>
+										No
+									</TableCell>
+									<TableCell className='color-theme' align='left'>
+										ProjectName
+									</TableCell>
+									<TableCell className='color-theme' align='left'>
+										Action
+									</TableCell>
 								</TableRow>
 							</TableHead>
 							{projects?.length > 0 ? (
@@ -89,13 +96,12 @@ const AllProjects = () => {
 												<ButtonGroup>
 													<Link to={`/dashboard/${project?._id}`}>
 														<Button
+															className='button border'
 															sx={{
 																mr: 0.5,
 																fontWeight: "bold",
-																backgroundColor: "#8444DF",
-																"&:hover": {
-																	backgroundColor: "#8444DF",
-																},
+																border: "2px solid",
+																backgroundColor: "transparent",
 																borderRadius: "25px",
 															}}
 															variant='contained'>
@@ -103,14 +109,13 @@ const AllProjects = () => {
 														</Button>
 													</Link>
 													<Button
+														className='button border'
 														onClick={() => handleDelete(project?._id)}
 														sx={{
 															ml: 0.5,
 															fontWeight: "bold",
-															backgroundColor: "#8444DF",
-															"&:hover": {
-																backgroundColor: "#8444DF",
-															},
+															border: "2px solid",
+															backgroundColor: "transparent",
 															borderRadius: "25px",
 														}}
 														variant='contained'>

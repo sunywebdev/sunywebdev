@@ -5,10 +5,11 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid, Paper, Skeleton } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import { Box } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
@@ -26,22 +27,34 @@ const Portfolio = () => {
 				justifyContent='center'
 				style={{ minHeight: "100vh" }}>
 				<Typography
-					sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
+					className='color-theme'
+					sx={{ mb: 0, mt: 0.5, fontWeight: 900 }}
 					variant='h3'
 					component='div'
 					gutterBottom>
 					PORTFOLIO
 				</Typography>
-				<Typography sx={{ mb: 4 }} variant='h5' component='div' gutterBottom>
+				<Typography
+					className='color-text'
+					sx={{ mb: 4 }}
+					variant='h5'
+					component='div'
+					gutterBottom>
 					Check out some of my latest works.
 				</Typography>
 				<Grid container spacing={3} sx={{ mb: 2 }}>
 					{projects?.length > 0 ? (
 						<>
 							{projects?.map((project) => (
-								<Grid key={project?._id} item md={12} xs={12}>
-									<Paper elevation={3} sx={{ borderRadius: "15px" }}>
+								<Grid key={project?._id} item md={12} sm={6} xs={12}>
+									<Paper
+										elevation={3}
+										sx={{
+											borderRadius: "15px",
+											backgroundColor: "transparent",
+										}}>
 										<Card
+											className='color-text'
 											sx={{
 												display: "flex",
 												alignItems: "center",
@@ -50,14 +63,16 @@ const Portfolio = () => {
 													sm: "column",
 													xs: "column",
 													borderRadius: "15px",
+													backgroundColor: "transparent",
 												},
 											}}>
 											<CardMedia
+												className='border'
 												sx={{
 													maxHeight: "350px",
 													maxWidth: "350px",
 													borderRadius: "15px",
-													border: "3px solid #8444DF",
+													border: "3px solid ",
 												}}
 												component='img'
 												image={project?.projectPhoto1}
@@ -69,8 +84,8 @@ const Portfolio = () => {
 													<Typography
 														component='div'
 														variant='h5'
+														className='color-theme'
 														sx={{
-															color: "#8444DF",
 															fontWeight: "bold",
 															my: 1,
 														}}>
@@ -80,15 +95,10 @@ const Portfolio = () => {
 														component='div'
 														variant='body'
 														sx={{ my: 1 }}>
-														<b style={{ color: "#8444DF" }}>
-															Technologies Used:
-														</b>{" "}
+														<b className='color-theme'>Technologies Used:</b>{" "}
 														{project?.techUsed}
 													</Typography>
-													<Typography
-														variant='subtitle1'
-														color='text.secondary'
-														component='div'>
+													<Typography variant='subtitle1' component='div'>
 														{project?.projectDetails}
 													</Typography>
 												</CardContent>
@@ -103,14 +113,13 @@ const Portfolio = () => {
 														<Box>
 															<Button
 																variant='contained'
+																className='button border'
 																sx={{
 																	px: 1.5,
 																	fontWeight: "bold",
-																	backgroundColor: "#8444DF",
-																	"&:hover": {
-																		backgroundColor: "#8444DF",
-																	},
 																	borderRadius: "25px",
+																	backgroundColor: "transparent",
+																	border: "2px solid",
 																}}
 																size='small'
 																onClick={() =>
@@ -125,14 +134,13 @@ const Portfolio = () => {
 																style={{ textDecoration: "none" }}>
 																<Button
 																	variant='contained'
+																	className='button border'
 																	sx={{
 																		px: 1.5,
 																		fontWeight: "bold",
-																		backgroundColor: "#8444DF",
-																		"&:hover": {
-																			backgroundColor: "#8444DF",
-																		},
 																		borderRadius: "25px",
+																		backgroundColor: "transparent",
+																		border: "2px solid",
 																	}}
 																	size='small'>
 																	Show More
@@ -150,7 +158,11 @@ const Portfolio = () => {
 					) : (
 						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
 							{Array.from({ length: 5 }).map((_, idx) => (
-								<Skeleton key={idx} animation='wave' />
+								<CircularProgress
+									key={idx}
+									sx={{ mx: 0.5 }}
+									className='color-theme'
+								/>
 							))}
 						</Grid>
 					)}
@@ -158,14 +170,13 @@ const Portfolio = () => {
 			</Grid>
 			<Button
 				onClick={() => window.open("https://github.com/sunywebdev", "_blank")}
+				className='button border'
 				sx={{
 					my: 1,
 					px: 3,
 					fontWeight: "bold",
-					backgroundColor: "#8444DF",
-					"&:hover": {
-						backgroundColor: "#8444DF",
-					},
+					border: "2px solid",
+					backgroundColor: "transparent",
 					borderRadius: "25px",
 				}}
 				variant='contained'>

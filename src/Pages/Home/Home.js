@@ -14,6 +14,7 @@ import { animations } from "react-animation";
 const Home = () => {
 	return (
 		<Container
+			className='color-text'
 			sx={{
 				mt: { md: 0, xs: 3 },
 				overflow: "auto",
@@ -34,14 +35,14 @@ const Home = () => {
 						item
 						md={4}
 						xs={12}
-						sx={{ img: { width: { md: "100%", xs: "70%" } } }}>
+						sx={{ img: { width: { md: "90%", xs: "70%" } } }}>
 						<img
+							className='myphoto border'
 							src={image}
 							alt='Shoyeb Mohammed Suny'
 							style={{
-								border: " 2px solid #8444DF",
+								border: "2px solid",
 								borderRadius: "50%",
-								boxShadow: "12px 0 #d9c8f1, 24px 0 #e2d6f3, 36px 0 #ece6f5",
 							}}
 						/>
 					</Grid>
@@ -54,12 +55,13 @@ const Home = () => {
 							variant='h1'
 							component='div'
 							gutterBottom
-							sx={{ fontWeight: 900, color: "#8444DF" }}>
+							className='color-theme'
+							sx={{ fontWeight: 900 }}>
 							Hello!
 						</Typography>
 						<Typography variant='h5' component='div' gutterBottom>
-							I'm <b style={{ color: "#8444DF" }}>Shoyeb Mohammed Suny</b>. I'm
-							a MERN Stack Web Developer from Chattogram, Bangladesh!
+							I'm <b className='color-theme'>Shoyeb Mohammed Suny</b>. I'm a
+							MERN Stack Web Developer from Chattogram, Bangladesh!
 						</Typography>
 						<Button
 							onClick={() =>
@@ -72,12 +74,11 @@ const Home = () => {
 								my: 1,
 								px: 3,
 								fontWeight: "bold",
-								backgroundColor: "#8444DF",
-								"&:hover": {
-									backgroundColor: "#8444DF",
-								},
+								border: "2px solid",
+								backgroundColor: "transparent",
 								borderRadius: "25px",
 							}}
+							className='border button'
 							variant='contained'>
 							<AssignmentIndIcon sx={{ mr: 1.5 }} />
 							My Resume
@@ -88,7 +89,10 @@ const Home = () => {
 							sx={{ my: 3, justifyContent: { xs: "center", md: "left" } }}>
 							<GitHubIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#292E34" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+								}}
 								onClick={() =>
 									window.open("https://github.com/sunywebdev", "_blank")
 								}></GitHubIcon>

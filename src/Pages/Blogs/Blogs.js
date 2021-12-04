@@ -9,7 +9,8 @@ const Blogs = () => {
 			direction='column'
 			alignItems='center'
 			justifyContent='center'
-			style={{ minHeight: "100vh", color: "#8444DF" }}>
+			className='color-theme'
+			style={{ minHeight: "100vh" }}>
 			<Typography variant='h1' component='div' sx={{ fontWeight: 900 }}>
 				Blogs
 			</Typography>

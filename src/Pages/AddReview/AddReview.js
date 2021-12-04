@@ -52,13 +52,15 @@ const AddReview = () => {
 	return (
 		<Container sx={{ mt: { md: 0, xs: 7 } }}>
 			<Grid
+				className='color-text'
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
 				sx={{ minHeight: { md: "100vh", xs: "90vh" } }}>
 				<Typography
-					sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}
+					className='color-theme'
+					sx={{ mb: 4, fontWeight: 900 }}
 					variant='h3'
 					component='div'
 					gutterBottom
@@ -87,10 +89,12 @@ const AddReview = () => {
 									<ListItem>
 										<ListItemAvatar>
 											<img
+												className='border'
 												style={{
-													width: "50px",
-													height: "50px",
+													width: "55px",
+													height: "55px",
 													borderRadius: "50%",
+													border: "3px solid",
 													my: 2,
 												}}
 												src={user?.photoURL}
@@ -99,6 +103,7 @@ const AddReview = () => {
 										</ListItemAvatar>
 										<Box item sx={{ textAlign: "left", ml: 2 }}>
 											<input
+												className='color-theme'
 												defaultValue={user?.displayName}
 												style={{
 													border: 0,
@@ -107,11 +112,11 @@ const AddReview = () => {
 													pointerEvents: "none",
 													my: 2,
 													fontWeight: "bold",
-													color: "#8444DF",
 												}}
 												{...register("userName", { required: true })}
 											/>
 											<input
+												className='color-theme'
 												style={{
 													border: 0,
 													fontSize: "17px",
@@ -132,11 +137,11 @@ const AddReview = () => {
 										alignItems: "center",
 									}}>
 									<Rating
+										className='color-theme'
 										sx={{
 											float: "left",
 											mb: 2,
 											fontSize: 50,
-											color: "#8444DF",
 										}}
 										name='hover-feedback'
 										value={value}
@@ -149,20 +154,25 @@ const AddReview = () => {
 											setHover(newHover);
 										}}
 										emptyIcon={
-											<StarIcon style={{ opacity: 0.55 }} fontSize='inherit' />
+											<StarIcon
+												className='color-text'
+												style={{ opacity: 0.55 }}
+												fontSize='inherit'
+											/>
 										}
 									/>
 									<Typography
+										className='color-theme'
 										variant='h4'
 										component='div'
-										sx={{ ml: 2, mb: 1.7, color: "#8444DF" }}>
+										sx={{ ml: 2, mb: 1.7 }}>
 										{hover !== -1 ? hover : value}
 									</Typography>
 								</Box>
 								<TextField
 									sx={{ width: "100%", mb: 2 }}
 									id='"outlined-multiline-flexible'
-									label='Share Your Review'
+									placeholder='Share Your Review'
 									multiline
 									rows={4}
 									{...register("userReview", { required: true })}
@@ -170,15 +180,14 @@ const AddReview = () => {
 								<Button
 									type='submit'
 									variant='contained'
+									className='button border'
 									sx={{
 										width: "100%",
 										mb: 2,
 										px: 3,
 										fontWeight: "bold",
-										backgroundColor: "#8444DF",
-										"&:hover": {
-											backgroundColor: "#8444DF",
-										},
+										border: "2px solid",
+										backgroundColor: "transparent",
 										borderRadius: "25px",
 									}}>
 									POST REVIEW
@@ -186,7 +195,10 @@ const AddReview = () => {
 							</form>
 						) : (
 							<Box sx={{ my: 2 }}>
-								<CircularProgress />
+								<CircularProgress
+									sx={{ mx: 0.5 }}
+									className='color-theme'
+								/>
 							</Box>
 						)}
 					</Grid>

@@ -1,10 +1,10 @@
 import {
 	Button,
+	ButtonGroup,
 	CardMedia,
 	Container,
 	Grid,
 	Rating,
-	Skeleton,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
@@ -15,6 +15,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import RateReviewIcon from "@mui/icons-material/RateReview";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
@@ -33,6 +34,7 @@ const Reviews = () => {
 		autoplaySpeed: 3000,
 		cssEase: "linear",
 		swipeToSlide: true,
+		arrows: false,
 		responsive: [
 			{
 				breakpoint: 992,
@@ -62,6 +64,7 @@ const Reviews = () => {
 			},
 		],
 	};
+	const slider = React.useRef(null);
 	return (
 		<Box
 			sx={{
@@ -77,7 +80,8 @@ const Reviews = () => {
 				style={{ minHeight: "100vh" }}>
 				<>
 					<Typography
-						sx={{ mb: 4, fontWeight: 900, color: "#8444DF" }}
+						className='color-theme'
+						sx={{ mb: 4, fontWeight: 900 }}
 						variant='h3'
 						component='div'
 						gutterBottom>
@@ -85,85 +89,118 @@ const Reviews = () => {
 					</Typography>
 					<Container sx={{ mx: "auto" }}>
 						{reviews?.length > 0 ? (
-							<Slider {...settings}>
-								{reviews?.map((review) => (
-									<Box key={review?._id}>
-										<Card
+							<>
+								<Box sx={{ my: 2 }}>
+									<ButtonGroup disableElevation variant='contained'>
+										<Button
+											className='button border'
 											sx={{
-												maxWidth: 345,
-												mt: 5,
-												mx: 1.5,
-												mb: 1,
-												pb: 2,
-												minHeight: "250px",
-												display: "flex",
-												flexDirection: "column",
-												alignItems: "center",
-												alignContent: "center",
-												overflow: "visible",
-											}}>
-											<CardMedia
-												component='img'
-												style={{
-													width: "80px",
-													marginTop: -35,
-													borderRadius: "50%",
-													border: "5px solid #8444DF",
-												}}
-												image={review?.userPhoto}
-												alt=''
-											/>
-											<Typography
-												gutterBottom
-												variant='h6'
-												component='div'
-												sx={{ color: "#8444DF" }}>
-												{review?.userName}
-											</Typography>
-											<Box
+												borderRadius: "15px 0 0 15px ",
+												backgroundColor: "transparent",
+												border: "2px solid",
+											}}
+											onClick={() => slider?.current?.slickPrev()}>
+											Prev
+										</Button>
+										<Button
+											className='button border'
+											sx={{
+												borderRadius: " 0 15px 15px 0",
+												backgroundColor: "transparent",
+												border: "2px solid",
+											}}
+											onClick={() => slider?.current?.slickNext()}>
+											Next
+										</Button>
+									</ButtonGroup>
+								</Box>
+								<Slider ref={slider} {...settings}>
+									{reviews?.map((review) => (
+										<Box key={review?._id}>
+											<Card
+												className='color-text border'
 												sx={{
+													maxWidth: 345,
+													mt: 5,
+													mx: 1.5,
+													mb: 1,
+													pb: 2,
+													minHeight: "250px",
 													display: "flex",
+													flexDirection: "column",
 													alignItems: "center",
+													alignContent: "center",
+													overflow: "visible",
+													backgroundColor: "transparent",
+													border: "2px solid",
 												}}>
-												<Rating
-													sx={{ color: "#8444DF" }}
-													name='half-rating-read'
-													defaultValue={review?.star}
-													precision={0.1}
-													readOnly
+												<CardMedia
+													component='img'
+													className='border'
+													style={{
+														width: "80px",
+														marginTop: -35,
+														borderRadius: "50%",
+														border: "5px solid",
+													}}
+													image={review?.userPhoto}
+													alt=''
 												/>
-											</Box>
-											<Typography variant='body2' sx={{ mt: 1, px: 1 }}>
-												{review?.userReview}
-											</Typography>
-										</Card>
-									</Box>
-								))}
-							</Slider>
+												<Typography
+													gutterBottom
+													variant='h6'
+													component='div'
+													className='color-theme'>
+													{review?.userName}
+												</Typography>
+												<Box
+													sx={{
+														display: "flex",
+														alignItems: "center",
+													}}>
+													<Rating
+														className='color-theme'
+														name='half-rating-read'
+														defaultValue={review?.star}
+														precision={0.1}
+														readOnly
+													/>
+												</Box>
+												<Typography variant='body2' sx={{ mt: 1, px: 1 }}>
+													{review?.userReview}
+												</Typography>
+											</Card>
+										</Box>
+									))}
+								</Slider>
+								<Link to='addreview' style={{ textDecoration: "none" }}>
+									<Button
+										variant='contained'
+										className='button border'
+										sx={{
+											px: 3,
+											fontWeight: "bold",
+											borderRadius: "25px",
+											backgroundColor: "transparent",
+											border: "2px solid",
+											my: 3.7,
+										}}>
+										<RateReviewIcon sx={{ mr: 1.5 }} />
+										Leave A Review
+									</Button>
+								</Link>
+							</>
 						) : (
 							<Box sx={{ mx: "auto", width: "72vw", mt: 3 }}>
 								{Array.from({ length: 5 }).map((_, idx) => (
-									<Skeleton key={idx} animation='wave' />
+									<CircularProgress
+										key={idx}
+										sx={{ mx: 0.5 }}
+										className='color-theme'
+									/>
 								))}
 							</Box>
 						)}
-						<Link to='addreview' style={{ textDecoration: "none" }}>
-							<Button
-								variant='contained'
-								sx={{
-									mt: 3.7,
-									px: 3,
-									fontWeight: "bold",
-									backgroundColor: "#8444DF",
-									"&:hover": {
-										backgroundColor: "#8444DF",
-									},
-									borderRadius: "25px",
-								}}>
-								<RateReviewIcon sx={{ mr: 1.5 }} />
-								Leave A Review
-							</Button>
-						</Link>
 					</Container>
 				</>
 			</Grid>

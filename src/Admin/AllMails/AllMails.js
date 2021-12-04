@@ -48,10 +48,11 @@ const AllMails = () => {
 
 	let count = 1;
 	return (
-		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+		<Container sx={{ mt: { xs: 9, md: 2 }, minHeight: "100vh" }}>
 			<Grid>
 				<Typography
-					sx={{ mb: 3, fw: "bold", color: "#8444DF" }}
+					className='color-theme'
+					sx={{ mb: 3, fw: "bold" }}
 					variant='h4'
 					component='div'
 					gutterBottom>
@@ -61,14 +62,26 @@ const AllMails = () => {
 					className='container'
 					sx={{ overflow: "auto", maxHeight: "80vh" }}>
 					<Table size='small' aria-label='a dense table'>
-						<TableHead sx={{ th: { fontWeight: "bold", color: "#8444DF" } }}>
+						<TableHead sx={{ th: { fontWeight: "bold" } }}>
 							<TableRow>
-								<TableCell align='left'>No</TableCell>
-								<TableCell align='left'>Name</TableCell>
-								<TableCell align='left'>Email</TableCell>
-								<TableCell align='left'>Subject</TableCell>
-								<TableCell align='left'>Details</TableCell>
-								<TableCell align='left'>Action</TableCell>
+								<TableCell className='color-theme' align='left'>
+									No
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Name
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Email
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Subject
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Details
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Action
+								</TableCell>
 							</TableRow>
 						</TableHead>
 						{mails?.length > 0 ? (
@@ -87,12 +100,11 @@ const AllMails = () => {
 										<TableCell align='left'>
 											<Button
 												onClick={() => handleDelete(mail?._id)}
+												className='button border'
 												sx={{
 													fontWeight: "bold",
-													backgroundColor: "#8444DF",
-													"&:hover": {
-														backgroundColor: "#8444DF",
-													},
+													border: "2px solid",
+													backgroundColor: "transparent",
 													borderRadius: "25px",
 												}}
 												variant='contained'>

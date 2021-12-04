@@ -5,8 +5,9 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid, Paper, Skeleton } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const SingleProject = () => {
 	const { id } = useParams();
@@ -17,27 +18,30 @@ const SingleProject = () => {
 			.then((data) => setProject(data));
 	}, [id]);
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ mt: { md: 0, xs: 7 }, minHeight: "100vh" }}>
 			{project?.length !== 0 ? (
 				<Grid
+					className='color-text'
 					container
 					direction='column'
 					alignItems='center'
 					justifyContent='center'
-					style={{ minHeight: "100vh" }}>
+					style={{}}>
 					<Typography
-						sx={{ mb: 3, mt: 1, fontWeight: 900, color: "#8444DF" }}
+						className='color-theme'
+						sx={{ mb: 3, mt: 1, fontWeight: 900 }}
 						variant='h4'
 						component='div'
 						gutterBottom>
 						{project?.projectName}
 					</Typography>
-					<Paper elevation={3} sx={{ borderRadius: "15px", py: 3 }}>
+					<Paper elevation={3} sx={{ backgroundColor: "transparent" }}>
 						<Grid container spacing={2}>
 							<Grid item md={6} xs={12}>
 								<CardMedia
+									className='border'
 									sx={{
-										border: "2px solid #8444DF",
+										border: "2px solid",
 									}}
 									component='img'
 									image={project?.projectPhoto1}
@@ -46,8 +50,9 @@ const SingleProject = () => {
 							</Grid>
 							<Grid item md={6} xs={12}>
 								<CardMedia
+									className='border'
 									sx={{
-										border: "2px solid #8444DF",
+										border: "2px solid ",
 									}}
 									component='img'
 									image={project?.projectPhoto2}
@@ -56,8 +61,9 @@ const SingleProject = () => {
 							</Grid>
 							<Grid item md={6} xs={12}>
 								<CardMedia
+									className='border'
 									sx={{
-										border: "2px solid #8444DF",
+										border: "2px solid ",
 									}}
 									component='img'
 									image={project?.projectPhoto3}
@@ -66,8 +72,9 @@ const SingleProject = () => {
 							</Grid>
 							<Grid item md={6} xs={12}>
 								<CardMedia
+									className='border'
 									sx={{
-										border: "2px solid #8444DF",
+										border: "2px solid ",
 									}}
 									component='img'
 									image={project?.projectPhoto4}
@@ -78,13 +85,17 @@ const SingleProject = () => {
 
 						<Grid item md={12} xs={12}>
 							<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
-								<Typography component='div' variant='body' sx={{ my: 1 }}>
-									<b style={{ color: "#8444DF" }}>Technologies Used:</b>{" "}
+								<Typography
+									component='div'
+									variant='body'
+									sx={{ my: 1 }}
+									className='color-text'>
+									<b className='color-theme'>Technologies Used:</b>{" "}
 									{project?.techUsed}
 								</Typography>
 								<Typography
+									className='color-text'
 									variant='subtitle1'
-									color='text.secondary'
 									component='div'>
 									{project?.projectDetails}
 								</Typography>
@@ -93,8 +104,8 @@ const SingleProject = () => {
 									color='text.secondary'
 									component='div'
 									sx={{ my: 3 }}>
-									<b style={{ color: "#8444DF" }}>Featuers:</b>
-									<ul style={{ marginTop: 0 }}>
+									<b className='color-theme'>Featuers:</b>
+									<ul style={{ marginTop: 0 }} className='color-text'>
 										<li>{project?.feature1}</li>
 										<li>{project?.feature2}</li>
 										<li>{project?.feature3}</li>
@@ -111,12 +122,11 @@ const SingleProject = () => {
 									sx={{
 										px: 1.5,
 										fontWeight: "bold",
-										backgroundColor: "#8444DF",
-										"&:hover": {
-											backgroundColor: "#8444DF",
-										},
+										border: "2px solid",
+										backgroundColor: "transparent",
 										borderRadius: "25px",
 									}}
+									className='border button'
 									size='small'
 									onClick={() => window.open(`${project?.liveLink}`, "_blank")}>
 									Live
@@ -126,12 +136,11 @@ const SingleProject = () => {
 									sx={{
 										px: 1.5,
 										fontWeight: "bold",
-										backgroundColor: "#8444DF",
-										"&:hover": {
-											backgroundColor: "#8444DF",
-										},
+										border: "2px solid",
+										backgroundColor: "transparent",
 										borderRadius: "25px",
 									}}
+									className='border button'
 									size='small'
 									onClick={() =>
 										window.open(`${project?.gitClientLink}`, "_blank")
@@ -144,12 +153,11 @@ const SingleProject = () => {
 										sx={{
 											px: 1.5,
 											fontWeight: "bold",
-											backgroundColor: "#8444DF",
-											"&:hover": {
-												backgroundColor: "#8444DF",
-											},
+											border: "2px solid",
+											backgroundColor: "transparent",
 											borderRadius: "25px",
 										}}
+										className='border button'
 										size='small'
 										onClick={() =>
 											window.open(`${project?.gitServerLink}`, "_blank")
@@ -164,15 +172,14 @@ const SingleProject = () => {
 						<Button
 							variant='contained'
 							sx={{
-								my: 3,
-								px: 1.5,
+								my: 1,
+								px: 3,
 								fontWeight: "bold",
-								backgroundColor: "#8444DF",
-								"&:hover": {
-									backgroundColor: "#8444DF",
-								},
+								border: "2px solid",
+								backgroundColor: "transparent",
 								borderRadius: "25px",
 							}}
+							className='border button'
 							size='small'>
 							Back To List
 						</Button>
@@ -181,7 +188,11 @@ const SingleProject = () => {
 			) : (
 				<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
 					{Array.from({ length: 5 }).map((_, idx) => (
-						<Skeleton key={idx} animation='wave' />
+						<CircularProgress
+							key={idx}
+							sx={{ mx: 0.5 }}
+							className='color-theme'
+						/>
 					))}
 				</Grid>
 			)}

@@ -64,9 +64,10 @@ const Contact = () => {
 						xs={12}
 						sx={{ textAlign: "left" }}>
 						<Typography
-							sx={{ mb: 0, fontWeight: 900, color: "#8444DF" }}
+							sx={{ mb: 0, fontWeight: 900 }}
 							variant='h3'
 							component='div'
+							className='color-theme'
 							gutterBottom>
 							CONTACT
 						</Typography>
@@ -74,14 +75,16 @@ const Contact = () => {
 							sx={{ mb: 4 }}
 							variant='h5'
 							component='div'
+							className='color-text'
 							gutterBottom>
 							Do you speak Alien Language? It's ok if you don't, I speak English
 							too.
 						</Typography>
 					</Grid>
-					<Grid data-aos='fade-left' item md={6} xs={12}>
+					<Grid data-aos='fade-left' item md={6} xs={12} className='color-text'>
 						<Typography
-							sx={{ mb: 1, fontWeight: 900, color: "#8444DF" }}
+							sx={{ mb: 1, fontWeight: 900 }}
+							className='color-theme'
 							variant='h6'
 							component='div'>
 							Click To Reach Me
@@ -89,7 +92,7 @@ const Contact = () => {
 						<Grid direction='row' sx={{ justifyContent: "center", mb: 3 }}>
 							<GitHubIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#292E34" }}
+								sx={{ mx: 0.5, cursor: "pointer" }}
 								onClick={() =>
 									window.open("https://github.com/sunywebdev", "_blank")
 								}></GitHubIcon>
@@ -159,7 +162,7 @@ const Contact = () => {
 													sx={{ width: "100%" }}
 													id='outlined-basic'
 													name='UserName'
-													label='Enter Your Name*'
+													placeholder='Enter Your Name*'
 													{...register("userName", { required: true })}
 												/>
 											</Grid>
@@ -169,7 +172,7 @@ const Contact = () => {
 													id='outlined-basic'
 													name='UserEmail'
 													type='email'
-													label='Enter Your Email*'
+													placeholder='Enter Your Email*'
 													{...register("userEmail", { required: true })}
 												/>
 											</Grid>
@@ -177,7 +180,7 @@ const Contact = () => {
 												<TextField
 													sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
 													id='outlined-basic'
-													label='Subject*'
+													placeholder='Subject*'
 													name='Subject'
 													{...register("subject", { required: true })}
 												/>
@@ -188,7 +191,7 @@ const Contact = () => {
 										<TextField
 											sx={{ width: "100%", mb: 2 }}
 											id='"outlined-multiline-flexible'
-											label='Your Message*'
+											placeholder='Your Message*'
 											name='Message'
 											multiline
 											rows={7.3}
@@ -199,15 +202,14 @@ const Contact = () => {
 								<Button
 									type='submit'
 									variant='contained'
+									className='button border'
 									sx={{
 										width: "100%",
 										mb: 2,
 										px: 3,
 										fontWeight: "bold",
-										backgroundColor: "#8444DF",
-										"&:hover": {
-											backgroundColor: "#8444DF",
-										},
+										border: "2px solid",
+										backgroundColor: "transparent",
 										borderRadius: "25px",
 									}}>
 									{submitted}
@@ -215,7 +217,10 @@ const Contact = () => {
 							</form>
 						) : (
 							<Box sx={{ my: 2 }}>
-								<CircularProgress />
+								<CircularProgress
+									sx={{ mx: 0.5 }}
+									className='color-theme'
+								/>
 							</Box>
 						)}
 					</Grid>

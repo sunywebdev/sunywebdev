@@ -11,6 +11,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import LanguageIcon from "@mui/icons-material/Language";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Box } from "@mui/system";
 
 const SingleProject = () => {
 	const { id } = useParams();
@@ -119,11 +120,17 @@ const SingleProject = () => {
 							</CardContent>
 						</Grid>
 						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-							<CardActions sx={{ justifyContent: "center" ,mb:2}}>
+							<CardActions
+								sx={{
+									justifyContent: "center",
+									mb: 2,
+									flexDirection: { md: "row", xs: "column" },
+								}}>
 								<Button
 									variant='contained'
 									sx={{
 										px: 1.5,
+										mx: 1,
 										fontWeight: "bold",
 										border: "2px solid",
 										backgroundColor: "transparent",
@@ -134,27 +141,12 @@ const SingleProject = () => {
 									onClick={() => window.open(`${project?.liveLink}`, "_blank")}>
 									<LanguageIcon sx={{ mr: 1 }} /> Live
 								</Button>
-								<Button
-									variant='contained'
-									sx={{
-										px: 1.5,
-										fontWeight: "bold",
-										border: "2px solid",
-										backgroundColor: "transparent",
-										borderRadius: "25px",
-									}}
-									className='border button'
-									size='small'
-									onClick={() =>
-										window.open(`${project?.gitClientLink}`, "_blank")
-									}>
-									<GitHubIcon sx={{ mr: 1 }} /> Client Git
-								</Button>
-								{project?.gitServerLink && (
+								<Box sx={{ my: 2 }}>
 									<Button
 										variant='contained'
 										sx={{
 											px: 1.5,
+											mx: 1,
 											fontWeight: "bold",
 											border: "2px solid",
 											backgroundColor: "transparent",
@@ -163,11 +155,30 @@ const SingleProject = () => {
 										className='border button'
 										size='small'
 										onClick={() =>
-											window.open(`${project?.gitServerLink}`, "_blank")
+											window.open(`${project?.gitClientLink}`, "_blank")
 										}>
-										<GitHubIcon sx={{ mr: 1 }} /> Server Git
+										<GitHubIcon sx={{ mr: 1 }} /> Client Git
 									</Button>
-								)}
+									{project?.gitServerLink && (
+										<Button
+											variant='contained'
+											sx={{
+												px: 1.5,
+												mx: 1,
+												fontWeight: "bold",
+												border: "2px solid",
+												backgroundColor: "transparent",
+												borderRadius: "25px",
+											}}
+											className='border button'
+											size='small'
+											onClick={() =>
+												window.open(`${project?.gitServerLink}`, "_blank")
+											}>
+											<GitHubIcon sx={{ mr: 1 }} /> Server Git
+										</Button>
+									)}
+								</Box>
 							</CardActions>
 						</Grid>
 					</Paper>{" "}

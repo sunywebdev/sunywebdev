@@ -31,7 +31,7 @@
 	background-color: white !important;
 }
 .MuiOutlinedInput-root {
-	background-color: white;
+	background-color: transparent !important;
 	color: var(--text-color) !important;
 }
 .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {

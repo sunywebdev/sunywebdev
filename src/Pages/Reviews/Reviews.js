@@ -16,6 +16,8 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import CircularProgress from "@mui/material/CircularProgress";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
@@ -81,11 +83,19 @@ const Reviews = () => {
 				<>
 					<Typography
 						className='color-theme'
-						sx={{ mb: 4, fontWeight: 900 }}
+						sx={{ mb: 0, fontWeight: 900 }}
 						variant='h3'
 						component='div'
 						gutterBottom>
 						REVIEWS
+					</Typography>
+					<Typography
+						className='color-text'
+						sx={{ mb: 4 }}
+						variant='h5'
+						component='div'
+						gutterBottom>
+						What They Say About Me
 					</Typography>
 					<Container sx={{ mx: "auto" }}>
 						{reviews?.length > 0 ? (
@@ -98,8 +108,10 @@ const Reviews = () => {
 												borderRadius: "15px 0 0 15px ",
 												backgroundColor: "transparent",
 												border: "2px solid",
+												fontWeight: "bold",
 											}}
 											onClick={() => slider?.current?.slickPrev()}>
+											<ArrowBackIcon sx={{ mr: 1 }} />
 											Prev
 										</Button>
 										<Button
@@ -108,9 +120,11 @@ const Reviews = () => {
 												borderRadius: " 0 15px 15px 0",
 												backgroundColor: "transparent",
 												border: "2px solid",
+												fontWeight: "bold",
 											}}
 											onClick={() => slider?.current?.slickNext()}>
 											Next
+											<ArrowForwardIcon sx={{ ml: 1 }} />
 										</Button>
 									</ButtonGroup>
 								</Box>

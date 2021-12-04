@@ -8,6 +8,9 @@ import Typography from "@mui/material/Typography";
 import { Container, Grid, Paper } from "@mui/material";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import LanguageIcon from "@mui/icons-material/Language";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const SingleProject = () => {
 	const { id } = useParams();
@@ -116,7 +119,7 @@ const SingleProject = () => {
 							</CardContent>
 						</Grid>
 						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-							<CardActions sx={{ justifyContent: "center" }}>
+							<CardActions sx={{ justifyContent: "center" ,mb:2}}>
 								<Button
 									variant='contained'
 									sx={{
@@ -129,7 +132,7 @@ const SingleProject = () => {
 									className='border button'
 									size='small'
 									onClick={() => window.open(`${project?.liveLink}`, "_blank")}>
-									Live
+									<LanguageIcon sx={{ mr: 1 }} /> Live
 								</Button>
 								<Button
 									variant='contained'
@@ -145,7 +148,7 @@ const SingleProject = () => {
 									onClick={() =>
 										window.open(`${project?.gitClientLink}`, "_blank")
 									}>
-									Client Git
+									<GitHubIcon sx={{ mr: 1 }} /> Client Git
 								</Button>
 								{project?.gitServerLink && (
 									<Button
@@ -162,7 +165,7 @@ const SingleProject = () => {
 										onClick={() =>
 											window.open(`${project?.gitServerLink}`, "_blank")
 										}>
-										Server Git
+										<GitHubIcon sx={{ mr: 1 }} /> Server Git
 									</Button>
 								)}
 							</CardActions>
@@ -172,7 +175,7 @@ const SingleProject = () => {
 						<Button
 							variant='contained'
 							sx={{
-								my: 1,
+								my: 2,
 								px: 3,
 								fontWeight: "bold",
 								border: "2px solid",
@@ -181,7 +184,7 @@ const SingleProject = () => {
 							}}
 							className='border button'
 							size='small'>
-							Back To List
+							<ArrowBackIcon sx={{ mr: 1 }} /> Back To List
 						</Button>
 					</Link>
 				</Grid>

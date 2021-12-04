@@ -10,6 +10,8 @@ import { Box } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
+import InfoIcon from "@mui/icons-material/Info";
+import LanguageIcon from "@mui/icons-material/Language";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
@@ -125,7 +127,7 @@ const Portfolio = () => {
 																onClick={() =>
 																	window.open(`${project?.liveLink}`, "_blank")
 																}>
-																Live
+																<LanguageIcon sx={{ mr: 1 }} /> Live
 															</Button>
 														</Box>
 														<Box>
@@ -143,7 +145,7 @@ const Portfolio = () => {
 																		border: "2px solid",
 																	}}
 																	size='small'>
-																	Show More
+																	<InfoIcon sx={{ mr: 1 }} /> Details
 																</Button>
 															</Link>
 														</Box>

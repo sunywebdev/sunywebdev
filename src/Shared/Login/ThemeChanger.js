@@ -112,9 +112,9 @@ export default function ThemeChanger() {
 		if (dark) {
 			setDark(true);
 			setBg("#021428");
-			setText("#E01545");
+			setText("#FFB400");
 			setNormal("#f0f8ffa9");
-			setBorder("#E01545");
+			setBorder("#FFB400");
 		} else {
 			setDark(false);
 			setBg("#fff");

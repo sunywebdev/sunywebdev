@@ -111,10 +111,10 @@ export default function ThemeChanger() {
 	useEffect(() => {
 		if (dark) {
 			setDark(true);
-			setBg("#021428");
-			setText("#FFB400");
+			setBg("#1D1D1D");
+			setText("#09F7D3");
 			setNormal("#f0f8ffa9");
-			setBorder("#FFB400");
+			setBorder("#09F7D3");
 		} else {
 			setDark(false);
 			setBg("#fff");

@@ -29,7 +29,7 @@
     "react-particles-js": "^3.6.0",
     "react-router-dom": "^6.0.2",
     "react-router-transition": "^2.1.0",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^4.0.3",
     "react-slick": "^0.28.1",
     "react-switch": "^6.0.0",
     "react-tiger-transition": "^4.1.2",

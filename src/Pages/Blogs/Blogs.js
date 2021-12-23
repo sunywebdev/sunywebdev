@@ -23,7 +23,7 @@ const Blogs = () => {
 				Comming Soon!
 			</Typography> */}
 				<Container sx={{ textAlign: "left" }}>
-					<Box sx={{my:5}}>
+					<Box sx={{ my: 5 }}>
 						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
 							Differences between props and state:
 						</Typography>
@@ -39,7 +39,7 @@ const Blogs = () => {
 							internal and controlled by the React Component itself.
 						</Typography>
 					</Box>
-					<Box sx={{my:5}}>
+					<Box sx={{ my: 5 }}>
 						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
 							JSX:
 						</Typography>
@@ -67,7 +67,7 @@ ReactDOM.render(<JSXDemo />, document.getElementById('root'));
 							</blockquote>
 						</Typography>
 					</Box>
-					<Box sx={{my:5}}>
+					<Box sx={{ my: 5 }}>
 						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
 							Custom hook:
 						</Typography>
@@ -82,7 +82,7 @@ ReactDOM.render(<JSXDemo />, document.getElementById('root'));
 							with "use". Like: useFetch().
 						</Typography>
 					</Box>
-					<Box sx={{my:5}}>
+					<Box sx={{ my: 5 }}>
 						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
 							Context API:
 						</Typography>
@@ -100,7 +100,7 @@ ReactDOM.render(<JSXDemo />, document.getElementById('root'));
 							any sub component without passing data to the child components.
 						</Typography>
 					</Box>
-					<Box sx={{my:5}}>
+					<Box sx={{ my: 5 }}>
 						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
 							Component Lifecycle:
 						</Typography>
@@ -113,6 +113,100 @@ ReactDOM.render(<JSXDemo />, document.getElementById('root'));
 							and at last when it completed its work it got Unmounted from dom.
 							Initial Phase, Mounting Phase, Updating Phase, Unmounting Phase
 							are the four phases of the Component Lifecycle.
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							CRUD Operations:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							CRUD Operations are basically create, read, update and delete
+							operations on storage. This operation creates or adds data , read
+							data , update data and delete data by user command. In node js we
+							use:
+							<ul>
+								<li>Create (POST) - Add something </li>
+								<li>Read (GET)- Read something</li>
+								<li>Update (PUT) - Change something</li>
+								<li>Delete (DELETE)- Remove something</li>
+							</ul>
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							JWT:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							JWT full form JSON Web Token. It's a kind of signature of a
+							requester. when someone wants to access a databaseJWT token
+							verifies the user token if the request comes from the right way.
+							If the database server does not detect the right jwt token, the
+							database blocks the access from that request.
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							Nodejs:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							Node.js is an open-source, cross-platform, back-end JavaScript
+							runtime environment. It is used for back-end server side and
+							networking development. It runs on a V8 engine. It runs on various
+							platforms like : Windows, Linux, Unix, Mac OS X, etc. Node js
+							helps to create or add data , read data , update data and delete
+							data on the database by user command.
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							Relational database:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							A relational database is a collection of data items with
+							pre-defined relationships between them. It is also called by
+							Relational Database Management Systems (RDBMS) or SQL
+							databases.SQL databases have static schema. It is vertically
+							scalable.It saves data on table row columns.
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							Nosql:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							It is a Non-relational or distributed database. NoSQL databases
+							have dynamic schema. It's horizontally scalable. It saves data in
+							json format. So in CRUD operation we can create, read, update and
+							delete data using json format.
+						</Typography>
+					</Box>
+					<Box sx={{ my: 5 }}>
+						<Typography variant='h6' component='div' sx={{ fontWeight: 900 }}>
+							Express.js:
+						</Typography>
+						<Typography
+							variant='body2'
+							component='div'
+							sx={{ fontWeight: 900 }}>
+							It is a back end web application framework for Node.js. It allows
+							setting up middlewares to respond to HTTP Requests on the backend
+							server. It is used for building single-page, multi-page, and
+							hybrid web applications for better user experience.
 						</Typography>
 					</Box>
 				</Container>

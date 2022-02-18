@@ -20,7 +20,7 @@ const AllReviews = () => {
 	useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/reviews`)
 			.then((res) => res.json())
-			.then((data) => setReviews(data));
+			.then((data) => setReviews(data.reverse()));
 	});
 
 	const handleDelete = (id) => {
@@ -60,8 +60,12 @@ const AllReviews = () => {
 				</Typography>
 				<Grid item xs={12} md={12}>
 					<Paper
-						className='container'
-						sx={{ overflow: "auto", maxHeight: "80vh" }}>
+						className='container cardShadow'
+						sx={{
+							overflow: "auto",
+							maxHeight: "80vh",
+							bgcolor: "transparent",
+						}}>
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
@@ -78,8 +82,11 @@ const AllReviews = () => {
 										Email
 									</TableCell>
 									<TableCell className='color-theme' align='left'>
-										Star
+										Submitted At
 									</TableCell>
+									{/* 	<TableCell className='color-theme' align='left'>
+										Star
+									</TableCell> */}
 									<TableCell className='color-theme' align='left'>
 										Reviews
 									</TableCell>
@@ -96,7 +103,7 @@ const AllReviews = () => {
 											sx={{
 												"&:last-child td, &:last-child th": { border: 0 },
 											}}>
-											<TableCell align='left'>{count++}</TableCell>
+											<TableCell align='left color-text '>{count++}</TableCell>
 											<TableCell>
 												<img
 													src={review?.userPhoto || "N/A"}
@@ -106,19 +113,22 @@ const AllReviews = () => {
 													style={{ borderRadius: "50%" }}
 												/>
 											</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text '>
 												{review?.userName || "N/A"}
 											</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text '>
 												{review?.userEmail || "N/A"}
 											</TableCell>
-											<TableCell align='left'>
-												{review?.star || "N/A"}
+											<TableCell align='left color-text '>
+												{review?.submitTime || "N/A"}
 											</TableCell>
-											<TableCell align='left'>
+											{/* 	<TableCell align='left color-text '>
+												{review?.star || "N/A"}
+											</TableCell> */}
+											<TableCell align='left color-text '>
 												{review?.userReview || "N/A"}
 											</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text '>
 												<Button
 													className='button border'
 													onClick={() => handleDelete(review?._id)}

@@ -18,14 +18,19 @@
 	color: var(--normal-text-color) !important;
 }
 .button {
-	color: var(--text-color) !important;
+	color: white !important;
+	background-color: var(--text-color) !important;
 }
 .button:hover {
-	background-color: var(--text-color) !important;
-	color: white !important;
+	background-color: white !important;
+	color: var(--text-color) !important;
+}
+.cardShadow {
+	border: 1px solid var(--border-color) !important;
+	box-shadow: 2px 2px 3px 0 var(--border-color) !important;
 }
 .myphoto {
-	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
+	box-shadow: 2px 3px 15px 2px var(--border-color) !important;
 }
 .Mui-focused {
 	background-color: white !important;
@@ -42,19 +47,20 @@
 	color: var(--text-color) !important;
 	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
 }
-.css-bshv44-MuiButtonBase-root-MuiListItem-root {
+.navbar .MuiListItem-root {
 	border-radius: 5px !important;
 	transition-duration: 0.2s !important;
+	font-weight: 900 !important;
 }
-.css-bshv44-MuiButtonBase-root-MuiListItem-root:hover {
+.navbar .MuiListItem-root:hover {
 	background-color: var(--text-color) !important;
 	color: white !important;
 	box-shadow: 3px 3px 7px -2px #000000 !important;
 }
-.css-1kty9di-MuiFormLabel-root-MuiInputLabel-root {
+.MuiInputLabel-root {
 	padding: 2px 10px !important;
 	color: var(--text-color) !important;
-	background-color: white !important;
+	background-color: transparent !important;
 }
 pre {
 	overflow: auto;

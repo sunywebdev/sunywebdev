@@ -30,6 +30,7 @@ function DashBoard(props) {
 	};
 	const drawer = (
 		<Box
+			className='navbar'
 			sx={{
 				m: "auto",
 				textAlign: "center",

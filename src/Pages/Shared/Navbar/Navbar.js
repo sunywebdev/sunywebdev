@@ -15,7 +15,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ContactPageIcon from "@mui/icons-material/ContactPage";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
-import RssFeedIcon from "@mui/icons-material/RssFeed";
+/* import RssFeedIcon from "@mui/icons-material/RssFeed"; */
 import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import image from "../../Home/Shoyeb Mohammed Suny.png";
@@ -34,7 +34,7 @@ function Navbar(props) {
 
 	const drawer = (
 		<>
-			<Box
+			<Box className="navbar"
 				sx={{
 					m: "auto",
 					textAlign: "center",
@@ -139,7 +139,7 @@ function Navbar(props) {
 							Reviews
 						</ListItem>
 					</Link>
-					<Link
+					{/* 				<Link
 						className='color-theme'
 						style={{
 							textDecoration: "none",
@@ -151,7 +151,7 @@ function Navbar(props) {
 							<RssFeedIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Blogs
 						</ListItem>
-					</Link>
+					</Link> */}
 					<Link
 						className='color-theme'
 						style={{

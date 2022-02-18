@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import LanguageIcon from "@mui/icons-material/Language";
@@ -33,99 +33,116 @@ const SingleProject = () => {
 					style={{}}>
 					<Typography
 						className='color-theme'
-						sx={{ mb: 3, mt: 1, fontWeight: 900 }}
+						sx={{ my: 2, fontWeight: 900 }}
 						variant='h4'
 						component='div'
 						gutterBottom>
 						{project?.projectName}
 					</Typography>
-					<Paper elevation={3} sx={{ backgroundColor: "transparent" }}>
-						<Grid container spacing={2}>
-							<Grid item md={6} xs={12}>
-								<CardMedia
-									className='border'
-									sx={{
-										border: "2px solid",
-									}}
-									component='img'
-									image={project?.projectPhoto1}
-									alt=''
-								/>
-							</Grid>
-							<Grid item md={6} xs={12}>
-								<CardMedia
-									className='border'
-									sx={{
-										border: "2px solid ",
-									}}
-									component='img'
-									image={project?.projectPhoto2}
-									alt=''
-								/>
-							</Grid>
-							<Grid item md={6} xs={12}>
-								<CardMedia
-									className='border'
-									sx={{
-										border: "2px solid ",
-									}}
-									component='img'
-									image={project?.projectPhoto3}
-									alt=''
-								/>
-							</Grid>
-							<Grid item md={6} xs={12}>
-								<CardMedia
-									className='border'
-									sx={{
-										border: "2px solid ",
-									}}
-									component='img'
-									image={project?.projectPhoto4}
-									alt=''
-								/>
-							</Grid>
-						</Grid>
-
-						<Grid item md={12} xs={12}>
-							<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
-								<Typography
-									component='div'
-									variant='body'
-									sx={{ my: 1 }}
-									className='color-text'>
-									<b className='color-theme'>Technologies Used:</b>{" "}
-									{project?.techUsed}
-								</Typography>
-								<Typography
-									className='color-text'
-									variant='subtitle1'
-									component='div'>
-									{project?.projectDetails}
-								</Typography>
-								<Typography
-									variant='subtitle1'
-									color='text.secondary'
-									component='div'
-									sx={{ my: 3 }}>
-									<b className='color-theme'>Featuers:</b>
-									<ul style={{ marginTop: 0 }} className='color-text'>
-										<li>{project?.feature1}</li>
-										<li>{project?.feature2}</li>
-										<li>{project?.feature3}</li>
-										<li>{project?.feature4}</li>
-										<li>{project?.feature5}</li>
-									</ul>
-								</Typography>
-							</CardContent>
-						</Grid>
-						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-							<CardActions
+					<Grid container spacing={2}>
+						<Grid item md={6} xs={12}>
+							<CardMedia
+								className='border'
 								sx={{
-									justifyContent: "center",
-									mb: 2,
-									flexDirection: { md: "row", xs: "column" },
-								}}>
+									border: "2px solid",
+								}}
+								component='img'
+								image={project?.projectPhoto1}
+								alt=''
+							/>
+						</Grid>
+						<Grid item md={6} xs={12}>
+							<CardMedia
+								className='border'
+								sx={{
+									border: "2px solid ",
+								}}
+								component='img'
+								image={project?.projectPhoto2}
+								alt=''
+							/>
+						</Grid>
+						<Grid item md={6} xs={12}>
+							<CardMedia
+								className='border'
+								sx={{
+									border: "2px solid ",
+								}}
+								component='img'
+								image={project?.projectPhoto3}
+								alt=''
+							/>
+						</Grid>
+						<Grid item md={6} xs={12}>
+							<CardMedia
+								className='border'
+								sx={{
+									border: "2px solid ",
+								}}
+								component='img'
+								image={project?.projectPhoto4}
+								alt=''
+							/>
+						</Grid>
+					</Grid>
+
+					<Grid item md={12} xs={12}>
+						<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
+							<Typography
+								component='div'
+								variant='body'
+								sx={{ my: 1 }}
+								className='color-text'>
+								<b className='color-theme'>Technologies Used:</b>{" "}
+								{project?.techUsed}
+							</Typography>
+							<Typography
+								sx={{ mt: 4 }}
+								className='color-text'
+								variant='subtitle1'
+								component='div'>
+								<b className='color-theme'>Project Details:</b>{" "}
+								{project?.projectDetails}
+							</Typography>
+							<Typography
+								variant='subtitle1'
+								color='text.secondary'
+								component='div'
+								sx={{ my: 3 }}>
+								<b className='color-theme'>Featuers:</b>
+								<ul style={{ marginTop: 0 }} className='color-text'>
+									<li>{project?.feature1}</li>
+									<li>{project?.feature2}</li>
+									<li>{project?.feature3}</li>
+									<li>{project?.feature4}</li>
+									<li>{project?.feature5}</li>
+								</ul>
+							</Typography>
+						</CardContent>
+					</Grid>
+					<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
+						<CardActions
+							sx={{
+								justifyContent: "center",
+								mb: 2,
+								flexDirection: { md: "row", xs: "column" },
+							}}>
+							<Button
+								variant='contained'
+								sx={{
+									px: 1.5,
+									mx: 1,
+									fontWeight: "bold",
+									border: "2px solid",
+									backgroundColor: "transparent",
+									borderRadius: "25px",
+								}}
+								className='border button'
+								size='small'
+								onClick={() => window.open(`${project?.liveLink}`, "_blank")}>
+								<LanguageIcon sx={{ mr: 1 }} /> Live
+							</Button>
+							<Box sx={{ my: 2 }}>
 								<Button
 									variant='contained'
 									sx={{
@@ -138,10 +155,12 @@ const SingleProject = () => {
 									}}
 									className='border button'
 									size='small'
-									onClick={() => window.open(`${project?.liveLink}`, "_blank")}>
-									<LanguageIcon sx={{ mr: 1 }} /> Live
+									onClick={() =>
+										window.open(`${project?.gitClientLink}`, "_blank")
+									}>
+									<GitHubIcon sx={{ mr: 1 }} /> Client Git
 								</Button>
-								<Box sx={{ my: 2 }}>
+								{project?.gitServerLink && (
 									<Button
 										variant='contained'
 										sx={{
@@ -155,33 +174,14 @@ const SingleProject = () => {
 										className='border button'
 										size='small'
 										onClick={() =>
-											window.open(`${project?.gitClientLink}`, "_blank")
+											window.open(`${project?.gitServerLink}`, "_blank")
 										}>
-										<GitHubIcon sx={{ mr: 1 }} /> Client Git
+										<GitHubIcon sx={{ mr: 1 }} /> Server Git
 									</Button>
-									{project?.gitServerLink && (
-										<Button
-											variant='contained'
-											sx={{
-												px: 1.5,
-												mx: 1,
-												fontWeight: "bold",
-												border: "2px solid",
-												backgroundColor: "transparent",
-												borderRadius: "25px",
-											}}
-											className='border button'
-											size='small'
-											onClick={() =>
-												window.open(`${project?.gitServerLink}`, "_blank")
-											}>
-											<GitHubIcon sx={{ mr: 1 }} /> Server Git
-										</Button>
-									)}
-								</Box>
-							</CardActions>
-						</Grid>
-					</Paper>{" "}
+								)}
+							</Box>
+						</CardActions>
+					</Grid>
 					<Link to={`/portfolio`} style={{ textDecoration: "none" }}>
 						<Button
 							variant='contained'

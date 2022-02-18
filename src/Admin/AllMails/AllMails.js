@@ -20,7 +20,7 @@ const AllMails = () => {
 	useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/mails`)
 			.then((res) => res.json())
-			.then((data) => setMails(data));
+			.then((data) => setMails(data.reverse()));
 	});
 
 	const handleDelete = (id) => {
@@ -59,8 +59,8 @@ const AllMails = () => {
 					All Mails
 				</Typography>
 				<Paper
-					className='container'
-					sx={{ overflow: "auto", maxHeight: "80vh" }}>
+					className='container cardShadow'
+					sx={{ overflow: "auto", maxHeight: "80vh", bgcolor: "transparent" }}>
 					<Table size='small' aria-label='a dense table'>
 						<TableHead sx={{ th: { fontWeight: "bold" } }}>
 							<TableRow>
@@ -72,6 +72,9 @@ const AllMails = () => {
 								</TableCell>
 								<TableCell className='color-theme' align='left'>
 									Email
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
+									Rec Time
 								</TableCell>
 								<TableCell className='color-theme' align='left'>
 									Subject
@@ -92,12 +95,23 @@ const AllMails = () => {
 										sx={{
 											"&:last-child td, &:last-child th": { border: 0 },
 										}}>
-										<TableCell align='left'>{count++}</TableCell>
-										<TableCell align='left'>{mail?.userName}</TableCell>
-										<TableCell align='left'>{mail?.userEmail}</TableCell>
-										<TableCell align='left'>{mail?.subject}</TableCell>
-										<TableCell align='left'>{mail?.message}</TableCell>
-										<TableCell align='left'>
+										<TableCell align='left color-text '>{count++}</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.userName}
+										</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.userEmail}
+										</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.submitTime || "N/A"}
+										</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.subject}
+										</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.message}
+										</TableCell>
+										<TableCell align='left color-text '>
 											<Button
 												onClick={() => handleDelete(mail?._id)}
 												className='button border'
@@ -117,12 +131,12 @@ const AllMails = () => {
 						) : (
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
-									<TableCell align='left'>N/A</TableCell>
-									<TableCell align='left'>N/A</TableCell>
-									<TableCell align='left'>N/A</TableCell>
-									<TableCell align='left'>N/A</TableCell>
-									<TableCell align='left'>N/A</TableCell>
-									<TableCell align='left'>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
 								</TableRow>
 							</TableHead>
 						)}

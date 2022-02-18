@@ -5,31 +5,33 @@ import {
 	List,
 	ListItem,
 	ListItemAvatar,
-	Rating,
+	/* 	Rating, */
 	TextField,
 	Typography,
 	CircularProgress,
+	Backdrop,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import StarIcon from "@mui/icons-material/Star";
+/* import StarIcon from "@mui/icons-material/Star"; */
 import useAuth from "../../context/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
 
 const AddReview = () => {
 	const [submitting, setSubmitting] = useState(false);
-	const [value, setValue] = React.useState(4);
-	const [hover, setHover] = React.useState(-1);
+	/* 	const [value, setValue] = React.useState(0);
+	const [hover, setHover] = React.useState(-1); */
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({ userName, userEmail, userReview }) => {
 		const data = {
 			userName,
 			userPhoto: user?.photoURL,
 			userEmail,
-			star: value,
+			/* star: value, */
 			userReview,
+			submitTime: new Date().toLocaleString(),
 		};
 		setSubmitting(true);
 		axios
@@ -78,132 +80,131 @@ const AddReview = () => {
 
 				<Grid container spacing={2}>
 					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						{!submitting ? (
-							<form data-aos='fade-left' onSubmit={handleSubmit(onSubmit)}>
-								<List
-									sx={{
-										width: "100%",
-										maxWidth: 400,
-										bgcolor: "transparent",
-									}}>
-									<ListItem>
-										<ListItemAvatar>
-											<img
-												className='border'
-												style={{
-													width: "55px",
-													height: "55px",
-													borderRadius: "50%",
-													border: "3px solid",
-													my: 2,
-												}}
-												src={user?.photoURL}
-												alt=''
-											/>
-										</ListItemAvatar>
-										<Box item sx={{ textAlign: "left", ml: 2 }}>
-											<input
-												className='color-theme'
-												defaultValue={user?.displayName}
-												style={{
-													border: 0,
-													fontSize: "18px",
-													backgroundColor: "transparent",
-													pointerEvents: "none",
-													my: 2,
-													fontWeight: "bold",
-												}}
-												{...register("userName", { required: true })}
-											/>
-											<input
-												className='color-theme'
-												style={{
-													border: 0,
-													fontSize: "17px",
-													textAlign: "left",
-													backgroundColor: "transparent",
-													pointerEvents: "none",
-													my: 2,
-												}}
-												defaultValue={user?.email}
-												{...register("userEmail", { required: true })}
-											/>
-										</Box>
-									</ListItem>
-								</List>
-								<Box
-									sx={{
-										display: "flex",
-										alignItems: "center",
-									}}>
-									<Rating
-										className='color-theme'
-										sx={{
-											float: "left",
-											mb: 2,
-											fontSize: 50,
-										}}
-										name='hover-feedback'
-										value={value}
-										size='large'
-										precision={0.5}
-										onChange={(event, newValue) => {
-											setValue(newValue);
-										}}
-										onChangeActive={(event, newHover) => {
-											setHover(newHover);
-										}}
-										emptyIcon={
-											<StarIcon
-												className='color-text'
-												style={{ opacity: 0.55 }}
-												fontSize='inherit'
-											/>
-										}
-									/>
-									<Typography
-										className='color-theme'
-										variant='h4'
-										component='div'
-										sx={{ ml: 2, mb: 1.7 }}>
-										{hover !== -1 ? hover : value}
-									</Typography>
-								</Box>
-								<TextField
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									placeholder='Share Your Review'
-									multiline
-									rows={4}
-									{...register("userReview", { required: true })}
-								/>
-								<Button
-									type='submit'
-									variant='contained'
-									className='button border'
-									sx={{
-										width: "100%",
-										mb: 2,
-										px: 3,
-										fontWeight: "bold",
-										border: "2px solid",
-										backgroundColor: "transparent",
-										borderRadius: "25px",
-									}}>
-									POST REVIEW
-								</Button>
-							</form>
-						) : (
-							<Box sx={{ my: 2 }}>
-								<CircularProgress
-									sx={{ mx: 0.5 }}
+						<form data-aos='fade-left' onSubmit={handleSubmit(onSubmit)}>
+							<List
+								sx={{
+									width: "100%",
+									maxWidth: 400,
+									bgcolor: "transparent",
+								}}>
+								<ListItem>
+									<ListItemAvatar>
+										<img
+											className='border'
+											style={{
+												width: "55px",
+												height: "55px",
+												borderRadius: "50%",
+												border: "3px solid",
+												my: 2,
+											}}
+											src={user?.photoURL}
+											alt=''
+										/>
+									</ListItemAvatar>
+									<Box item sx={{ textAlign: "left", ml: 2 }}>
+										<input
+											className='color-theme'
+											defaultValue={user?.displayName}
+											style={{
+												border: 0,
+												fontSize: "18px",
+												backgroundColor: "transparent",
+												pointerEvents: "none",
+												my: 2,
+												fontWeight: "bold",
+											}}
+											{...register("userName", { required: true })}
+										/>
+										<input
+											className='color-theme'
+											style={{
+												border: 0,
+												fontSize: "17px",
+												textAlign: "left",
+												backgroundColor: "transparent",
+												pointerEvents: "none",
+												my: 2,
+											}}
+											defaultValue={user?.email}
+											{...register("userEmail", { required: true })}
+										/>
+									</Box>
+								</ListItem>
+							</List>
+							{/* 		<Box
+								sx={{
+									display: "flex",
+									alignItems: "center",
+								}}>
+								<Rating
 									className='color-theme'
+									sx={{
+										float: "left",
+										mb: 2,
+										fontSize: 50,
+									}}
+									name='hover-feedback'
+									value={value}
+									size='large'
+									precision={0.5}
+									onChange={(event, newValue) => {
+										setValue(newValue);
+									}}
+									onChangeActive={(event, newHover) => {
+										setHover(newHover);
+									}}
+									emptyIcon={
+										<StarIcon
+											className='color-text'
+											style={{ opacity: 0.55 }}
+											fontSize='inherit'
+										/>
+									}
 								/>
-							</Box>
-						)}
+								<Typography
+									className='color-theme'
+									variant='h4'
+									component='div'
+									sx={{ ml: 2, mb: 1.7 }}>
+									{hover !== -1 ? hover : value}
+								</Typography>
+							</Box> */}
+							<TextField
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								placeholder='Share Your Review'
+								multiline
+								rows={4}
+								{...register("userReview", { required: true })}
+							/>
+							<Button
+								type='submit'
+								variant='contained'
+								className='button border'
+								sx={{
+									width: "100%",
+									mb: 2,
+									px: 3,
+									fontWeight: "bold",
+									border: "2px solid",
+									backgroundColor: "transparent",
+									borderRadius: "25px",
+								}}>
+								POST REVIEW
+							</Button>
+						</form>
 					</Grid>
 				</Grid>
 			</Grid>
+			<Backdrop
+				sx={{
+					color: "#fff",
+					zIndex: (theme) => theme.zIndex.drawer + 1,
+				}}
+				open={submitting}>
+				<CircularProgress color='inherit' />
+			</Backdrop>
 		</Container>
 	);
 };

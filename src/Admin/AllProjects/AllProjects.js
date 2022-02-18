@@ -23,7 +23,7 @@ const AllProjects = () => {
 	useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
-			.then((data) => setProjects(data));
+			.then((data) => setProjects(data.reverse()));
 	});
 
 	const handleDelete = (id) => {
@@ -63,8 +63,12 @@ const AllProjects = () => {
 				</Typography>
 				<Grid item xs={12} md={12}>
 					<Paper
-						className='container'
-						sx={{ overflow: "auto", maxHeight: "80vh" }}>
+						className='container cardShadow'
+						sx={{
+							overflow: "auto",
+							maxHeight: "80vh",
+							bgcolor: "transparent",
+						}}>
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
@@ -73,6 +77,9 @@ const AllProjects = () => {
 									</TableCell>
 									<TableCell className='color-theme' align='left'>
 										ProjectName
+									</TableCell>
+									<TableCell className='color-theme' align='left'>
+										Last Updated
 									</TableCell>
 									<TableCell className='color-theme' align='left'>
 										Action
@@ -87,12 +94,15 @@ const AllProjects = () => {
 											sx={{
 												"&:last-child td, &:last-child th": { border: 0 },
 											}}>
-											<TableCell align='left'>{count++}</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text '>{count++}</TableCell>
+											<TableCell align='left color-text '>
 												{project?.projectName || "N/A"}
 											</TableCell>
+											<TableCell align='left color-text '>
+												{project?.submitTime || "N/A"}
+											</TableCell>
 
-											<TableCell align='left'>
+											<TableCell align='left color-text '>
 												<ButtonGroup>
 													<Link to={`/dashboard/${project?._id}`}>
 														<Button

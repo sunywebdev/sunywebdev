@@ -5,7 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid, Paper } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { Box } from "@mui/system";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
@@ -48,26 +48,29 @@ const Portfolio = () => {
 					{projects?.length > 0 ? (
 						<>
 							{projects?.map((project) => (
-								<Grid key={project?._id} item md={12} sm={6} xs={12}>
-									<Paper
-										elevation={3}
+								<Grid
+									key={project?._id}
+									item
+									md={4}
+									sm={6}
+									xs={12}
+									style={{ display: "grid" }}>
+									<Card
+										className='color-text cardShadow'
 										sx={{
-											borderRadius: "15px",
-											backgroundColor: "transparent",
+											display: "flex",
+											justifyContent: "space-between",
+											alignItems: "center",
+											p: 1.5,
+											flexDirection: {
+												md: "column",
+												sm: "column",
+												xs: "column",
+												borderRadius: "15px",
+												backgroundColor: "transparent",
+											},
 										}}>
-										<Card
-											className='color-text'
-											sx={{
-												display: "flex",
-												alignItems: "center",
-												flexDirection: {
-													md: "row",
-													sm: "column",
-													xs: "column",
-													borderRadius: "15px",
-													backgroundColor: "transparent",
-												},
-											}}>
+										<Box sx={{ display: "flex", flexDirection: "column" }}>
 											<CardMedia
 												className='border'
 												sx={{
@@ -80,80 +83,81 @@ const Portfolio = () => {
 												image={project?.projectPhoto1}
 												alt=''
 											/>
-											<Box sx={{ display: "flex", flexDirection: "column" }}>
-												<CardContent
-													sx={{ flex: "1 0 auto", textAlign: "left" }}>
-													<Typography
-														component='div'
-														variant='h5'
-														className='color-theme'
-														sx={{
-															fontWeight: "bold",
-															my: 1,
-														}}>
-														{project?.projectName}
-													</Typography>
-													<Typography
-														component='div'
-														variant='body'
-														sx={{ my: 1 }}>
-														<b className='color-theme'>Technologies Used:</b>{" "}
-														{project?.techUsed}
-													</Typography>
-													<Typography variant='subtitle1' component='div'>
-														{project?.projectDetails}
-													</Typography>
-												</CardContent>
-												<Box
+											<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
+												<Typography
+													component='div'
+													variant='h5'
+													className='color-theme'
 													sx={{
-														display: "flex",
-														alignItems: "center",
-														pl: 1,
-														pb: 1,
+														fontWeight: "bold",
+														my: 1,
 													}}>
-													<CardActions sx={{ justifyContent: "space-around" }}>
-														<Box>
-															<Button
-																variant='contained'
-																className='button border'
-																sx={{
-																	px: 1.5,
-																	fontWeight: "bold",
-																	borderRadius: "25px",
-																	backgroundColor: "transparent",
-																	border: "2px solid",
-																}}
-																size='small'
-																onClick={() =>
-																	window.open(`${project?.liveLink}`, "_blank")
-																}>
-																<LanguageIcon sx={{ mr: 1 }} /> Live
-															</Button>
-														</Box>
-														<Box>
-															<Link
-																to={`/portfolio/${project?._id}`}
-																style={{ textDecoration: "none" }}>
-																<Button
-																	variant='contained'
-																	className='button border'
-																	sx={{
-																		px: 1.5,
-																		fontWeight: "bold",
-																		borderRadius: "25px",
-																		backgroundColor: "transparent",
-																		border: "2px solid",
-																	}}
-																	size='small'>
-																	<InfoIcon sx={{ mr: 1 }} /> Details
-																</Button>
-															</Link>
-														</Box>
-													</CardActions>
+													{project?.projectName}
+												</Typography>
+												<Typography
+													component='div'
+													variant='body'
+													sx={{ my: 1 }}>
+													<b className='color-theme'>Technologies Used:</b>{" "}
+													{project?.techUsed}
+												</Typography>
+												<Typography
+													variant='subtitle1'
+													component='div'
+													sx={{ textAlign: "justify" }}>
+													<b className='color-theme'>Project Details:</b>{" "}
+													{project?.projectDetails.slice(0, 110)} .......
+												</Typography>
+											</CardContent>
+										</Box>
+										<Box
+											sx={{
+												display: "flex",
+												alignItems: "center",
+												pl: 1,
+												pb: 1,
+											}}>
+											<CardActions sx={{ justifyContent: "space-around" }}>
+												<Box>
+													<Button
+														variant='contained'
+														className='button border'
+														sx={{
+															px: 1.5,
+															fontWeight: "bold",
+															borderRadius: "25px",
+															backgroundColor: "transparent",
+															border: "2px solid",
+														}}
+														size='small'
+														onClick={() =>
+															window.open(`${project?.liveLink}`, "_blank")
+														}>
+														<LanguageIcon sx={{ mr: 1 }} /> Live
+													</Button>
 												</Box>
-											</Box>
-										</Card>
-									</Paper>
+												<Box>
+													<Link
+														to={`/portfolio/${project?._id}`}
+														style={{ textDecoration: "none" }}>
+														<Button
+															variant='contained'
+															className='button border'
+															sx={{
+																px: 1.5,
+																fontWeight: "bold",
+																borderRadius: "25px",
+																backgroundColor: "transparent",
+																border: "2px solid",
+															}}
+															size='small'>
+															<InfoIcon sx={{ mr: 1 }} /> Details
+														</Button>
+													</Link>
+												</Box>
+											</CardActions>
+										</Box>
+									</Card>
 								</Grid>
 							))}
 						</>

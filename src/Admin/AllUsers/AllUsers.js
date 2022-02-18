@@ -20,7 +20,7 @@ const AllUsers = () => {
 	useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/users`)
 			.then((res) => res.json())
-			.then((data) => setUsers(data));
+			.then((data) => setUsers(data.reverse()));
 	});
 
 	const handleDelete = (id) => {
@@ -50,7 +50,8 @@ const AllUsers = () => {
 	return (
 		<Container
 			sx={{
-				mt: { xs: 9, md: 2} ,minHeight:'100vh'
+				mt: { xs: 9, md: 2 },
+				minHeight: "100vh",
 			}}>
 			<Grid>
 				<Typography
@@ -63,8 +64,12 @@ const AllUsers = () => {
 				</Typography>
 				<Grid item xs={12} md={12}>
 					<Paper
-						className='container'
-						sx={{ overflow: "auto", maxHeight: "80vh" }}>
+						className='container cardShadow'
+						sx={{
+							overflow: "auto",
+							maxHeight: "80vh",
+							bgcolor: "transparent",
+						}}>
 						<Table size='small' aria-label='a dense table'>
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
@@ -93,7 +98,7 @@ const AllUsers = () => {
 											sx={{
 												"&:last-child td, &:last-child th": { border: 0 },
 											}}>
-											<TableCell align='left'>{count++}</TableCell>
+											<TableCell align='left color-text'>{count++}</TableCell>
 											<TableCell>
 												<img
 													src={user?.photoURL || "N/A"}
@@ -103,11 +108,13 @@ const AllUsers = () => {
 													style={{ borderRadius: "50%" }}
 												/>
 											</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text'>
 												{user?.displayName || "N/A"}
 											</TableCell>
-											<TableCell align='left'>{user?.email || "N/A"}</TableCell>
-											<TableCell align='left'>
+											<TableCell align='left color-text'>
+												{user?.email || "N/A"}
+											</TableCell>
+											<TableCell align='left  color-text'>
 												<Button
 													className='button border'
 													onClick={() => handleDelete(user?._id)}
@@ -127,11 +134,11 @@ const AllUsers = () => {
 							) : (
 								<TableHead sx={{ th: { fontWeight: "bold" } }}>
 									<TableRow>
-										<TableCell align='left'>N/A</TableCell>
-										<TableCell align='left'>N/A</TableCell>
-										<TableCell align='left'>N/A</TableCell>
-										<TableCell align='left'>N/A</TableCell>
-										<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left color-text '>N/A</TableCell>
+										<TableCell align='left color-text '>N/A</TableCell>
+										<TableCell align='left color-text '>N/A</TableCell>
+										<TableCell align='left color-text '>N/A</TableCell>
+										<TableCell align='left color-text '>N/A</TableCell>
 									</TableRow>
 								</TableHead>
 							)}

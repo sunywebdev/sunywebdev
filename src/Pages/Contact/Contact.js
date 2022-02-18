@@ -4,11 +4,11 @@ import {
 	Grid,
 	TextField,
 	Typography,
-	Box,
 	CircularProgress,
+	Backdrop,
 } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -18,35 +18,50 @@ import CallIcon from "@mui/icons-material/Call";
 import SmsIcon from "@mui/icons-material/Sms";
 import EmailIcon from "@mui/icons-material/Email";
 import Swal from "sweetalert2";
+import emailjs from "emailjs-com";
 
 const Contact = () => {
-	const [submitted, setSubmitted] = useState("");
+	const form = useRef();
 	const [submitting, setSubmitting] = useState(false);
-	const [formLink, setFormLink] = useState();
-	useEffect(() => {
-		setFormLink(process.env.REACT_APP_GFORM_ID);
-		setSubmitted("SEND");
-	}, []);
-
 	const { register, handleSubmit, reset } = useForm();
-	const onSubmit = (data) => {
+	const onSubmit = ({ message, subject, userEmail, userName }) => {
+		const data = {
+			message,
+			subject,
+			userEmail,
+			userName,
+			submitTime: new Date().toLocaleString(),
+		};
 		setSubmitting(true);
-		axios
-			.post(`https://${process.env.REACT_APP_SERVER_API}/mails`, data)
-			.then(function (response) {
-				Swal.fire({
-					icon: "success",
-					title: "Your Messsage Sent Successfully",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-				setSubmitting(false);
-				setSubmitted("Messsage Sent Successfully");
-				reset();
-			})
-			.catch(function (error) {
-				console.log(error);
-			});
+		emailjs
+			.sendForm(
+				"sunywebdev",
+				"sunywebdevEmail",
+				form.current,
+				"user_aUuHacyHZpyM577ohllYe",
+			)
+			.then(
+				(result) => {
+					axios
+						.post(`https://${process.env.REACT_APP_SERVER_API}/mails`, data)
+						.then(function (response) {
+							setSubmitting(false);
+							Swal.fire({
+								icon: "success",
+								title: "Your Mail Sent Successfully",
+								showConfirmButton: true,
+								timer: 1500,
+							});
+							reset();
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+				},
+				(error) => {
+					console.log(error.text);
+				},
+			);
 	};
 	return (
 		<Container sx={{ mt: { md: 0, xs: 7 }, overflow: "auto" }}>
@@ -81,7 +96,13 @@ const Contact = () => {
 							too.
 						</Typography>
 					</Grid>
-					<Grid data-aos='fade-left' item md={6} xs={12} className='color-text'>
+					<Grid
+						data-aos='fade-left'
+						item
+						md={6}
+						xs={12}
+						sx={{ my: 2 }}
+						className='color-text'>
 						<Typography
 							sx={{ mb: 1, fontWeight: 900 }}
 							className='color-theme'
@@ -91,14 +112,33 @@ const Contact = () => {
 						</Typography>
 						<Grid direction='row' sx={{ justifyContent: "center", mb: 3 }}>
 							<GitHubIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer" }}
+								className='color-text'
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									"&:hover": {
+										backgroundColor: "white !important",
+										color: "black !important",
+										border: "2px solid black",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open("https://github.com/sunywebdev", "_blank")
 								}></GitHubIcon>
 							<LinkedInIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0073B2" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0073B2",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0073B2",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open(
 										"https://www.linkedin.com/in/sunywebdev",
@@ -106,14 +146,32 @@ const Contact = () => {
 									)
 								}></LinkedInIcon>
 							<FacebookIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0D8BF0" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0D8BF0",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0D8BF0",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open("https://www.facebook.com/sunywebdev", "_blank")
 								}></FacebookIcon>
 							<WhatsAppIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0F9D58" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0F9D58",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0F9D58",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open(
 										"https://api.whatsapp.com/send?phone=+8801861917938",
@@ -121,20 +179,47 @@ const Contact = () => {
 									)
 								}></WhatsAppIcon>
 							<CallIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#3CC886" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#3CC886",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #3CC886",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open("tel:01861917938", "_blank")
 								}></CallIcon>
 							<SmsIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#2C97AA" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#2C97AA",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #2C97AA",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open("sms:01861917938", "_blank")
 								}></SmsIcon>
 							<EmailIcon
-								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#EB4436" }}
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#EB4436",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #EB4436",
+										borderRadius: "5px",
+									},
+								}}
 								onClick={() =>
 									window.open("mailto:suny.webdev@gmail.com", "_blank")
 								}></EmailIcon>
@@ -144,88 +229,79 @@ const Contact = () => {
 
 				<Grid data-aos='fade-up' container spacing={2}>
 					<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-						{!submitting ? (
-							<form
-								onSubmit={handleSubmit(onSubmit)}
-								action={formLink}
-								method='post'
-								id='gform'
-								className='gform'>
-								<Box sx={{ display: "none" }}>
-									<input id='honeypot' type='text' name='honeypot' />
-								</Box>
-								<Grid container spacing={2}>
-									<Grid item md={6} xs={12}>
-										<Grid container spacing={2}>
-											<Grid item md={12} xs={12}>
-												<TextField
-													sx={{ width: "100%" }}
-													id='outlined-basic'
-													name='UserName'
-													placeholder='Enter Your Name*'
-													{...register("userName", { required: true })}
-												/>
-											</Grid>
-											<Grid item md={12} xs={12}>
-												<TextField
-													sx={{ width: "100%" }}
-													id='outlined-basic'
-													name='UserEmail'
-													type='email'
-													placeholder='Enter Your Email*'
-													{...register("userEmail", { required: true })}
-												/>
-											</Grid>
-											<Grid item md={12} xs={12}>
-												<TextField
-													sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
-													id='outlined-basic'
-													placeholder='Subject*'
-													name='Subject'
-													{...register("subject", { required: true })}
-												/>
-											</Grid>
+						<form ref={form} onSubmit={handleSubmit(onSubmit)} method='post'>
+							<Grid container spacing={2}>
+								<Grid item md={6} xs={12}>
+									<Grid container spacing={2}>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%" }}
+												id='outlined-basic'
+												name='UserName'
+												placeholder='Enter Your Name*'
+												{...register("userName", { required: true })}
+											/>
+										</Grid>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%" }}
+												id='outlined-basic'
+												name='UserEmail'
+												type='email'
+												placeholder='Enter Your Email*'
+												{...register("userEmail", { required: true })}
+											/>
+										</Grid>
+										<Grid item md={12} xs={12}>
+											<TextField
+												sx={{ width: "100%", mb: { md: 2, xs: 0 } }}
+												id='outlined-basic'
+												placeholder='Subject*'
+												name='Subject'
+												{...register("subject", { required: true })}
+											/>
 										</Grid>
 									</Grid>
-									<Grid item md={6} xs={12}>
-										<TextField
-											sx={{ width: "100%", mb: 2 }}
-											id='"outlined-multiline-flexible'
-											placeholder='Your Message*'
-											name='Message'
-											multiline
-											rows={7.3}
-											{...register("message", { required: true })}
-										/>
-									</Grid>
 								</Grid>
-								<Button
-									type='submit'
-									variant='contained'
-									className='button border'
-									sx={{
-										width: "100%",
-										mb: 2,
-										px: 3,
-										fontWeight: "bold",
-										border: "2px solid",
-										backgroundColor: "transparent",
-										borderRadius: "25px",
-									}}>
-									{submitted}
-								</Button>
-							</form>
-						) : (
-							<Box sx={{ my: 2 }}>
-								<CircularProgress
-									sx={{ mx: 0.5 }}
-									className='color-theme'
-								/>
-							</Box>
-						)}
+								<Grid item md={6} xs={12}>
+									<TextField
+										sx={{ width: "100%", mb: 2 }}
+										id='"outlined-multiline-flexible'
+										placeholder='Your Message*'
+										name='Message'
+										multiline
+										rows={7.3}
+										{...register("message", { required: true })}
+									/>
+								</Grid>
+							</Grid>
+							<Button
+								type='submit'
+								variant='contained'
+								className='button border'
+								sx={{
+									width: "100%",
+									mb: 2,
+									px: 3,
+									fontWeight: "bold",
+									border: "2px solid",
+									backgroundColor: "transparent",
+									borderRadius: "25px",
+								}}>
+								SEND
+							</Button>
+						</form>
 					</Grid>
 				</Grid>
 			</Grid>
+			<Backdrop
+				sx={{
+					color: "#fff",
+					zIndex: (theme) => theme.zIndex.drawer + 1,
+				}}
+				open={submitting}>
+				<CircularProgress color='inherit' />
+			</Backdrop>
 		</Container>
 	);
 };

@@ -114,6 +114,7 @@ const Reviews = () => {
 											<ArrowBackIcon sx={{ mr: 1 }} />
 											Prev
 										</Button>
+										<Box sx={{ border: "1px solid white" }} />
 										<Button
 											className='button border'
 											sx={{
@@ -146,21 +147,24 @@ const Reviews = () => {
 													alignContent: "center",
 													overflow: "visible",
 													backgroundColor: "transparent",
-													border: "2px solid",
+													border: "3px solid",
+													borderRadius: "15px",
+													cursor: "grab",
 												}}>
 												<CardMedia
 													component='img'
 													className='border'
 													style={{
-														width: "80px",
-														marginTop: -35,
+														width: "90px",
+														marginTop: -40,
 														borderRadius: "50%",
 														border: "5px solid",
 													}}
-													image={review?.userPhoto}
+													image={`${review?.userPhoto}`}
 													alt=''
 												/>
 												<Typography
+													sx={{ fontWeight: "bold", mt: 1 }}
 													gutterBottom
 													variant='h6'
 													component='div'
@@ -175,7 +179,7 @@ const Reviews = () => {
 													<Rating
 														className='color-theme'
 														name='half-rating-read'
-														defaultValue={review?.star}
+														defaultValue={5}
 														precision={0.1}
 														readOnly
 													/>

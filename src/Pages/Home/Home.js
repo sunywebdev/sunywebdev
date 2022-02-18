@@ -88,6 +88,123 @@ const Home = () => {
 							direction='row'
 							sx={{ my: 3, justifyContent: { xs: "center", md: "left" } }}>
 							<GitHubIcon
+								className='color-text'
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									"&:hover": {
+										backgroundColor: "white !important",
+										color: "black !important",
+										border: "2px solid black",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open("https://github.com/sunywebdev", "_blank")
+								}></GitHubIcon>
+							<LinkedInIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0073B2",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0073B2",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open(
+										"https://www.linkedin.com/in/sunywebdev",
+										"_blank",
+									)
+								}></LinkedInIcon>
+							<FacebookIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0D8BF0",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0D8BF0",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open("https://www.facebook.com/sunywebdev", "_blank")
+								}></FacebookIcon>
+							<WhatsAppIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#0F9D58",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #0F9D58",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open(
+										"https://api.whatsapp.com/send?phone=+8801861917938",
+										"_blank",
+									)
+								}></WhatsAppIcon>
+							<CallIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#3CC886",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #3CC886",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open("tel:01861917938", "_blank")
+								}></CallIcon>
+							<SmsIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#2C97AA",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #2C97AA",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open("sms:01861917938", "_blank")
+								}></SmsIcon>
+							<EmailIcon
+								sx={{
+									mx: 0.5,
+									cursor: "pointer",
+									fontSize: { md: "3rem", xs: "2.4rem" },
+									color: "#EB4436",
+									"&:hover": {
+										backgroundColor: "white !important",
+										border: "2px solid #EB4436",
+										borderRadius: "5px",
+									},
+								}}
+								onClick={() =>
+									window.open("mailto:suny.webdev@gmail.com", "_blank")
+								}></EmailIcon>
+						</Grid>
+						{/* 	<Grid
+							container
+							direction='row'
+							sx={{ my: 3, justifyContent: { xs: "center", md: "left" } }}>
+							<GitHubIcon
 								fontSize='large'
 								sx={{
 									mx: 0.5,
@@ -138,7 +255,7 @@ const Home = () => {
 								onClick={() =>
 									window.open("mailto:suny.webdev@gmail.com", "_blank")
 								}></EmailIcon>
-						</Grid>
+						</Grid> */}
 					</Grid>
 				</Grid>
 			</Grid>

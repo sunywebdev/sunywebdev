@@ -197,6 +197,7 @@ const AddProjects = () => {
 			projectPhoto2: imageLink2,
 			projectPhoto3: imageLink3,
 			projectPhoto4: imageLink4,
+			submitTime: new Date().toLocaleString(),
 		};
 		setSubmitting(true);
 		axios

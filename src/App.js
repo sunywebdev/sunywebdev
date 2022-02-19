@@ -16,7 +16,6 @@ import Reviews from "./Pages/Reviews/Reviews";
 import Home from "./Pages/Home/Home";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./Shared/Login/Login";
-import PrivateRoute from "./PrivateRoute/PrivateRoute";
 import AdminRoute from "./AdminRoute/AdminRoute";
 import LoginAdmin from "./Shared/Login/LoginAdmin";
 import EditProject from "./Admin/EditProject/EditProject";

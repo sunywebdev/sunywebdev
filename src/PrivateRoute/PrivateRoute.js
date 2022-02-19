@@ -1,5 +1,5 @@
 import React from "react";
-import { LinearProgress } from "@mui/material";
+import HashLoader from "react-spinners/HashLoader";
 import useAuth from "../context/useAuth";
 import { Navigate, useLocation } from "react-router";
 
@@ -8,12 +8,15 @@ const PrivateRoute = ({ children }) => {
 	let location = useLocation();
 	if (isLoading) {
 		return (
-			<>
-				<LinearProgress />
-				<LinearProgress />
-				<LinearProgress />
-				<LinearProgress />
-			</>
+			<div
+				style={{
+					position: "absolute",
+					left: "50%",
+					top: "50%",
+					transform: "translate(-50%, -50%)",
+				}}>
+				<HashLoader size={100} color={"#8444DF"} />
+			</div>
 		);
 	}
 	if (user?.email) {

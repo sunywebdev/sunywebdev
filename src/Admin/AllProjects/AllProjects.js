@@ -55,10 +55,9 @@ const AllProjects = () => {
 			<Grid>
 				<Typography
 					className='color-theme'
-					sx={{ mb: 3, fw: "bold" }}
-					variant='h4'
-					component='div'
-					gutterBottom>
+					sx={{ mb: 2, fontWeight: "bold" }}
+					variant='h3'
+					component='div'>
 					All Projects
 				</Typography>
 				<Grid item xs={12} md={12}>

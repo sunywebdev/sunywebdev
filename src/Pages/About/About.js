@@ -1,6 +1,7 @@
 import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React from "react";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const About = () => {
 	return (
@@ -40,51 +41,229 @@ const About = () => {
 						</Typography>
 						<Box data-aos='fade-up'>
 							<Typography
+								className='color-theme'
+								variant='h5'
+								component='div'
+								gutterBottom
+								sx={{ fontWeight: "bold" }}>
+								MY SKILLS:
+							</Typography>
+							<Typography
+								className='color-theme'
 								variant='h6'
 								component='div'
 								gutterBottom
-								sx={{ my: 2, fontWeight: "bold" }}>
-								<b className='color-theme'>MY SKILLS:</b>
+								sx={{ mt: 3, fontWeight: "bold" }}>
+								Expertise:
 							</Typography>
+							<Grid container spacing={2}>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>HTML5</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>CSS3</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>JavaScript</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>ES6</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>React JS</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>CURD</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>REST API</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>MUI</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Boostrap</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Tailwind</span>
+								</Grid>
+							</Grid>
 							<Typography
-								variant='body1'
+								className='color-theme'
+								variant='h6'
 								component='div'
 								gutterBottom
-								sx={{ my: 2 }}>
-								<b className='color-theme'>Expertise:</b>
-								<br />
-								HTML5, CSS3, JavaScript, ES6, React JS, CURD, REST API, MUI,
-								Bootstrap ,Tailwind
+								sx={{ mt: 3, fontWeight: "bold" }}>
+								Comfortable:
 							</Typography>
-							<Typography
-								variant='body1'
-								component='div'
-								gutterBottom
-								sx={{ my: 2 }}>
-								<b className='color-theme'>Comfortable:</b>
-								<br />
-								Express JS, Node JS, Mongodb, Firebase
-							</Typography>
+							<Grid container spacing={2}>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Express JS</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Node JS</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>MongoDB</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Firebase</span>
+								</Grid>
+							</Grid>
 
 							<Typography
-								variant='body1'
+								className='color-theme'
+								variant='h6'
 								component='div'
 								gutterBottom
-								sx={{ my: 2 }}>
-								<b className='color-theme'>Familiar:</b>
-								<br />
-								TypeScript, Redux
+								sx={{ mt: 3, fontWeight: "bold" }}>
+								Familiar:
 							</Typography>
+							<Grid container spacing={2}>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>TypeScript</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Redux</span>
+								</Grid>
+							</Grid>
 							<Typography
-								variant='body1'
+								className='color-theme'
+								variant='h6'
 								component='div'
 								gutterBottom
-								sx={{ my: 2 }}>
-								<b className='color-theme'>Tools:</b>
-								<br />
-								VS Code, GitHub, Brackets, Heroku, Netlify, Photoshop,
-								Illustrator, Figma, MS Office
+								sx={{ mt: 3, fontWeight: "bold" }}>
+								Tools:
 							</Typography>
+							<Grid container spacing={2}>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>VS Code</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>GitHub</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Brackets</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Heroku</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Netlify</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Photoshop</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Illustrator</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Figma</span>,
+								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>MS Office</span>
+								</Grid>
+							</Grid>
 						</Box>
 					</Grid>
 				</Grid>

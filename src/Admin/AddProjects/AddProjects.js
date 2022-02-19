@@ -228,10 +228,9 @@ const AddProjects = () => {
 				style={{ minHeight: "100vh" }}>
 				<Typography
 					className='color-theme'
-					sx={{ mb: 3, fw: "bold" }}
-					variant='h4'
-					component='div'
-					gutterBottom>
+					sx={{ mb: 2, fontWeight: "bold" }}
+					variant='h3'
+					component='div'>
 					Add New Project
 				</Typography>
 				<Grid container spacing={2}>

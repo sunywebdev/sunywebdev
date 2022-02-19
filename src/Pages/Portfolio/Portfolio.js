@@ -21,7 +21,7 @@ const Portfolio = () => {
 			.then((data) => setProjects(data));
 	}, []);
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ mt: { md: 0, xs: 9 }, mb: 4 }}>
 			<Grid
 				container
 				direction='column'
@@ -42,7 +42,7 @@ const Portfolio = () => {
 					variant='h5'
 					component='div'
 					gutterBottom>
-					Check out some of my latest works.
+					Check out some of my works.
 				</Typography>
 				<Grid container spacing={3} sx={{ mb: 2 }}>
 					{projects?.length > 0 ? (

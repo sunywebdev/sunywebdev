@@ -5,7 +5,7 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const About = () => {
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 }, overflow: "auto" }}>
+		<Container sx={{ mt: { md: 0, xs: 9 }, mb: 4, overflow: "auto" }}>
 			<Grid
 				container
 				direction='column'
@@ -44,8 +44,7 @@ const About = () => {
 								className='color-theme'
 								variant='h5'
 								component='div'
-								gutterBottom
-								sx={{ fontWeight: "bold" }}>
+								sx={{ mt: 4, fontWeight: "bold" }}>
 								MY SKILLS:
 							</Typography>
 							<Typography
@@ -53,7 +52,7 @@ const About = () => {
 								variant='h6'
 								component='div'
 								gutterBottom
-								sx={{ mt: 3, fontWeight: "bold" }}>
+								sx={{ mt: 2, fontWeight: "bold" }}>
 								Expertise:
 							</Typography>
 							<Grid container spacing={2}>

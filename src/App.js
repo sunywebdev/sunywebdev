@@ -40,14 +40,7 @@ function App() {
 							<Route path='/portfolio/:id' element={<SingleProject />} />
 							<Route path='/reviews' element={<Reviews />} />
 							<Route path='/blogs' element={<Blogs />} />
-							<Route
-								path='/reviews/addreview'
-								element={
-									<PrivateRoute>
-										<AddReview />
-									</PrivateRoute>
-								}
-							/>
+							<Route path='/reviews/addreview' element={<AddReview />} />
 							<Route path='/contact' element={<Contact />} />
 							<Route path='/login' element={<Login />} />
 							<Route path='*' element={<NotFound404 />} />

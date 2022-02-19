@@ -77,7 +77,7 @@ const Contact = () => {
 						item
 						md={6}
 						xs={12}
-						sx={{ textAlign: "left" }}>
+						sx={{ textAlign: { md: "left", xs: "center" } }}>
 						<Typography
 							sx={{ mb: 0, fontWeight: 900 }}
 							variant='h3'
@@ -87,7 +87,7 @@ const Contact = () => {
 							CONTACT
 						</Typography>
 						<Typography
-							sx={{ mb: 4 }}
+							sx={{ mb: 2 }}
 							variant='h5'
 							component='div'
 							className='color-text'
@@ -96,13 +96,7 @@ const Contact = () => {
 							too.
 						</Typography>
 					</Grid>
-					<Grid
-						data-aos='fade-left'
-						item
-						md={6}
-						xs={12}
-						sx={{ my: 2 }}
-						className='color-text'>
+					<Grid data-aos='fade-left' item md={6} xs={12} className='color-text'>
 						<Typography
 							sx={{ mb: 1, fontWeight: 900 }}
 							className='color-theme'

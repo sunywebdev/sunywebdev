@@ -30,7 +30,7 @@ const Contact = () => {
 			subject,
 			userEmail,
 			userName,
-			submitTime: new Date().toLocaleString(),
+			submitTime: new Date().toLocaleString("en-GB"),
 		};
 		setSubmitting(true);
 		emailjs

@@ -3,170 +3,110 @@ import {
 	CircularProgress,
 	Container,
 	Grid,
-	Input,
 	TextField,
 	Typography,
+	IconButton,
+	Backdrop,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import FileUploadIcon from "@mui/icons-material/FileUpload";
+import styled from "@emotion/styled";
 
 const AddProjects = () => {
 	const [submitting, setSubmitting] = useState(false);
-	const [inputImage1, setInputImage1] = useState(null);
-	const [inputImage2, setInputImage2] = useState(null);
-	const [inputImage3, setInputImage3] = useState(null);
-	const [inputImage4, setInputImage4] = useState(null);
+
+	/// image - 1 ////
+	const [loading1, setLoading1] = useState(false);
 	const [imageLink1, setImageLink1] = useState(null);
+	const uploadImage1 = async (e) => {
+		const files = e.target.files;
+		const data = new FormData();
+		data.append("file", files[0]);
+		data.append("upload_preset", "sunywebdevProjects");
+		setLoading1(true);
+		const res = await fetch(
+			"https://api.cloudinary.com/v1_1/dqdug0ows/image/upload",
+			{
+				method: "POST",
+				body: data,
+			},
+		);
+		const file = await res.json();
+		setImageLink1(file.secure_url);
+		setLoading1(false);
+	};
+
+	/// image - 2 ////
+	const [loading2, setLoading2] = useState(false);
 	const [imageLink2, setImageLink2] = useState(null);
+	const uploadImage2 = async (e) => {
+		const files = e.target.files;
+		const data = new FormData();
+		data.append("file", files[0]);
+		data.append("upload_preset", "sunywebdevProjects");
+		setLoading2(true);
+		const res = await fetch(
+			"https://api.cloudinary.com/v1_1/dqdug0ows/image/upload",
+			{
+				method: "POST",
+				body: data,
+			},
+		);
+		const file = await res.json();
+		setImageLink2(file.secure_url);
+		setLoading2(false);
+	};
+
+	/// image - 3 ////
+	const [loading3, setLoading3] = useState(false);
 	const [imageLink3, setImageLink3] = useState(null);
+	const uploadImage3 = async (e) => {
+		const files = e.target.files;
+		const data = new FormData();
+		data.append("file", files[0]);
+		data.append("upload_preset", "sunywebdevProjects");
+		setLoading3(true);
+		const res = await fetch(
+			"https://api.cloudinary.com/v1_1/dqdug0ows/image/upload",
+			{
+				method: "POST",
+				body: data,
+			},
+		);
+		const file = await res.json();
+		setImageLink3(file.secure_url);
+		setLoading3(false);
+	};
+
+	/// image - 4 ////
+	const [loading4, setLoading4] = useState(false);
 	const [imageLink4, setImageLink4] = useState(null);
-	const [uploading1, setUploading1] = useState(false);
-	const [uploading2, setUploading2] = useState(false);
-	const [uploading3, setUploading3] = useState(false);
-	const [uploading4, setUploading4] = useState(false);
-	const uploadImage1 = (e) => {
-		e.preventDefault();
-		if (!inputImage1) {
-			return;
-		}
-		setUploading1(true);
-		let payload1 = new FormData();
-		payload1.append("image", inputImage1);
-
-		axios
-			.post(
-				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
-				payload1,
-			)
-			.then((response) => {
-				setUploading1(false);
-				setImageLink1(response?.data?.data?.url);
-				Swal.fire({
-					icon: "success",
-					title: "Photo Uploaded",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			})
-			.catch((error) => {
-				setUploading1(false);
-				console.log("error", error);
-				Swal.fire({
-					icon: "error",
-					title: "Uploading Failed, Try Again",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			});
+	const uploadImage4 = async (e) => {
+		const files = e.target.files;
+		const data = new FormData();
+		data.append("file", files[0]);
+		data.append("upload_preset", "sunywebdevProjects");
+		setLoading4(true);
+		const res = await fetch(
+			"https://api.cloudinary.com/v1_1/dqdug0ows/image/upload",
+			{
+				method: "POST",
+				body: data,
+			},
+		);
+		const file = await res.json();
+		setImageLink4(file.secure_url);
+		setLoading4(false);
 	};
-	const uploadImage2 = (e) => {
-		e.preventDefault();
-		if (!inputImage2) {
-			return;
-		}
-		setUploading2(true);
-		let payload2 = new FormData();
-		payload2.append("image", inputImage2);
 
-		axios
-			.post(
-				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
-				payload2,
-			)
-			.then((response) => {
-				setUploading2(false);
-				setImageLink2(response?.data?.data?.url);
-				Swal.fire({
-					icon: "success",
-					title: "Photo Uploaded",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			})
-			.catch((error) => {
-				setUploading2(false);
-				console.log("error", error);
-				Swal.fire({
-					icon: "error",
-					title: "Uploading Failed, Try Again",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			});
-	};
-	const uploadImage3 = (e) => {
-		e.preventDefault();
-		if (!inputImage3) {
-			return;
-		}
-		setUploading3(true);
-		let payload3 = new FormData();
-		payload3.append("image", inputImage3);
+	const Input = styled("input")({
+		display: "none",
+	});
 
-		axios
-			.post(
-				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
-				payload3,
-			)
-			.then((response) => {
-				setUploading3(false);
-				setImageLink3(response?.data?.data?.url);
-				Swal.fire({
-					icon: "success",
-					title: "Photo Uploaded",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			})
-			.catch((error) => {
-				setUploading3(false);
-				console.log("error", error);
-				Swal.fire({
-					icon: "error",
-					title: "Uploading Failed, Try Again",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			});
-	};
-	const uploadImage4 = (e) => {
-		e.preventDefault();
-		if (!inputImage4) {
-			return;
-		}
-		setUploading4(true);
-		let payload4 = new FormData();
-		payload4.append("image", inputImage4);
-
-		axios
-			.post(
-				`https://api.imgbb.com/1/upload?&key=${process.env.REACT_APP_IMGBB_API}`,
-				payload4,
-			)
-			.then((response) => {
-				setUploading4(false);
-				setImageLink4(response?.data?.data?.url);
-				Swal.fire({
-					icon: "success",
-					title: "Photo Uploaded",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			})
-			.catch((error) => {
-				setUploading4(false);
-				console.log("error", error);
-				Swal.fire({
-					icon: "error",
-					title: "Uploading Failed, Try Again",
-					showConfirmButton: false,
-					timer: 1500,
-				});
-			});
-	};
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({
 		projectName,
@@ -176,6 +116,9 @@ const AddProjects = () => {
 		feature3,
 		feature4,
 		feature5,
+		feature6,
+		feature7,
+		feature8,
 		techUsed,
 		liveLink,
 		gitClientLink,
@@ -189,6 +132,9 @@ const AddProjects = () => {
 			feature3,
 			feature4,
 			feature5,
+			feature6,
+			feature7,
+			feature8,
 			techUsed,
 			liveLink,
 			gitClientLink,
@@ -197,7 +143,7 @@ const AddProjects = () => {
 			projectPhoto2: imageLink2,
 			projectPhoto3: imageLink3,
 			projectPhoto4: imageLink4,
-			submitTime: new Date().toLocaleString(),
+			submitTime: new Date().toLocaleString("en-GB"),
 		};
 		setSubmitting(true);
 		axios
@@ -206,7 +152,7 @@ const AddProjects = () => {
 				Swal.fire({
 					icon: "success",
 					title: "Your Project Successfully Added",
-					showConfirmButton: false,
+					showConfirmButton: true,
 					timer: 1500,
 				});
 				setSubmitting(false);
@@ -233,276 +179,409 @@ const AddProjects = () => {
 					component='div'>
 					Add New Project
 				</Typography>
-				<Grid container spacing={2}>
-					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						{!submitting ? (
-							<form onSubmit={handleSubmit(onSubmit)}>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='outlined-basic'
-									label='Enter Project Name'
-									{...register("projectName", { required: true })}
-								/>
-								<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
-									<Input
-										className='color-theme'
-										accept='image/*'
-										type='file'
-										onChange={(e) => setInputImage1(e.target.files[0])}
-									/>
 
-									{!uploading1 ? (
-										<>
-											{inputImage1 && (
-												<>
-													<img
-														src={URL.createObjectURL(inputImage1)}
-														alt=''
-														width='250px'
+				{!submitting ? (
+					<form onSubmit={handleSubmit(onSubmit)}>
+						<Grid container spacing={2}>
+							<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
+								<Grid container spacing={2}>
+									<Grid item md={12} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Enter Project Name'
+											{...register("projectName", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<Box
+											display='flex'
+											flexDirection='column'
+											alignItems='center'
+											sx={{ mb: 1, mx: "auto" }}>
+											<label
+												className='upload-button'
+												htmlFor='icon-button-file1'
+												style={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
+													margin: "0 9px",
+													borderRadius: 5,
+													cursor: "pointer",
+												}}>
+												<Input
+													accept='image/*'
+													id='icon-button-file1'
+													type='file'
+													onChange={uploadImage1}
+												/>
+												<Typography
+													sx={{ my: 2, ml: 2, color: "white" }}
+													variant='h6'
+													component='div'
+													gutterBottom>
+													Project Photo 1
+												</Typography>
+												<IconButton
+													color='primary'
+													aria-label='upload picture'
+													component='span'>
+													<FileUploadIcon
+														fontSize='large'
+														sx={{ fontWeight: "bold", color: "white" }}
 													/>
-													<Button
-														onClick={uploadImage1}
-														variant='contained'
-														component='span'
-														className='button border'
-														sx={{
-															my: 1,
-															py: 0.5,
-															width: "250px",
-															border: "2px solid",
-															backgroundColor: "transparent",
-														}}>
-														Upload Image
-													</Button>
-												</>
-											)}
-										</>
-									) : (
-										<Box sx={{ my: 2 }}>
-											<CircularProgress />
-										</Box>
-									)}
-								</Box>
-								<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
-									<Input
-										className='color-theme'
-										accept='image/*'
-										type='file'
-										onChange={(e) => setInputImage2(e.target.files[0])}
-									/>
+												</IconButton>
+											</label>
 
-									{!uploading2 ? (
-										<>
-											{inputImage2 && (
-												<>
-													<img
-														src={URL.createObjectURL(inputImage2)}
-														alt=''
-														width='250px'
+											{loading1 ? (
+												<Box sx={{ my: 2 }}>
+													<CircularProgress className='color-theme' />
+												</Box>
+											) : (
+												<img
+													src={imageLink1}
+													style={{
+														width: "200px",
+														borderRadius: "50%",
+														margin: "5px 0",
+													}}
+													alt=''
+												/>
+											)}
+										</Box>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<Box
+											display='flex'
+											flexDirection='column'
+											alignItems='center'
+											sx={{ mb: 1, mx: "auto" }}>
+											<label
+												className='upload-button'
+												htmlFor='icon-button-file2'
+												style={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
+													margin: "0 9px",
+													borderRadius: 5,
+													cursor: "pointer",
+												}}>
+												<Input
+													accept='image/*'
+													id='icon-button-file2'
+													type='file'
+													onChange={uploadImage2}
+												/>
+												<Typography
+													sx={{ my: 2, ml: 2, color: "white" }}
+													variant='h6'
+													component='div'
+													gutterBottom>
+													Project Photo 2
+												</Typography>
+												<IconButton
+													color='primary'
+													aria-label='upload picture'
+													component='span'>
+													<FileUploadIcon
+														fontSize='large'
+														sx={{ fontWeight: "bold", color: "white" }}
 													/>
-													<Button
-														onClick={uploadImage2}
-														variant='contained'
-														component='span'
-														className='button border'
-														sx={{
-															my: 1,
-															py: 0.5,
-															width: "250px",
-															border: "2px solid",
-															backgroundColor: "transparent",
-														}}>
-														Upload Image
-													</Button>
-												</>
-											)}
-										</>
-									) : (
-										<Box sx={{ my: 2 }}>
-											<CircularProgress />
-										</Box>
-									)}
-								</Box>
-								<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
-									<Input
-										className='color-theme'
-										accept='image/*'
-										type='file'
-										onChange={(e) => setInputImage3(e.target.files[0])}
-									/>
+												</IconButton>
+											</label>
 
-									{!uploading3 ? (
-										<>
-											{inputImage3 && (
-												<>
-													<img
-														src={URL.createObjectURL(inputImage3)}
-														alt=''
-														width='250px'
+											{loading2 ? (
+												<Box sx={{ my: 2 }}>
+													<CircularProgress className='color-theme' />
+												</Box>
+											) : (
+												<img
+													src={imageLink2}
+													style={{
+														width: "200px",
+														borderRadius: "50%",
+														margin: "5px 0",
+													}}
+													alt=''
+												/>
+											)}
+										</Box>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<Box
+											display='flex'
+											flexDirection='column'
+											alignItems='center'
+											sx={{ mb: 1, mx: "auto" }}>
+											<label
+												className='upload-button'
+												htmlFor='icon-button-file3'
+												style={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
+													margin: "0 9px",
+													borderRadius: 5,
+													cursor: "pointer",
+												}}>
+												<Input
+													accept='image/*'
+													id='icon-button-file3'
+													type='file'
+													onChange={uploadImage3}
+												/>
+												<Typography
+													sx={{ my: 2, ml: 2, color: "white" }}
+													variant='h6'
+													component='div'
+													gutterBottom>
+													Project Photo 3
+												</Typography>
+												<IconButton
+													color='primary'
+													aria-label='upload picture'
+													component='span'>
+													<FileUploadIcon
+														fontSize='large'
+														sx={{ fontWeight: "bold", color: "white" }}
 													/>
-													<Button
-														onClick={uploadImage3}
-														variant='contained'
-														component='span'
-														className='button border'
-														sx={{
-															my: 1,
-															py: 0.5,
-															width: "250px",
-															border: "2px solid",
-															backgroundColor: "transparent",
-														}}>
-														Upload Image
-													</Button>
-												</>
-											)}
-										</>
-									) : (
-										<Box sx={{ my: 2 }}>
-											<CircularProgress />
-										</Box>
-									)}
-								</Box>
-								<Box display='flex' flexDirection='column' sx={{ mb: 3 }}>
-									<Input
-										className='color-theme'
-										accept='image/*'
-										type='file'
-										onChange={(e) => setInputImage4(e.target.files[0])}
-									/>
+												</IconButton>
+											</label>
 
-									{!uploading4 ? (
-										<>
-											{inputImage4 && (
-												<>
-													<img
-														src={URL.createObjectURL(inputImage4)}
-														alt=''
-														width='250px'
+											{loading3 ? (
+												<Box sx={{ my: 2 }}>
+													<CircularProgress className='color-theme' />
+												</Box>
+											) : (
+												<img
+													src={imageLink3}
+													style={{
+														width: "200px",
+														borderRadius: "50%",
+														margin: "5px 0",
+													}}
+													alt=''
+												/>
+											)}
+										</Box>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<Box
+											display='flex'
+											flexDirection='column'
+											alignItems='center'
+											sx={{ mb: 1, mx: "auto" }}>
+											<label
+												className='upload-button'
+												htmlFor='icon-button-file4'
+												style={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
+													margin: "0 9px",
+													borderRadius: 5,
+													cursor: "pointer",
+												}}>
+												<Input
+													accept='image/*'
+													id='icon-button-file4'
+													type='file'
+													onChange={uploadImage4}
+												/>
+												<Typography
+													sx={{ my: 2, ml: 2, color: "white" }}
+													variant='h6'
+													component='div'
+													gutterBottom>
+													Project Photo 4
+												</Typography>
+												<IconButton
+													color='primary'
+													aria-label='upload picture'
+													component='span'>
+													<FileUploadIcon
+														fontSize='large'
+														sx={{ fontWeight: "bold", color: "white" }}
 													/>
-													<Button
-														onClick={uploadImage4}
-														variant='contained'
-														component='span'
-														className='button border'
-														sx={{
-															my: 1,
-															py: 0.5,
-															width: "250px",
-															border: "2px solid",
-															backgroundColor: "transparent",
-														}}>
-														Upload Image
-													</Button>
-												</>
-											)}
-										</>
-									) : (
-										<Box sx={{ my: 2 }}>
-											<CircularProgress />
-										</Box>
-									)}
-								</Box>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Project Details'
-									multiline
-									rows={4}
-									{...register("projectDetails", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Feature 1'
-									{...register("feature1", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Feature 2'
-									{...register("feature2", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Feature 3'
-									{...register("feature3", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Feature 4'
-									{...register("feature4", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Feature 5'
-									{...register("feature5", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='"outlined-multiline-flexible'
-									label='Technologies Used'
-									multiline
-									rows={2}
-									{...register("techUsed", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='outlined-basic'
-									label='Project Live Link'
-									{...register("liveLink", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='outlined-basic'
-									label='Project GitHub Client Link'
-									{...register("gitClientLink", { required: true })}
-								/>
-								<TextField
-									className='color-theme'
-									sx={{ width: "100%", mb: 2 }}
-									id='outlined-basic'
-									label='Project GitHub Server Link'
-									{...register("gitServerLink" /* , { required: true } */)}
-								/>
+												</IconButton>
+											</label>
 
-								<Button
-									type='submit'
-									variant='contained'
-									className='button border'
-									sx={{
-										width: "100%",
-										mb: 2,
-										px: 3,
-										fontWeight: "bold",
-										border: "2px solid",
-										backgroundColor: "transparent",
-										borderRadius: "25px",
-									}}>
-									Add Project
-								</Button>
-							</form>
-						) : (
-							<Box sx={{ my: 2 }}>
-								<CircularProgress className='color-theme' />
-							</Box>
-						)}
-					</Grid>
-				</Grid>
+											{loading4 ? (
+												<Box sx={{ my: 2 }}>
+													<CircularProgress className='color-theme' />
+												</Box>
+											) : (
+												<img
+													src={imageLink4}
+													style={{
+														width: "200px",
+														borderRadius: "50%",
+														margin: "5px 0",
+													}}
+													alt=''
+												/>
+											)}
+										</Box>
+									</Grid>
+									<Grid item md={12} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Project Details'
+											multiline
+											rows={4}
+											{...register("projectDetails", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 1'
+											{...register("feature1", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 2'
+											{...register("feature2", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 3'
+											{...register("feature3", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 4'
+											{...register("feature4", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 5'
+											{...register("feature5")}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 6'
+											{...register("feature6")}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 7'
+											{...register("feature7")}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Feature 8'
+											{...register("feature8")}
+										/>
+									</Grid>
+									<Grid item md={12} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='"outlined-multiline-flexible'
+											label='Technologies Used'
+											multiline
+											rows={2}
+											{...register("techUsed", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Project Live Link'
+											{...register("liveLink", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Project GitHub Client Link'
+											{...register("gitClientLink", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={6} xs={12}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Project GitHub Server Link'
+											{...register("gitServerLink" /* , { required: true } */)}
+										/>
+									</Grid>
+									<Grid item md={12} xs={12}>
+										<Button
+											type='submit'
+											variant='contained'
+											className='button border'
+											sx={{
+												width: "100%",
+												mb: 2,
+												px: 3,
+												fontWeight: "bold",
+												border: "2px solid",
+												backgroundColor: "transparent",
+												borderRadius: "25px",
+											}}>
+											Add Project
+										</Button>
+									</Grid>
+								</Grid>
+							</Grid>
+						</Grid>
+					</form>
+				) : (
+					<Box sx={{ my: 2 }}>
+						<CircularProgress className='color-theme' />
+					</Box>
+				)}
 			</Grid>
+			<Backdrop
+				sx={{
+					color: "#fff",
+					zIndex: (theme) => theme.zIndex.drawer + 1,
+				}}
+				open={submitting}>
+				<CircularProgress color='inherit' />
+			</Backdrop>
 		</Container>
 	);
 };

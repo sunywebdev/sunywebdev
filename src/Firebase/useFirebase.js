@@ -54,11 +54,12 @@ const useFirebase = () => {
 				Swal.fire({
 					icon: "success",
 					title: "Login Successfull",
-					showConfirmButton: false,
-					timer: 1500,
+					showConfirmButton: true,
+					timer: 2500,
+				}).then(function () {
+					const destination = location?.state?.from || "/";
+					navigate(destination);
 				});
-				const destination = location?.state?.from || "/";
-				navigate(destination);
 			})
 			.catch(function (error) {
 				console.log(error);

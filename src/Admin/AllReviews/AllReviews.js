@@ -77,9 +77,9 @@ const AllReviews = () => {
 									<TableCell className='color-theme' align='left'>
 										Name
 									</TableCell>
-									<TableCell className='color-theme' align='left'>
+									{/* <TableCell className='color-theme' align='left'>
 										Email
-									</TableCell>
+									</TableCell> */}
 									<TableCell className='color-theme' align='left'>
 										Submitted At
 									</TableCell>
@@ -115,9 +115,9 @@ const AllReviews = () => {
 											<TableCell align='left color-text '>
 												{review?.userName || "N/A"}
 											</TableCell>
-											<TableCell align='left color-text '>
+										{/* 	<TableCell align='left color-text '>
 												{review?.userEmail || "N/A"}
-											</TableCell>
+											</TableCell> */}
 											<TableCell align='left color-text '>
 												{review?.submitTime || "N/A"}
 											</TableCell>
@@ -147,8 +147,8 @@ const AllReviews = () => {
 							) : (
 								<TableHead sx={{ th: { fontWeight: "bold" } }}>
 									<TableRow>
-										<TableCell align='left'>N/A</TableCell>
-										<TableCell align='left'>N/A</TableCell>
+									{/* 	<TableCell align='left'>N/A</TableCell>
+										<TableCell align='left'>N/A</TableCell> */}
 										<TableCell align='left'>N/A</TableCell>
 										<TableCell align='left'>N/A</TableCell>
 										<TableCell align='left'>N/A</TableCell>

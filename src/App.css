@@ -21,6 +21,10 @@
 	color: white !important;
 	background-color: var(--text-color) !important;
 }
+.upload-button {
+	color: white !important;
+	background-color: var(--text-color) !important;
+}
 .button:hover {
 	background-color: white !important;
 	color: var(--text-color) !important;

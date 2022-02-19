@@ -13,18 +13,20 @@ import { Outlet, Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+/* import PeopleAltIcon from "@mui/icons-material/PeopleAlt"; */
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
 import image from "../../../Pages/Home/Shoyeb Mohammed Suny.png";
 import ThemeChanger from "../../../Shared/Login/ThemeChanger";
+import LogoutIcon from "@mui/icons-material/Logout";
+import useAuth from "../../../context/useAuth";
 
 const drawerWidth = 190;
 
 function DashBoard(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
-
+	const { logOut } = useAuth();
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
@@ -74,7 +76,7 @@ function DashBoard(props) {
 					flexWrap: "wrap",
 					alignContent: "space-around",
 				}}>
-				<Link
+				{/* 			<Link
 					className='color-theme'
 					style={{
 						textDecoration: "none",
@@ -86,7 +88,7 @@ function DashBoard(props) {
 						<PeopleAltIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Users
 					</ListItem>
-				</Link>
+				</Link> */}
 				<Link
 					className='color-theme'
 					style={{
@@ -153,6 +155,11 @@ function DashBoard(props) {
 						Home
 					</ListItem>
 				</Link>
+
+				<ListItem button className='color-theme' onClick={logOut}>
+					<LogoutIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+					LogOut
+				</ListItem>
 			</Box>
 		</Box>
 	);

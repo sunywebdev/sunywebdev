@@ -27,15 +27,15 @@ const LoginAdmin = () => {
 						icon: "success",
 						title: "Hello!",
 						text: "Welcome Admin!",
-						showConfirmButton: false,
-						timer: 2000,
+						showConfirmButton: true,
+						timer: 2500,
 				  })
 				: Swal.fire({
 						icon: "error",
 						title: "Oops...",
 						text: "You Are Not An Admin!",
-						showConfirmButton: false,
-						timer: 2000,
+						showConfirmButton: true,
+						timer: 2500,
 				  });
 		}
 	}, [admin]);

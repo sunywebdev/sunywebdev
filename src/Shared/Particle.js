@@ -19,6 +19,7 @@ const Particle = () => {
 	return (
 		<div>
 			<Particles
+				id='tsparticles'
 				className='demo'
 				params={{
 					particles: {

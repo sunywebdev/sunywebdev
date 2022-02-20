@@ -20,13 +20,14 @@ import image from "../../../Pages/Home/Shoyeb Mohammed Suny.png";
 import ThemeChanger from "../../../Shared/Login/ThemeChanger";
 import LogoutIcon from "@mui/icons-material/Logout";
 import useAuth from "../../../context/useAuth";
+import Swal from "sweetalert2";
 
 const drawerWidth = 190;
 
 function DashBoard(props) {
 	const { window } = props;
 	const [mobileOpen, setMobileOpen] = React.useState(false);
-	const { logOut } = useAuth();
+	const { logOut, admin } = useAuth();
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
@@ -96,10 +97,10 @@ function DashBoard(props) {
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
-					to={`/dashboard/allmails`}>
+					to='/dashboard'>
 					<ListItem button>
-						<AllInboxIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
-						All Mails
+						<LaptopChromebookIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+						All Projects
 					</ListItem>
 				</Link>
 				<Link
@@ -109,10 +110,10 @@ function DashBoard(props) {
 						fontWeight: "bold",
 						fontSize: "15px",
 					}}
-					to='/dashboard/allprojects'>
+					to={`/dashboard/allmails`}>
 					<ListItem button>
-						<LaptopChromebookIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
-						All Projects
+						<AllInboxIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+						All Mails
 					</ListItem>
 				</Link>
 				<Link
@@ -166,6 +167,27 @@ function DashBoard(props) {
 
 	const container =
 		window !== undefined ? () => window().document.body : undefined;
+
+	React.useEffect(() => {
+		// eslint-disable-next-line no-lone-blocks
+		{
+			admin === true
+				? Swal.fire({
+						icon: "success",
+						title: "Hello!",
+						text: "Welcome Admin!",
+						showConfirmButton: true,
+						timer: 2500,
+				  })
+				: Swal.fire({
+						icon: "error",
+						title: "Oops...",
+						text: "You Are Not An Admin!",
+						showConfirmButton: true,
+						timer: 2500,
+				  });
+		}
+	}, [admin]);
 
 	return (
 		<Box sx={{ display: "flex" }}>

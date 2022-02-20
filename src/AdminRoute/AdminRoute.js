@@ -6,7 +6,7 @@ import HashLoader from "react-spinners/HashLoader";
 const AdminRoute = ({ children }) => {
 	const { user, admin, isLoading } = useAuth();
 	const location = useLocation();
-	if (isLoading || !admin) {
+	if (isLoading) {
 		return (
 			<div
 				style={{
@@ -22,7 +22,7 @@ const AdminRoute = ({ children }) => {
 	if (user?.email && admin) {
 		return children;
 	}
-	return <Navigate to='/adminLogin' state={{ from: location }} />;
+	return <Navigate to='/login' state={{ from: location }} />;
 };
 
 export default AdminRoute;

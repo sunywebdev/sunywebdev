@@ -3,6 +3,8 @@ import {
 	getAuth,
 	signInWithPopup,
 	GoogleAuthProvider,
+	signInWithEmailAndPassword,
+	sendPasswordResetEmail,
 	signOut,
 	onAuthStateChanged,
 } from "firebase/auth";
@@ -19,6 +21,69 @@ const useFirebase = () => {
 	const [admin, setAdmin] = useState(false);
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
+
+	const signInWithEmailPassword = (
+		auth,
+		email,
+		password,
+		navigate,
+		location,
+		setSubmitting,
+	) => {
+		setIsloading(true);
+		signInWithEmailAndPassword(auth, email, password)
+			.then(() => {
+				setSubmitting(false);
+				Swal.fire({
+					icon: "success",
+					title: "SignIn Successful",
+					showConfirmButton: true,
+					timer: 3300,
+				}).then(function () {
+					const destination = location?.state?.from || "/";
+					navigate(destination);
+				});
+			})
+			.catch((error) => {
+				setSubmitting(false);
+				const errorMessage = error.message;
+				setError(errorMessage);
+				Swal.fire({
+					icon: "error",
+					title: errorMessage,
+					showConfirmButton: true,
+					timer: 3300,
+				});
+			})
+			.finally(() => setIsloading(false));
+	};
+	const resetPassword = (auth, email, navigate, location, setSubmitting) => {
+		sendPasswordResetEmail(auth, email)
+			.then(() => {
+				setSubmitting(false);
+				Swal.fire({
+					icon: "success",
+					title: "Please Check Your Email Inbox",
+					showConfirmButton: true,
+					timer: 3300,
+				}).then(function () {
+					const destination = location?.state?.from || "/login";
+					navigate(destination);
+				});
+			})
+			.catch((error) => {
+				setSubmitting(false);
+				const errorMessage = error.message;
+				Swal.fire({
+					icon: "error",
+					title: errorMessage,
+					showConfirmButton: true,
+					timer: 3300,
+				});
+				setError(errorMessage);
+			})
+			.finally(() => setIsloading(false));
+	};
 
 	const signInUsingGoogle = (navigate, location) => {
 		setIsloading(true);
@@ -100,6 +165,8 @@ const useFirebase = () => {
 		error,
 		signInUsingGoogle,
 		logOut,
+		signInWithEmailPassword,
+		resetPassword,
 		isLoading,
 		admin,
 	};

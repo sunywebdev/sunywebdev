@@ -10,19 +10,19 @@ import AddProjects from "./Admin/AddProjects/AddProjects";
 import AllReviews from "./Admin/AllReviews/AllReviews";
 import AllProjects from "./Admin/AllProjects/AllProjects";
 import AllMails from "./Admin/AllMails/AllMails";
-import AllUsers from "./Admin/AllUsers/AllUsers";
+/* import AllUsers from "./Admin/AllUsers/AllUsers"; */
 import AddReview from "./Pages/AddReview/AddReview";
 import Reviews from "./Pages/Reviews/Reviews";
 import Home from "./Pages/Home/Home";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./Shared/Login/Login";
 import AdminRoute from "./AdminRoute/AdminRoute";
-import LoginAdmin from "./Shared/Login/LoginAdmin";
 import EditProject from "./Admin/EditProject/EditProject";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import SingleProject from "./Pages/Portfolio/SingleProject";
 import Blogs from "./Pages/Blogs/Blogs";
+import ResetPass from "./Shared/Login/ResetPass";
 
 AOS.init();
 
@@ -42,6 +42,7 @@ function App() {
 							<Route path='/reviews/addreview' element={<AddReview />} />
 							<Route path='/contact' element={<Contact />} />
 							<Route path='/login' element={<Login />} />
+							<Route path='/resetpassword' element={<ResetPass />} />
 							<Route path='*' element={<NotFound404 />} />
 						</Route>
 						<Route
@@ -51,14 +52,12 @@ function App() {
 									<DashBoard />
 								</AdminRoute>
 							}>
-							<Route exact path='/dashboard' element={<AllUsers />} />
+							<Route exact path='/dashboard' element={<AllProjects />} />
 							<Route path='/dashboard/:id' element={<EditProject />} />
 							<Route path='/dashboard/allmails' element={<AllMails />} />
-							<Route path='/dashboard/allprojects' element={<AllProjects />} />
 							<Route path='/dashboard/allreviews' element={<AllReviews />} />
 							<Route path='/dashboard/addprojects' element={<AddProjects />} />
 						</Route>{" "}
-						<Route path='/adminLogin' element={<LoginAdmin />} />
 					</Routes>
 				</BrowserRouter>
 			</AuthProvider>

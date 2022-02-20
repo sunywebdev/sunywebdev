@@ -41,7 +41,7 @@ const Login = () => {
 	};
 
 	return (
-		<Container>
+		<Container sx={{ minHeight: "100vh" }}>
 			<Grid
 				container
 				direction='column'

@@ -24,7 +24,7 @@ export default function ResetPass() {
 		resetPassword(auth, data.email, navigate, location, setSubmitting);
 	};
 	return (
-		<Container component='main' maxWidth='xs'>
+		<Container component='main' maxWidth='xs' sx={{ minHeight: "100vh" }}>
 			<CssBaseline />
 			<Box
 				sx={{

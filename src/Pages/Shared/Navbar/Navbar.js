@@ -34,7 +34,8 @@ function Navbar(props) {
 
 	const drawer = (
 		<>
-			<Box className="navbar"
+			<Box
+				className='navbar'
 				sx={{
 					m: "auto",
 					textAlign: "center",
@@ -250,13 +251,14 @@ function Navbar(props) {
 					{drawer}
 				</Drawer>
 				<Drawer
-					className='nav'
+					className='nav2'
 					variant='permanent'
 					sx={{
 						display: { xs: "none", sm: "block" },
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
+							backgroundColor: "transparent",
 						},
 					}}
 					open>

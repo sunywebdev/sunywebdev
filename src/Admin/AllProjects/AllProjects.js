@@ -51,7 +51,7 @@ const AllProjects = () => {
 
 	let count = 1;
 	return (
-		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+		<Container sx={{ minHeight: "100vh", mt: { xs: 9, md: 2 } }}>
 			<Grid sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Typography
 					className='color-theme'

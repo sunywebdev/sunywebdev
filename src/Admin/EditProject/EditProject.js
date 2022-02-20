@@ -195,7 +195,7 @@ const EditProject = () => {
 	};
 
 	return (
-		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+		<Container sx={{ minHeight: "100vh", mt: { xs: 9, md: 2 } }}>
 			<Grid
 				container
 				direction='column'

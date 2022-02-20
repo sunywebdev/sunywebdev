@@ -5,7 +5,13 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const About = () => {
 	return (
-		<Container sx={{ mt: { md: 0, xs: 9 }, mb: 4, overflow: "auto" }}>
+		<Container
+			sx={{
+				minHeight: "100vh",
+				mt: { md: 0, xs: 9 },
+				mb: 4,
+				overflow: "auto",
+			}}>
 			<Grid
 				container
 				direction='column'

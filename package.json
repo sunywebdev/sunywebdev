@@ -27,7 +27,7 @@
     "react-draggable": "^4.4.4",
     "react-hook-form": "^7.20.0",
     "react-material-ui-theme": "^1.0.9",
-    "react-particles-js": "^3.6.0",
+    "react-particles-js": "^2.4.0",
     "react-router-dom": "^6.0.2",
     "react-router-transition": "^2.1.0",
     "react-scripts": "^4.0.3",

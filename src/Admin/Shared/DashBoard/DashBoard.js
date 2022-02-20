@@ -246,7 +246,7 @@ function DashBoard(props) {
 					{drawer}
 				</Drawer>
 				<Drawer
-					className='nav'
+					className='nav2'
 					variant='permanent'
 					sx={{
 						display: { xs: "none", sm: "block" },

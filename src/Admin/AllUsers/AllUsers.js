@@ -52,7 +52,7 @@ const AllUsers = () => {
 			sx={{
 				mt: { xs: 9, md: 2 },
 			}}>
-			<Grid sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
+			<Grid sx={{ minHeight: "100vh", minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Typography
 					className='color-theme'
 					sx={{ mb: 2, fontWeight: "bold" }}

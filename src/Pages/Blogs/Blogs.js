@@ -3,7 +3,7 @@ import React from "react";
 
 const Blogs = () => {
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 7 } }}>
 			<Grid
 				data-aos='zoom-in'
 				container

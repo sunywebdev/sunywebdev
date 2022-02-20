@@ -16,6 +16,7 @@ const Home = () => {
 		<Container
 			className='color-text'
 			sx={{
+				minHeight: "100vh",
 				mt: { md: 0, xs: 9 },
 				my: "auto",
 				overflow: "visible",

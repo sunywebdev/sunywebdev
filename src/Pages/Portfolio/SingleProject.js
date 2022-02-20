@@ -22,7 +22,7 @@ const SingleProject = () => {
 			.then((data) => setProject(data));
 	}, [id]);
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 } }}>
+		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 7 } }}>
 			{project?.length !== 0 ? (
 				<Grid
 					className='color-text'

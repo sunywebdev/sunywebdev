@@ -64,7 +64,8 @@ const Contact = () => {
 			);
 	};
 	return (
-		<Container sx={{ mt: { md: 0, xs: 9 }, overflow: "auto" }}>
+		<Container
+			sx={{ minHeight: "100vh", mt: { md: 0, xs: 9 }, overflow: "auto" }}>
 			<Grid
 				container
 				direction='column'

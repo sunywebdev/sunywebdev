@@ -51,6 +51,10 @@
 	color: var(--text-color) !important;
 	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
 }
+.nav2 .MuiDrawer-paper {
+	color: var(--text-color) !important;
+	box-shadow: 2px 2px 15px 2px var(--border-color) !important;
+}
 .navbar .MuiListItem-root {
 	border-radius: 5px !important;
 	transition-duration: 0.2s !important;
@@ -70,4 +74,18 @@ pre {
 	overflow: auto;
 	background-color: #eee;
 	width: 100%;
+}
+
+.App2 {
+	position: relative;
+}
+.demo,
+canvas {
+	opacity: 40%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 0;
 }

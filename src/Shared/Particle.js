@@ -1,5 +1,5 @@
 import React from "react";
-import Particles from "react-particles-js";
+import Particles from "react-tsparticles";
 import express from "./logos/express.png";
 import github from "./logos/github.png";
 import mongodb from "./logos/mongodb.png";

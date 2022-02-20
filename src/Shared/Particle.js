@@ -41,7 +41,7 @@ const Particle = () => {
 						shape: {
 							type: ["images"],
 							images: images?.map((img) => ({
-								src: img?.img,
+								src: `${img?.img}`,
 								height: 5,
 								width: 5,
 							})),

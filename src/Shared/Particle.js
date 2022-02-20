@@ -34,6 +34,7 @@ const Particle = () => {
 							enable: false,
 						},
 						move: {
+							enable: true,
 							speed: 1,
 							out_mode: "out",
 						},

@@ -32,7 +32,7 @@ export default function ResetPass() {
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "center",
-					minHeight: "100vh",
+					minHeight: { md: "100vh", xs: "70vh" },
 				}}>
 				<Avatar sx={{ m: 1 }} className='navbg'>
 					<LockOutlinedIcon />

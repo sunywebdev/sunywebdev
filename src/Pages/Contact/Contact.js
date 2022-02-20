@@ -64,13 +64,13 @@ const Contact = () => {
 			);
 	};
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 }, overflow: "auto" }}>
+		<Container sx={{ mt: { md: 0, xs: 9 }, overflow: "auto" }}>
 			<Grid
 				container
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "100vh" }}>
+				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Grid container>
 					<Grid
 						data-aos='fade-right'

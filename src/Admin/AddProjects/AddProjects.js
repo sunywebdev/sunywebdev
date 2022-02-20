@@ -171,7 +171,7 @@ const AddProjects = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "100vh" }}>
+				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Typography
 					className='color-theme'
 					sx={{ mb: 2, fontWeight: "bold" }}

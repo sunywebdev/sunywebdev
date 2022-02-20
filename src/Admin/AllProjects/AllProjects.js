@@ -51,8 +51,8 @@ const AllProjects = () => {
 
 	let count = 1;
 	return (
-		<Container sx={{ mt: { xs: 9, md: 2 }, minHeight: "100vh" }}>
-			<Grid>
+		<Container sx={{ mt: { xs: 9, md: 2 } }}>
+			<Grid sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Typography
 					className='color-theme'
 					sx={{ mb: 2, fontWeight: "bold" }}
@@ -65,7 +65,7 @@ const AllProjects = () => {
 						className='container cardShadow'
 						sx={{
 							overflow: "auto",
-							maxHeight: "80vh",
+							maxHeight: "70vh",
 							bgcolor: "transparent",
 						}}>
 						<Table size='small' aria-label='a dense table'>

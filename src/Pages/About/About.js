@@ -12,7 +12,7 @@ const About = () => {
 				alignItems='center'
 				justifyContent='center'
 				className='color-text'
-				style={{ minHeight: "100vh" }}>
+				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Grid container spacing={2} alignItems='center' justifyContent='center'>
 					<Grid item md={12} xs={12} sx={{ textAlign: "left" }}>
 						<Typography

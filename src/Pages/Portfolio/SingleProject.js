@@ -22,7 +22,7 @@ const SingleProject = () => {
 			.then((data) => setProject(data));
 	}, [id]);
 	return (
-		<Container sx={{ mt: { md: 0, xs: 7 }, minHeight: "100vh" }}>
+		<Container sx={{ mt: { md: 0, xs: 7 } }}>
 			{project?.length !== 0 ? (
 				<Grid
 					className='color-text'
@@ -30,7 +30,7 @@ const SingleProject = () => {
 					direction='column'
 					alignItems='center'
 					justifyContent='center'
-					style={{}}>
+					sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 					<Typography
 						className='color-theme'
 						sx={{ my: 2, fontWeight: 900 }}

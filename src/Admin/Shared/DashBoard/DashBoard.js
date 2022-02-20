@@ -156,11 +156,12 @@ function DashBoard(props) {
 						Home
 					</ListItem>
 				</Link>
-
-				<ListItem button className='color-theme' onClick={logOut}>
-					<LogoutIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
-					LogOut
-				</ListItem>
+				<Link to='/'>
+					<ListItem button className='color-theme' onClick={logOut}>
+						<LogoutIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+						LogOut
+					</ListItem>
+				</Link>
 			</Box>
 		</Box>
 	);

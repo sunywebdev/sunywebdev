@@ -27,7 +27,7 @@ const Portfolio = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				style={{ minHeight: "100vh" }}>
+				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
 				<Typography
 					className='color-theme'
 					sx={{ mb: 0, mt: 0.5, fontWeight: 900 }}

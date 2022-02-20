@@ -17,7 +17,7 @@ import googleLogo from "./google-logo.png";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useForm } from "react-hook-form";
 
-const Login = () => {
+const LoginAdmin = () => {
 	const { signInUsingGoogle, isLoading, signInWithEmailPassword, auth, error } =
 		useAuth();
 	console.log(error);
@@ -47,7 +47,7 @@ const Login = () => {
 				direction='column'
 				alignItems='center'
 				justifyContent='center'
-				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
+				style={{ minHeight: "95vh" }}>
 				<Box
 					sx={{
 						paddingTop: 8,
@@ -142,4 +142,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default LoginAdmin;

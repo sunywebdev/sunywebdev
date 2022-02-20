@@ -114,7 +114,7 @@ const AddReview = () => {
 					component='div'
 					gutterBottom
 					data-aos='fade-right'>
-					Leave A Feedback​
+					Leave Feedback​
 					<Typography variant='caption' display='block' sx={{ color: "red" }}>
 						Your posts will appear publicly with your profile name and picture.
 						Your posts will appear across the web.

@@ -100,17 +100,21 @@ const Contact = () => {
 						<Typography
 							sx={{ mb: 1, fontWeight: 900 }}
 							className='color-theme'
-							variant='h6'
+							variant='h5'
 							component='div'>
 							Click To Reach Me
 						</Typography>
-						<Grid direction='row' sx={{ justifyContent: "center", mb: 3 }}>
+						<Grid
+							sx={{
+								mb: 3,
+								display: "flex",
+								justifyContent: "space-evenly",
+							}}>
 							<GitHubIcon
 								className='color-text'
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									"&:hover": {
 										backgroundColor: "white !important",
 										color: "black !important",
@@ -123,9 +127,8 @@ const Contact = () => {
 								}></GitHubIcon>
 							<LinkedInIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0073B2",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -141,9 +144,8 @@ const Contact = () => {
 								}></LinkedInIcon>
 							<FacebookIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0D8BF0",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -156,9 +158,8 @@ const Contact = () => {
 								}></FacebookIcon>
 							<WhatsAppIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0F9D58",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -174,9 +175,8 @@ const Contact = () => {
 								}></WhatsAppIcon>
 							<CallIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#3CC886",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -189,9 +189,8 @@ const Contact = () => {
 								}></CallIcon>
 							<SmsIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#2C97AA",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -204,9 +203,8 @@ const Contact = () => {
 								}></SmsIcon>
 							<EmailIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#EB4436",
 									"&:hover": {
 										backgroundColor: "white !important",

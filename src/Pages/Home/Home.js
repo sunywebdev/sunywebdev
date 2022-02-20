@@ -30,12 +30,14 @@ const Home = () => {
 					container
 					spacing={2}
 					alignItems='center'
-					justifyContent='space-between'>
+					justifyContent='space-evenly'>
 					<Grid
 						item
 						md={4}
 						xs={12}
-						sx={{ img: { width: { md: "90%", xs: "70%" } } }}>
+						sx={{
+							img: { width: { md: "90%", xs: "70%" }, mt: { md: 0, xs: 7 } },
+						}}>
 						<img
 							className='myphoto border'
 							src={image}
@@ -54,7 +56,6 @@ const Home = () => {
 						<Typography
 							variant='h1'
 							component='div'
-							gutterBottom
 							className='color-theme'
 							sx={{ fontWeight: 900 }}>
 							Hello!
@@ -84,15 +85,16 @@ const Home = () => {
 							My Resume
 						</Button>
 						<Grid
-							container
-							direction='row'
-							sx={{ my: 3, justifyContent: { xs: "center", md: "left" } }}>
+							sx={{
+								my: { md: 3, xs: 1.5 },
+								display: "flex",
+								justifyContent: { xs: "space-evenly", md: "left" },
+							}}>
 							<GitHubIcon
 								className='color-text'
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									"&:hover": {
 										backgroundColor: "white !important",
 										color: "black !important",
@@ -105,9 +107,8 @@ const Home = () => {
 								}></GitHubIcon>
 							<LinkedInIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0073B2",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -123,9 +124,8 @@ const Home = () => {
 								}></LinkedInIcon>
 							<FacebookIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0D8BF0",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -138,9 +138,8 @@ const Home = () => {
 								}></FacebookIcon>
 							<WhatsAppIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#0F9D58",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -156,9 +155,8 @@ const Home = () => {
 								}></WhatsAppIcon>
 							<CallIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#3CC886",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -171,9 +169,8 @@ const Home = () => {
 								}></CallIcon>
 							<SmsIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#2C97AA",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -186,9 +183,8 @@ const Home = () => {
 								}></SmsIcon>
 							<EmailIcon
 								sx={{
-									mx: 0.5,
 									cursor: "pointer",
-									fontSize: { md: "3rem", xs: "2.4rem" },
+									fontSize: { md: "3.5rem", xs: "2.7rem" },
 									color: "#EB4436",
 									"&:hover": {
 										backgroundColor: "white !important",
@@ -207,7 +203,7 @@ const Home = () => {
 							<GitHubIcon
 								fontSize='large'
 								sx={{
-									mx: 0.5,
+									
 									cursor: "pointer",
 								}}
 								onClick={() =>
@@ -215,7 +211,7 @@ const Home = () => {
 								}></GitHubIcon>
 							<LinkedInIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0073B2" }}
+								sx={{  cursor: "pointer", color: "#0073B2" }}
 								onClick={() =>
 									window.open(
 										"https://www.linkedin.com/in/sunywebdev",
@@ -224,13 +220,13 @@ const Home = () => {
 								}></LinkedInIcon>
 							<FacebookIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0D8BF0" }}
+								sx={{  cursor: "pointer", color: "#0D8BF0" }}
 								onClick={() =>
 									window.open("https://www.facebook.com/sunywebdev", "_blank")
 								}></FacebookIcon>
 							<WhatsAppIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#0F9D58" }}
+								sx={{  cursor: "pointer", color: "#0F9D58" }}
 								onClick={() =>
 									window.open(
 										"https://api.whatsapp.com/send?phone=+8801861917938",
@@ -239,19 +235,19 @@ const Home = () => {
 								}></WhatsAppIcon>
 							<CallIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#3CC886" }}
+								sx={{  cursor: "pointer", color: "#3CC886" }}
 								onClick={() =>
 									window.open("tel:01861917938", "_blank")
 								}></CallIcon>
 							<SmsIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#2C97AA" }}
+								sx={{  cursor: "pointer", color: "#2C97AA" }}
 								onClick={() =>
 									window.open("sms:01861917938", "_blank")
 								}></SmsIcon>
 							<EmailIcon
 								fontSize='large'
-								sx={{ mx: 0.5, cursor: "pointer", color: "#EB4436" }}
+								sx={{  cursor: "pointer", color: "#EB4436" }}
 								onClick={() =>
 									window.open("mailto:suny.webdev@gmail.com", "_blank")
 								}></EmailIcon>

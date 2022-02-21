@@ -20,7 +20,7 @@ const Particle = () => {
 		<div>
 			<Particles
 				id='tsparticles'
-				className='demo'
+				style={{ opacity: "20%" }}
 				params={{
 					particles: {
 						number: {

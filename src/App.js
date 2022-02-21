@@ -30,44 +30,39 @@ AOS.init();
 function App() {
 	return (
 		<div className='App'>
-			<Particle />
-			<div className='App2'>
-				<AuthProvider>
-					<BrowserRouter>
-						<Routes>
-							<Route path='/' element={<Navbar />}>
-								<Route exact path='/' element={<Home />} />
-								<Route path='/about' element={<About />} />
-								<Route path='/portfolio' element={<Portfolio />} />
-								<Route path='/portfolio/:id' element={<SingleProject />} />
-								<Route path='/reviews' element={<Reviews />} />
-								<Route path='/blogs' element={<Blogs />} />
-								<Route path='/reviews/addreview' element={<AddReview />} />
-								<Route path='/contact' element={<Contact />} />
-								<Route path='/login' element={<Login />} />
-								<Route path='/resetpassword' element={<ResetPass />} />
-								<Route path='*' element={<NotFound404 />} />
-							</Route>
-							<Route
-								path='/dashboard'
-								element={
-									<AdminRoute>
-										<DashBoard />
-									</AdminRoute>
-								}>
-								<Route exact path='/dashboard' element={<AllProjects />} />
-								<Route path='/dashboard/:id' element={<EditProject />} />
-								<Route path='/dashboard/allmails' element={<AllMails />} />
-								<Route path='/dashboard/allreviews' element={<AllReviews />} />
-								<Route
-									path='/dashboard/addprojects'
-									element={<AddProjects />}
-								/>
-							</Route>{" "}
-						</Routes>
-					</BrowserRouter>
-				</AuthProvider>
-			</div>
+			<AuthProvider>
+				<BrowserRouter>
+					<Particle />
+					<Routes>
+						<Route path='/' element={<Navbar />}>
+							<Route exact path='/' element={<Home />} />
+							<Route path='/about' element={<About />} />
+							<Route path='/portfolio' element={<Portfolio />} />
+							<Route path='/portfolio/:id' element={<SingleProject />} />
+							<Route path='/reviews' element={<Reviews />} />
+							<Route path='/blogs' element={<Blogs />} />
+							<Route path='/reviews/addreview' element={<AddReview />} />
+							<Route path='/contact' element={<Contact />} />
+							<Route path='/login' element={<Login />} />
+							<Route path='/resetpassword' element={<ResetPass />} />
+							<Route path='*' element={<NotFound404 />} />
+						</Route>
+						<Route
+							path='/dashboard'
+							element={
+								<AdminRoute>
+									<DashBoard />
+								</AdminRoute>
+							}>
+							<Route exact path='/dashboard' element={<AllProjects />} />
+							<Route path='/dashboard/:id' element={<EditProject />} />
+							<Route path='/dashboard/allmails' element={<AllMails />} />
+							<Route path='/dashboard/allreviews' element={<AllReviews />} />
+							<Route path='/dashboard/addprojects' element={<AddProjects />} />
+						</Route>{" "}
+					</Routes>
+				</BrowserRouter>
+			</AuthProvider>
 		</div>
 	);
 }

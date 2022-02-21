@@ -56,7 +56,7 @@ const Particle = () => {
 								enable: true,
 								speed: 4,
 								size_min: 10,
-								sync: false,
+								sync: true,
 							},
 						},
 					},

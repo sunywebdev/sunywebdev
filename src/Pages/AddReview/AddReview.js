@@ -15,7 +15,6 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "@emotion/styled";
-import user from "./user.jpg";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { useNavigate } from "react-router-dom";
 /* import StarIcon from "@mui/icons-material/Star"; */
@@ -36,7 +35,9 @@ const AddReview = () => {
 	const onSubmit = ({ userName, userReview }) => {
 		const data = {
 			userName,
-			userPhoto: imageLink2 || user,
+			userPhoto:
+				imageLink2 ||
+				"https://res.cloudinary.com/dqdug0ows/image/upload/v1647179220/sunywebdevComments/user_xdotiy.jpg",
 			/* star: value, */
 			userReview,
 			submitTime: new Date().toLocaleString("en-GB"),

@@ -202,7 +202,7 @@ const Reviews = () => {
 								</Link>
 							</>
 						) : (
-							<Box sx={{ mx: "auto", width: "72vw", mt: 3 }}>
+							<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
 								{Array.from({ length: 5 }).map((_, idx) => (
 									<CircularProgress
 										key={idx}
@@ -210,7 +210,7 @@ const Reviews = () => {
 										className='color-theme'
 									/>
 								))}
-							</Box>
+							</Grid>
 						)}
 					</Container>
 				</>

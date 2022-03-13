@@ -156,7 +156,7 @@ function DashBoard(props) {
 						Home
 					</ListItem>
 				</Link>
-				<Link to='/'>
+				<Link to='/' style={{ textDecoration: "none" }}>
 					<ListItem button className='color-theme' onClick={logOut}>
 						<LogoutIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						LogOut
@@ -253,6 +253,7 @@ function DashBoard(props) {
 						"& .MuiDrawer-paper": {
 							boxSizing: "border-box",
 							width: drawerWidth,
+							backgroundColor: "transparent",
 						},
 					}}
 					open>

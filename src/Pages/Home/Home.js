@@ -191,62 +191,6 @@ const Home = () => {
 								window.open("mailto:suny.webdev@gmail.com", "_blank")
 							}></EmailIcon>
 					</Grid>
-					{/* 	<Grid
-							container
-							direction='row'
-							sx={{ my: 3, justifyContent: { xs: "center", md: "left" } }}>
-							<GitHubIcon
-								fontSize='large'
-								sx={{
-									
-									cursor: "pointer",
-								}}
-								onClick={() =>
-									window.open("https://github.com/sunywebdev", "_blank")
-								}></GitHubIcon>
-							<LinkedInIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#0073B2" }}
-								onClick={() =>
-									window.open(
-										"https://www.linkedin.com/in/sunywebdev",
-										"_blank",
-									)
-								}></LinkedInIcon>
-							<FacebookIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#0D8BF0" }}
-								onClick={() =>
-									window.open("https://www.facebook.com/sunywebdev", "_blank")
-								}></FacebookIcon>
-							<WhatsAppIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#0F9D58" }}
-								onClick={() =>
-									window.open(
-										"https://api.whatsapp.com/send?phone=+8801861917938",
-										"_blank",
-									)
-								}></WhatsAppIcon>
-							<CallIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#3CC886" }}
-								onClick={() =>
-									window.open("tel:01861917938", "_blank")
-								}></CallIcon>
-							<SmsIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#2C97AA" }}
-								onClick={() =>
-									window.open("sms:01861917938", "_blank")
-								}></SmsIcon>
-							<EmailIcon
-								fontSize='large'
-								sx={{  cursor: "pointer", color: "#EB4436" }}
-								onClick={() =>
-									window.open("mailto:suny.webdev@gmail.com", "_blank")
-								}></EmailIcon>
-						</Grid> */}
 				</Grid>
 			</Grid>
 		</Container>

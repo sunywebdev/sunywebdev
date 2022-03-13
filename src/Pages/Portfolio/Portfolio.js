@@ -194,25 +194,3 @@ const Portfolio = () => {
 };
 
 export default Portfolio;
-/* <Grid
-		data-aos='zoom-in'
-		container
-		direction='column'
-		alignItems='center'
-		justifyContent='center'
-		style={{ minHeight: "100vh" }}>
-		<Typography
-			variant='h2'
-			component='div'
-			gutterBottom
-			sx={{ fontWeight: 900 }}>
-			Sorry!
-		</Typography>
-		<Typography
-			variant='h3'
-			component='div'
-			gutterBottom
-			sx={{ fontWeight: 900 }}>
-			Page is under maintenance
-		</Typography>
-	</Grid> */

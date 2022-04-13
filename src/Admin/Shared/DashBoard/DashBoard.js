@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 import ReviewsOutlinedIcon from "@mui/icons-material/ReviewsOutlined";
@@ -31,6 +31,7 @@ function DashBoard(props) {
 	const handleDrawerToggle = () => {
 		setMobileOpen(!mobileOpen);
 	};
+	const location = useLocation();
 	const drawer = (
 		<Box
 			className='navbar'
@@ -98,7 +99,9 @@ function DashBoard(props) {
 						fontSize: "15px",
 					}}
 					to='/dashboard'>
-					<ListItem button>
+					<ListItem
+						button
+						className={location?.pathname === "/dashboard" && "activeButton"}>
 						<LaptopChromebookIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Projects
 					</ListItem>
@@ -111,7 +114,11 @@ function DashBoard(props) {
 						fontSize: "15px",
 					}}
 					to={`/dashboard/allmails`}>
-					<ListItem button>
+					<ListItem
+						button
+						className={
+							location?.pathname === "/dashboard/allmails" && "activeButton"
+						}>
 						<AllInboxIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Mails
 					</ListItem>
@@ -124,7 +131,11 @@ function DashBoard(props) {
 						fontSize: "15px",
 					}}
 					to='/dashboard/allreviews'>
-					<ListItem button>
+					<ListItem
+						button
+						className={
+							location?.pathname === "/dashboard/allreviews" && "activeButton"
+						}>
 						<ReviewsOutlinedIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						All Reviews
 					</ListItem>
@@ -137,7 +148,11 @@ function DashBoard(props) {
 						fontSize: "15px",
 					}}
 					to='/dashboard/addprojects'>
-					<ListItem button>
+					<ListItem
+						button
+						className={
+							location?.pathname === "/dashboard/addprojects" && "activeButton"
+						}>
 						<AddToQueueIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						Add Projects
 					</ListItem>
@@ -151,7 +166,9 @@ function DashBoard(props) {
 						fontSize: "15px",
 					}}
 					to='/'>
-					<ListItem button>
+					<ListItem
+						button
+						className={location?.pathname === "/" && "activeButton"}>
 						<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 						Home
 					</ListItem>

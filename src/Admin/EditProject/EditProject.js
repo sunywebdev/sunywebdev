@@ -127,6 +127,7 @@ const EditProject = () => {
 			projectPhoto2: "",
 			projectPhoto3: "",
 			projectPhoto4: "",
+			sort: "",
 		},
 	});
 	const [data, setData] = useState();
@@ -213,7 +214,19 @@ const EditProject = () => {
 					<Grid container spacing={2}>
 						<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
 							<Grid container spacing={2}>
-								<Grid item md={12} xs={12}>
+								<Grid item md={2} xs={2}>
+									<TextField
+										className='color-theme'
+										sx={{ width: "100%" }}
+										id='outlined-basic'
+										label='Serial'
+										InputLabelProps={{
+											shrink: true,
+										}}
+										{...register("sort", { required: true })}
+									/>
+								</Grid>
+								<Grid item md={10} xs={10}>
 									<TextField
 										className='color-theme'
 										sx={{ width: "100%" }}

@@ -65,6 +65,15 @@
 	color: white !important;
 	box-shadow: 3px 3px 7px -2px #000000 !important;
 }
+.activeButton {
+	background-color: transparent !important;
+	color: var(--text-color) !important;
+	border: 1px solid var(--text-color) !important;
+}
+
+.activeButton .MuiListItemIcon-root {
+	color: var(--text-color) !important;
+}
 .MuiInputLabel-root {
 	padding: 2px 10px !important;
 	color: var(--text-color) !important;

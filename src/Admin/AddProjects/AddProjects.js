@@ -123,6 +123,7 @@ const AddProjects = () => {
 		liveLink,
 		gitClientLink,
 		gitServerLink,
+		sort,
 	}) => {
 		const data = {
 			projectName,
@@ -139,6 +140,7 @@ const AddProjects = () => {
 			liveLink,
 			gitClientLink,
 			gitServerLink,
+			sort,
 			projectPhoto1: imageLink1,
 			projectPhoto2: imageLink2,
 			projectPhoto3: imageLink3,
@@ -155,6 +157,10 @@ const AddProjects = () => {
 					showConfirmButton: true,
 					timer: 1500,
 				});
+				setImageLink1(false);
+				setImageLink2(false);
+				setImageLink3(false);
+				setImageLink4(false);
 				setSubmitting(false);
 				reset();
 			})
@@ -185,7 +191,16 @@ const AddProjects = () => {
 						<Grid container spacing={2}>
 							<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
 								<Grid container spacing={2}>
-									<Grid item md={12} xs={12}>
+									<Grid item md={2} xs={2}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Serial'
+											{...register("sort", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={10} xs={10}>
 										<TextField
 											className='color-theme'
 											sx={{ width: "100%" }}

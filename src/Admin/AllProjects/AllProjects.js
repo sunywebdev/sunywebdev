@@ -23,7 +23,7 @@ const AllProjects = () => {
 	useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
-			.then((data) => setProjects(data.reverse()));
+			.then((data) => setProjects(data?.sort((a, b) => b.sort - a.sort)));
 	});
 
 	const handleDelete = (id) => {

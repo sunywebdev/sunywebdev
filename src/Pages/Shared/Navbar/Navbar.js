@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
@@ -31,7 +31,7 @@ function Navbar(props) {
 		setMobileOpen(!mobileOpen);
 	};
 	const { admin } = useAuth();
-
+	const location = useLocation();
 	const drawer = (
 		<>
 			<Box
@@ -90,7 +90,9 @@ function Navbar(props) {
 							fontSize: "15px",
 						}}
 						to='/'>
-						<ListItem button>
+						<ListItem
+							button
+							className={location?.pathname === "/" && "activeButton"}>
 							<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Home
 						</ListItem>
@@ -103,7 +105,9 @@ function Navbar(props) {
 							fontSize: "15px",
 						}}
 						to='about'>
-						<ListItem button>
+						<ListItem
+							button
+							className={location?.pathname === "/about" && "activeButton"}>
 							<PersonOutlineIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							About
 						</ListItem>
@@ -116,7 +120,11 @@ function Navbar(props) {
 							fontSize: "15px",
 						}}
 						to='portfolio'>
-						<ListItem button>
+						<ListItem
+							button
+							className={
+								location?.pathname.includes("/portfolio") && "activeButton"
+							}>
 							<LaptopChromebookIcon
 								sx={{ mr: 1.5, my: 0.7 }}
 								fontSize='medium'
@@ -132,7 +140,11 @@ function Navbar(props) {
 							fontSize: "15px",
 						}}
 						to='reviews'>
-						<ListItem button>
+						<ListItem
+							button
+							className={
+								location?.pathname.includes("/reviews") && "activeButton"
+							}>
 							<ReviewsOutlinedIcon
 								sx={{ mr: 1.5, my: 0.7 }}
 								fontSize='medium'
@@ -161,7 +173,9 @@ function Navbar(props) {
 							fontSize: "15px",
 						}}
 						to='contact'>
-						<ListItem button>
+						<ListItem
+							button
+							className={location?.pathname === "/contact" && "activeButton"}>
 							<ContactPageIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Contact
 						</ListItem>
@@ -175,7 +189,11 @@ function Navbar(props) {
 								fontSize: "15px",
 							}}
 							to='/dashboard'>
-							<ListItem button>
+							<ListItem
+								button
+								className={
+									location?.pathname === "/dashboard" && "activeButton"
+								}>
 								<DashboardIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 								Dashboard
 							</ListItem>

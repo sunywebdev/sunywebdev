@@ -24,10 +24,16 @@ import SingleProject from "./Pages/Portfolio/SingleProject";
 import Blogs from "./Pages/Blogs/Blogs";
 import ResetPass from "./Shared/Login/ResetPass";
 import Particle from "./Shared/Particle";
+import React from "react";
 
 AOS.init();
 
 function App() {
+	React.useEffect(() => {
+		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
+			.then((res) => res.json())
+			.then((data) => console.log("Server Loaded"));
+	}, []);
 	return (
 		<div className='App'>
 			<AuthProvider>

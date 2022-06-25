@@ -68,7 +68,13 @@ const Reviews = () => {
 	};
 	const slider = React.useRef(null);
 	return (
-		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 9 }, mb: 4 }}>
+		<Container
+			sx={{
+				minHeight: "100vh",
+				mt: { md: 0, xs: 9 },
+				mb: 4,
+				overflow: "hidden",
+			}}>
 			<Grid
 				container
 				direction='column'

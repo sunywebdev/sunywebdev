@@ -159,6 +159,7 @@ const EditProject = () => {
 		projectPhoto2,
 		projectPhoto3,
 		projectPhoto4,
+		sort,
 	}) => {
 		const data = {
 			projectName,
@@ -176,6 +177,7 @@ const EditProject = () => {
 			projectPhoto2: imageLink2 || projectPhoto2,
 			projectPhoto3: imageLink3 || projectPhoto3,
 			projectPhoto4: imageLink4 || projectPhoto4,
+			sort,
 			submitTime: new Date().toLocaleString("en-GB"),
 		};
 		setSubmitting(true);

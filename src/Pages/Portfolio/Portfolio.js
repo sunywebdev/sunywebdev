@@ -18,7 +18,7 @@ const Portfolio = () => {
 	React.useEffect(() => {
 		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
-			.then((data) => setProjects(data?.sort((a, b) => b.sort - a.sort)));
+			.then((data) => setProjects(data?.sort((a, b) => a.sort - b.sort)));
 	}, []);
 	return (
 		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 9 }, mb: 4 }}>

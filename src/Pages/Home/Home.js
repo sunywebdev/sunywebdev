@@ -144,7 +144,7 @@ const Home = () => {
 							}}
 							onClick={() =>
 								window.open(
-									"https://api.whatsapp.com/send?phone=+8801861917938",
+									"https://api.whatsapp.com/send?phone=01861917938",
 									"_blank",
 								)
 							}></WhatsAppIcon>
@@ -188,7 +188,7 @@ const Home = () => {
 								},
 							}}
 							onClick={() =>
-								window.open("mailto:suny.webdev@gmail.com", "_blank")
+								window.open("mailto:sunywebdev@gmail.com", "_blank")
 							}></EmailIcon>
 					</Grid>
 				</Grid>

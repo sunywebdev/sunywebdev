@@ -114,7 +114,7 @@ const useFirebase = () => {
 	) => {
 		const user = { email, displayName, photoURL };
 		axios
-			.put(`https://${process.env.REACT_APP_SERVER_API}/users`, user)
+			.put(`${process.env.REACT_APP_SERVER_API}/users`, user)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",
@@ -133,7 +133,7 @@ const useFirebase = () => {
 
 	/*------ to findout user is admin or not---------- */
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/users/${user?.email}`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/users/${user?.email}`)
 			.then((res) => res.json())
 			.then((data) => setAdmin(data?.admin));
 	}, [user?.email]);

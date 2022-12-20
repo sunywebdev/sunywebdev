@@ -149,7 +149,7 @@ const AddProjects = () => {
 		};
 		setSubmitting(true);
 		axios
-			.post(`https://${process.env.REACT_APP_SERVER_API}/projects`, data)
+			.post(`${process.env.REACT_APP_SERVER_API}/projects`, data)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",

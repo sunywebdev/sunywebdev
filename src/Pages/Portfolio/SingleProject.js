@@ -17,7 +17,7 @@ const SingleProject = () => {
 	const { id } = useParams();
 	const [project, setProject] = React.useState([]);
 	React.useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/projects/${id}`)
 			.then((res) => res.json())
 			.then((data) => setProject(data));
 	}, [id]);

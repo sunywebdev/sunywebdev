@@ -133,7 +133,7 @@ const EditProject = () => {
 	const [data, setData] = useState();
 	useEffect(() => {
 		axios
-			.get(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`)
+			.get(`${process.env.REACT_APP_SERVER_API}/projects/${id}`)
 			.then((res) => {
 				console.log(res.data);
 				reset(res.data);
@@ -182,7 +182,7 @@ const EditProject = () => {
 		};
 		setSubmitting(true);
 		axios
-			.put(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`, data)
+			.put(`${process.env.REACT_APP_SERVER_API}/projects/${id}`, data)
 			.then(function (response) {
 				Swal.fire({
 					icon: "success",

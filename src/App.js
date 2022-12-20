@@ -30,7 +30,7 @@ AOS.init();
 
 function App() {
 	React.useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => console.log("Server Loaded"));
 	}, []);

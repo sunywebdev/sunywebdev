@@ -43,7 +43,7 @@ const Contact = () => {
 			.then(
 				(result) => {
 					axios
-						.post(`https://${process.env.REACT_APP_SERVER_API}/mails`, data)
+						.post(`${process.env.REACT_APP_SERVER_API}/mails`, data)
 						.then(function (response) {
 							setSubmitting(false);
 							Swal.fire({

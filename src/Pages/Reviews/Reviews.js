@@ -22,7 +22,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 const Reviews = () => {
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/reviews`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [reviews]);

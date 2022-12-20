@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 const AllMails = () => {
 	const [mails, setMails] = useState([]);
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/mails`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/mails`)
 			.then((res) => res.json())
 			.then((data) => setMails(data.reverse()));
 	});
@@ -35,7 +35,7 @@ const AllMails = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://${process.env.REACT_APP_SERVER_API}/mails/${id}`)
+					.delete(`${process.env.REACT_APP_SERVER_API}/mails/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "Your mail has been deleted.", "success");
 					})

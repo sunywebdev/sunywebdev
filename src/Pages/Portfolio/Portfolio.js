@@ -16,7 +16,7 @@ import LanguageIcon from "@mui/icons-material/Language";
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
 	React.useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data?.sort((a, b) => a.sort - b.sort)));
 	}, []);

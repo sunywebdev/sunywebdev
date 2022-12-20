@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 const AllReviews = () => {
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/reviews`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data.reverse()));
 	});
@@ -35,7 +35,7 @@ const AllReviews = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://${process.env.REACT_APP_SERVER_API}/reviews/${id}`)
+					.delete(`${process.env.REACT_APP_SERVER_API}/reviews/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "That Review has been deleted.", "success");
 					})

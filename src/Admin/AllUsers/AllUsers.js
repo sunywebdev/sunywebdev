@@ -18,7 +18,7 @@ import Swal from "sweetalert2";
 const AllUsers = () => {
 	const [users, setUsers] = useState([]);
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/users`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/users`)
 			.then((res) => res.json())
 			.then((data) => setUsers(data.reverse()));
 	});
@@ -35,7 +35,7 @@ const AllUsers = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://${process.env.REACT_APP_SERVER_API}/users/${id}`)
+					.delete(`${process.env.REACT_APP_SERVER_API}/users/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "That User has been removed.", "success");
 					})

@@ -54,7 +54,7 @@ const AddReview = () => {
 			.then(
 				(result) => {
 					axios
-						.post(`https://${process.env.REACT_APP_SERVER_API}/reviews`, data)
+						.post(`${process.env.REACT_APP_SERVER_API}/reviews`, data)
 						.then(function (response) {
 							setSubmitting(false);
 							setSubmitting(false);

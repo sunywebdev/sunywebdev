@@ -21,7 +21,7 @@ import Swal from "sweetalert2";
 const AllProjects = () => {
 	const [projects, setProjects] = useState([]);
 	useEffect(() => {
-		fetch(`https://${process.env.REACT_APP_SERVER_API}/projects`)
+		fetch(`${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data?.sort((a, b) => a.sort - b.sort)));
 	});
@@ -38,7 +38,7 @@ const AllProjects = () => {
 		}).then((result) => {
 			if (result.isConfirmed) {
 				axios
-					.delete(`https://${process.env.REACT_APP_SERVER_API}/projects/${id}`)
+					.delete(`${process.env.REACT_APP_SERVER_API}/projects/${id}`)
 					.then(function (response) {
 						Swal.fire("Deleted!", "That Project has been deleted.", "success");
 					})

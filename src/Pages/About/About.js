@@ -170,6 +170,13 @@ const About = () => {
 									/>
 									<span>Firebase</span>
 								</Grid>
+								<Grid item display='flex' alignItems='center'>
+									<CheckCircleOutlineIcon
+										className='color-theme'
+										sx={{ mr: 0.5 }}
+									/>
+									<span>Socket IO</span>
+								</Grid>
 							</Grid>
 
 							<Typography

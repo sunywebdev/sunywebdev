@@ -144,7 +144,7 @@ const Home = () => {
 							}}
 							onClick={() =>
 								window.open(
-									"https://api.whatsapp.com/send?phone=01861917938",
+									"https://api.whatsapp.com/send?phone=8801861917938",
 									"_blank",
 								)
 							}></WhatsAppIcon>

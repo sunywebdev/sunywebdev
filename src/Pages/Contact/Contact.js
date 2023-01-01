@@ -18,7 +18,6 @@ import CallIcon from "@mui/icons-material/Call";
 import SmsIcon from "@mui/icons-material/Sms";
 import EmailIcon from "@mui/icons-material/Email";
 import Swal from "sweetalert2";
-import emailjs from "emailjs-com";
 
 const Contact = () => {
 	const form = useRef();
@@ -33,35 +32,21 @@ const Contact = () => {
 			submitTime: new Date().toLocaleString("en-GB"),
 		};
 		setSubmitting(true);
-		emailjs
-			.sendForm(
-				"sunywebdev",
-				"sunywebdevEmail",
-				form.current,
-				"user_aUuHacyHZpyM577ohllYe",
-			)
-			.then(
-				(result) => {
-					axios
-						.post(`${process.env.REACT_APP_SERVER_API}/mails`, data)
-						.then(function (response) {
-							setSubmitting(false);
-							Swal.fire({
-								icon: "success",
-								title: "Your Mail Sent Successfully",
-								showConfirmButton: true,
-								timer: 1500,
-							});
-							reset();
-						})
-						.catch(function (error) {
-							console.log(error);
-						});
-				},
-				(error) => {
-					console.log(error.text);
-				},
-			);
+		axios
+			.post(`${process.env.REACT_APP_SERVER_API}/mails`, data)
+			.then(function (response) {
+				setSubmitting(false);
+				Swal.fire({
+					icon: "success",
+					title: "Your Mail Sent Successfully",
+					showConfirmButton: true,
+					timer: 1500,
+				});
+				reset();
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 	return (
 		<Container

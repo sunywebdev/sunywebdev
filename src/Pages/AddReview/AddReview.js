@@ -7,6 +7,7 @@ import {
 	CircularProgress,
 	IconButton,
 	Backdrop,
+	Rating,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useRef, useState } from "react";
@@ -17,66 +18,49 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "@emotion/styled";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { useNavigate } from "react-router-dom";
-/* import StarIcon from "@mui/icons-material/Star"; */
-import emailjs from "emailjs-com";
+import StarIcon from "@mui/icons-material/Star";
 import { useLocation } from "react-router-dom";
 
 const AddReview = () => {
 	const form = useRef();
 	const navigate = useNavigate();
 	const location = useLocation();
-	/*	const navigate = useNavigate();
 	const [value, setValue] = React.useState();
-	 const [hover, setHover] = React.useState(-1); */
 	const [submitting, setSubmitting] = useState(false);
 	const [imageLink2, setImageLink2] = useState(null);
 	const { register, handleSubmit, reset } = useForm();
 
-	const onSubmit = ({ userName, userReview }) => {
+	const onSubmit = ({ userName, userReview, userEmail }) => {
 		const data = {
 			userName,
+			userEmail,
 			userPhoto:
 				imageLink2 ||
 				"https://res.cloudinary.com/dqdug0ows/image/upload/v1647179220/sunywebdevComments/user_xdotiy.jpg",
-			/* star: value, */
+			star: value,
 			userReview,
 			submitTime: new Date().toLocaleString("en-GB"),
 		};
 		setSubmitting(true);
-
-		emailjs
-			.sendForm(
-				"sunywebdev",
-				"sunywebdevComments",
-				form.current,
-				"user_aUuHacyHZpyM577ohllYe",
-			)
-			.then(
-				(result) => {
-					axios
-						.post(`${process.env.REACT_APP_SERVER_API}/reviews`, data)
-						.then(function (response) {
-							setSubmitting(false);
-							setSubmitting(false);
-							Swal.fire({
-								icon: "success",
-								title: "Your Review Successfully Added",
-								showConfirmButton: true,
-								timer: 2500,
-							}).then(function () {
-								reset();
-								const destination = location?.state?.from || "/";
-								navigate(destination);
-							});
-						})
-						.catch(function (error) {
-							console.log(error);
-						});
-				},
-				(error) => {
-					console.log(error.text);
-				},
-			);
+		axios
+			.post(`${process.env.REACT_APP_SERVER_API}/reviews`, data)
+			.then(function (response) {
+				setSubmitting(false);
+				setSubmitting(false);
+				Swal.fire({
+					icon: "success",
+					title: "Your Review Successfully Added",
+					showConfirmButton: true,
+					timer: 2500,
+				}).then(function () {
+					reset();
+					const destination = location?.state?.from || "/";
+					navigate(destination);
+				});
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
 	};
 
 	const [loading, setLoading] = useState(false);
@@ -188,9 +172,8 @@ const AddReview = () => {
 									/>
 								)}
 							</Box>
-							{/* 	<Box
+							<Box
 								sx={{
-									mt: 3,
 									display: "flex",
 									justifyContent: "center",
 								}}>
@@ -208,9 +191,6 @@ const AddReview = () => {
 									onChange={(event, newValue) => {
 										setValue(newValue);
 									}}
-									onChangeActive={(event, newHover) => {
-										 setHover(newHover);
-									}}
 									emptyIcon={
 										<StarIcon
 											className='color-text'
@@ -219,20 +199,20 @@ const AddReview = () => {
 										/>
 									}
 								/>
-							<Typography
-										className='color-theme'
-										variant='h4'
-										component='div'
-										sx={{ ml: 2, mb: 1.7 }}>
-										{hover !== -1 ? hover : value}
-									</Typography> 
-							</Box>*/}
+							</Box>
 							<TextField
 								required
 								sx={{ width: "100%", mb: 2 }}
 								id='"outlined-multiline-flexible'
 								label='Name'
 								{...register("userName", { required: true })}
+							/>
+							<TextField
+								required
+								sx={{ width: "100%", mb: 2 }}
+								id='"outlined-multiline-flexible'
+								label='Email'
+								{...register("userEmail", { required: true })}
 							/>
 							<TextField
 								required

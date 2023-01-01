@@ -178,7 +178,7 @@ const Reviews = () => {
 													<Rating
 														className='color-theme'
 														name='half-rating-read'
-														defaultValue={5}
+														defaultValue={review?.star || 5}
 														precision={0.1}
 														readOnly
 													/>

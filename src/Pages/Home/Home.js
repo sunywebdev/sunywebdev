@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Button, Box, Grid, Typography } from "@mui/material";
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -13,14 +13,16 @@ import { animations } from "react-animation";
 
 const Home = () => {
 	return (
-		<Container
+		<Box
+			id='home'
 			className='color-text'
 			sx={{
-				minHeight: "100vh",
+				minHeight: { md: "100vh", xs: "auto" },
 				mt: { md: 0, xs: 9 },
 				my: "auto",
-				overflow: "visible",
+				overflowX: "hidden",
 				animation: animations.popIn,
+				p: 2,
 			}}>
 			<Grid
 				container
@@ -193,7 +195,7 @@ const Home = () => {
 					</Grid>
 				</Grid>
 			</Grid>
-		</Container>
+		</Box>
 	);
 };
 

@@ -32,6 +32,7 @@ function Navbar(props) {
 	};
 	const { admin } = useAuth();
 	const location = useLocation();
+
 	const drawer = (
 		<>
 			<Box
@@ -82,76 +83,97 @@ function Navbar(props) {
 						flexWrap: "wrap",
 						alignContent: "space-around",
 					}}>
-					<Link
+					<a
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						to='/'>
+						href='#home'>
 						<ListItem
 							button
-							className={location?.pathname === "/" && "activeButton"}>
+							className={location?.hash.includes("#home") && "activeButton"}>
 							<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Home
 						</ListItem>
-					</Link>
-					<Link
+					</a>
+					<a
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						to='about'>
+						href='#about'>
 						<ListItem
 							button
-							className={location?.pathname === "/about" && "activeButton"}>
+							className={location?.hash.includes("#about") && "activeButton"}>
 							<PersonOutlineIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							About
 						</ListItem>
-					</Link>
-					<Link
+					</a>
+					{location?.pathname.includes("/portfolio") ? (
+						<Link
+							className='color-theme'
+							style={{
+								textDecoration: "none",
+								fontWeight: "bold",
+								fontSize: "15px",
+							}}
+							to='/#portfolio'>
+							<ListItem
+								button
+								className={
+									location?.pathname.includes("/portfolio") && "activeButton"
+								}>
+								<LaptopChromebookIcon
+									sx={{ mr: 1.5, my: 0.7 }}
+									fontSize='medium'
+								/>
+								Portfolio
+							</ListItem>
+						</Link>
+					) : (
+						<a
+							className='color-theme'
+							style={{
+								textDecoration: "none",
+								fontWeight: "bold",
+								fontSize: "15px",
+							}}
+							href='#portfolio'>
+							<ListItem
+								button
+								className={
+									location?.hash.includes("#portfolio") && "activeButton"
+								}>
+								<LaptopChromebookIcon
+									sx={{ mr: 1.5, my: 0.7 }}
+									fontSize='medium'
+								/>
+								Portfolio
+							</ListItem>
+						</a>
+					)}
+					<a
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						to='portfolio'>
+						href='#reviews'>
 						<ListItem
 							button
-							className={
-								location?.pathname.includes("/portfolio") && "activeButton"
-							}>
-							<LaptopChromebookIcon
-								sx={{ mr: 1.5, my: 0.7 }}
-								fontSize='medium'
-							/>
-							Portfolio
-						</ListItem>
-					</Link>
-					<Link
-						className='color-theme'
-						style={{
-							textDecoration: "none",
-							fontWeight: "bold",
-							fontSize: "15px",
-						}}
-						to='reviews'>
-						<ListItem
-							button
-							className={
-								location?.pathname.includes("/reviews") && "activeButton"
-							}>
+							className={location?.hash.includes("#reviews") && "activeButton"}>
 							<ReviewsOutlinedIcon
 								sx={{ mr: 1.5, my: 0.7 }}
 								fontSize='medium'
 							/>
 							Reviews
 						</ListItem>
-					</Link>
+					</a>
 					{/* 				<Link
 						className='color-theme'
 						style={{
@@ -165,21 +187,21 @@ function Navbar(props) {
 							Blogs
 						</ListItem>
 					</Link> */}
-					<Link
+					<a
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						to='contact'>
+						href='#contact'>
 						<ListItem
 							button
-							className={location?.pathname === "/contact" && "activeButton"}>
+							className={location?.hash.includes("#contact") && "activeButton"}>
 							<ContactPageIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Contact
 						</ListItem>
-					</Link>
+					</a>
 					{admin && (
 						<Link
 							className='color-theme'
@@ -192,7 +214,7 @@ function Navbar(props) {
 							<ListItem
 								button
 								className={
-									location?.pathname === "/dashboard" && "activeButton"
+									location?.pathname.includes("/dashboard") && "activeButton"
 								}>
 								<DashboardIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 								Dashboard
@@ -286,7 +308,14 @@ function Navbar(props) {
 					{drawer}
 				</Drawer>
 			</Box>
-			<Outlet></Outlet>
+			<Box
+				component='main'
+				sx={{
+					flexGrow: 1,
+					width: { sm: `calc(100% - ${drawerWidth}px)` },
+				}}>
+				<Outlet></Outlet>
+			</Box>
 		</Box>
 	);
 }

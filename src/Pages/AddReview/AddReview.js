@@ -1,6 +1,5 @@
 import {
 	Button,
-	Container,
 	Grid,
 	TextField,
 	Typography,
@@ -8,6 +7,8 @@ import {
 	IconButton,
 	Backdrop,
 	Rating,
+	Fade,
+	Modal,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useRef, useState } from "react";
@@ -16,17 +17,32 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import styled from "@emotion/styled";
-import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { useNavigate } from "react-router-dom";
 import StarIcon from "@mui/icons-material/Star";
 import { useLocation } from "react-router-dom";
+import CancelIcon from "@mui/icons-material/Cancel";
 
-const AddReview = () => {
+const style = {
+	position: "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	boxShadow: 24,
+	p: 2,
+	maxWidth: "95vw",
+	maxHeight: "90vh",
+	overflowX: "hidden",
+	overflowY: "scroll",
+	borderRadius: 3,
+	backgroundColor: "white",
+	textAlign: "center",
+};
+
+const AddReview = ({ open, setOpen, setSubmitting }) => {
 	const form = useRef();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const [value, setValue] = React.useState();
-	const [submitting, setSubmitting] = useState(false);
 	const [imageLink2, setImageLink2] = useState(null);
 	const { register, handleSubmit, reset } = useForm();
 
@@ -85,172 +101,184 @@ const AddReview = () => {
 		display: "none",
 	});
 	return (
-		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 7 } }}>
-			<Grid
-				container
-				direction='column'
-				alignItems='center'
-				justifyContent='center'
-				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
-				<Typography
-					className='color-theme '
-					sx={{ mb: 4, fontWeight: 900 }}
-					variant='h3'
-					component='div'
-					gutterBottom
-					data-aos='fade-right'>
-					Leave Feedback​
-					<Typography variant='caption' display='block' sx={{ color: "red" }}>
-						Your posts will appear publicly with your profile name and picture.
-						Your posts will appear across the web.
-					</Typography>
-				</Typography>
+		<Modal
+			aria-labelledby='transition-modal-title'
+			aria-describedby='transition-modal-description'
+			open={open}
+			closeAfterTransition
+			BackdropComponent={Backdrop}
+			BackdropProps={{
+				timeout: 500,
+			}}>
+			<Fade in={open}>
+				<Box sx={style} style={{ backgroundImage: `url(/bg-img.jpg)` }}>
+					<CancelIcon
+						onClick={() => setOpen(false)}
+						className='color-theme'
+						sx={{
+							position: "fixed",
+							top: "5px",
+							right: "5px",
+							cursor: "pointer",
+						}}
+					/>
+					<Grid
+						container
+						direction='column'
+						alignItems='center'
+						justifyContent='center'
+						sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
+						<Typography
+							className='color-theme '
+							sx={{ mb: 4, fontWeight: 900 }}
+							variant='h3'
+							component='div'
+							gutterBottom
+							data-aos='fade-right'>
+							Leave Feedback​
+							<Typography
+								variant='caption'
+								display='block'
+								sx={{ color: "red" }}>
+								Your posts will appear publicly with your profile name and
+								picture. Your posts will appear across the web.
+							</Typography>
+						</Typography>
 
-				<Grid container spacing={2}>
-					<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
-						<form
-							ref={form}
-							data-aos='fade-left'
-							onSubmit={handleSubmit(onSubmit)}>
-							<Box
-								display='flex'
-								flexDirection='column'
-								alignItems='center'
-								sx={{ mb: 1, mx: "auto" }}>
-								<label
-									className='upload-button'
-									htmlFor='icon-button-file'
-									style={{
-										display: "flex",
-										alignItems: "center",
-										justifyContent: "center",
-										margin: "0 9px",
-										borderRadius: 5,
-										cursor: "pointer",
-									}}>
-									<Input
-										accept='image/*'
-										id='icon-button-file'
-										type='file'
-										onChange={uploadImage}
-									/>
-									<Typography
-										sx={{ my: 2, ml: 2, color: "white" }}
-										variant='h6'
-										component='div'
-										gutterBottom>
-										Upload Your Photo (Optional)
-									</Typography>
-									<IconButton
-										color='primary'
-										aria-label='upload picture'
-										component='span'>
-										<AccountCircleIcon
-											fontSize='large'
-											sx={{ fontWeight: "bold", color: "white", mx: 1 }}
-										/>
-										<FileUploadIcon
-											fontSize='large'
-											sx={{ fontWeight: "bold", color: "white" }}
-										/>
-									</IconButton>
-								</label>
-
-								{loading ? (
-									<Box sx={{ my: 2 }}>
-										<CircularProgress className='color-theme' />
+						<Grid container spacing={2}>
+							<Grid item md={7} xs={12} sx={{ mx: "auto" }}>
+								<form
+									ref={form}
+									data-aos='fade-left'
+									onSubmit={handleSubmit(onSubmit)}>
+									<Box
+										display='flex'
+										flexDirection='column'
+										alignItems='center'
+										sx={{ mb: 1, mx: "auto" }}>
+										{!imageLink2 && !loading && (
+											<label
+												className='upload-button'
+												htmlFor='icon-button-file'
+												style={{
+													display: "flex",
+													alignItems: "center",
+													justifyContent: "center",
+													cursor: "pointer",
+													width: "150px",
+													height: "150px",
+													borderRadius: "50%",
+												}}>
+												<Input
+													accept='image/*'
+													id='icon-button-file'
+													type='file'
+													onChange={uploadImage}
+												/>
+												<IconButton
+													color='primary'
+													aria-label='upload picture'
+													component='span'>
+													<AccountCircleIcon
+														fontSize='large'
+														sx={{ fontWeight: "bold", color: "white", mx: 1 }}
+													/>
+												</IconButton>
+											</label>
+										)}
+										{loading ? (
+											<Box sx={{ my: 2 }}>
+												<CircularProgress className='color-theme' />
+											</Box>
+										) : (
+											<>
+												{imageLink2 && (
+													<img
+														src={imageLink2}
+														style={{
+															width: "150px",
+															height: "150px",
+															borderRadius: "50%",
+														}}
+														alt=''
+													/>
+												)}
+											</>
+										)}
 									</Box>
-								) : (
-									<img
-										src={imageLink2}
-										style={{
-											width: "200px",
-											borderRadius: "50%",
-											margin: "5px 0",
-										}}
-										alt=''
-									/>
-								)}
-							</Box>
-							<Box
-								sx={{
-									display: "flex",
-									justifyContent: "center",
-								}}>
-								<Rating
-									className='color-theme'
-									sx={{
-										float: "left",
-										mb: 2,
-										fontSize: 70,
-									}}
-									name='hover-feedback'
-									value={value}
-									size='large'
-									precision={0.5}
-									onChange={(event, newValue) => {
-										setValue(newValue);
-									}}
-									emptyIcon={
-										<StarIcon
-											className='color-text'
-											style={{ opacity: 0.55 }}
-											fontSize='inherit'
+									<Box
+										sx={{
+											display: "flex",
+											justifyContent: "center",
+										}}>
+										<Rating
+											className='color-theme'
+											sx={{
+												float: "left",
+												mb: 2,
+												fontSize: 70,
+											}}
+											name='hover-feedback'
+											value={value}
+											size='large'
+											precision={0.5}
+											onChange={(event, newValue) => {
+												setValue(newValue);
+											}}
+											emptyIcon={
+												<StarIcon
+													className='color-text'
+													style={{ opacity: 0.55 }}
+													fontSize='inherit'
+												/>
+											}
 										/>
-									}
-								/>
-							</Box>
-							<TextField
-								required
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Name'
-								{...register("userName", { required: true })}
-							/>
-							<TextField
-								required
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Email'
-								{...register("userEmail", { required: true })}
-							/>
-							<TextField
-								required
-								sx={{ width: "100%", mb: 2 }}
-								id='"outlined-multiline-flexible'
-								label='Share Your Review'
-								multiline
-								rows={4}
-								{...register("userReview", { required: true })}
-							/>
-							<Button
-								type='submit'
-								variant='contained'
-								className='button border'
-								sx={{
-									width: "100%",
-									mb: 2,
-									px: 3,
-									fontWeight: "bold",
-									border: "2px solid",
-									backgroundColor: "transparent",
-									borderRadius: "25px",
-								}}>
-								POST REVIEW
-							</Button>
-						</form>
+									</Box>
+									<TextField
+										required
+										sx={{ width: "100%", mb: 2 }}
+										id='"outlined-multiline-flexible'
+										label='Name'
+										{...register("userName", { required: true })}
+									/>
+									<TextField
+										required
+										sx={{ width: "100%", mb: 2 }}
+										id='"outlined-multiline-flexible'
+										label='Email'
+										{...register("userEmail", { required: true })}
+									/>
+									<TextField
+										required
+										sx={{ width: "100%", mb: 2 }}
+										id='"outlined-multiline-flexible'
+										label='Share Your Review'
+										multiline
+										rows={4}
+										{...register("userReview", { required: true })}
+									/>
+									<Button
+										type='submit'
+										variant='contained'
+										className='button border'
+										sx={{
+											width: "100%",
+											mb: 2,
+											px: 3,
+											fontWeight: "bold",
+											border: "2px solid",
+											backgroundColor: "transparent",
+											borderRadius: "25px",
+										}}>
+										POST REVIEW
+									</Button>
+								</form>
+							</Grid>
+						</Grid>
 					</Grid>
-				</Grid>
-			</Grid>
-			<Backdrop
-				sx={{
-					color: "#fff",
-					zIndex: (theme) => theme.zIndex.drawer + 1,
-				}}
-				open={submitting}>
-				<CircularProgress color='inherit' />
-			</Backdrop>
-		</Container>
+				</Box>
+			</Fade>
+		</Modal>
 	);
 };
 

@@ -2,78 +2,47 @@ import {
 	Button,
 	ButtonGroup,
 	CardMedia,
-	Container,
+	Box,
 	Grid,
 	Rating,
+	Container,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
-import { Box } from "@mui/system";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import CircularProgress from "@mui/material/CircularProgress";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import AddReview from "../AddReview/AddReview";
+import { useRef } from "react";
 
 const Reviews = () => {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
 	const [reviews, setReviews] = useState([]);
 	useEffect(() => {
 		fetch(`${process.env.REACT_APP_SERVER_API}/reviews`)
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, [reviews]);
-	const settings = {
-		dots: true,
-		infinite: true,
-		slidesToShow: 3,
-		slidesToScroll: 1,
-		autoplay: true,
-		speed: 700,
-		autoplaySpeed: 3000,
-		cssEase: "linear",
-		swipeToSlide: true,
-		arrows: false,
-		responsive: [
-			{
-				breakpoint: 992,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 1,
-					infinite: true,
-					dots: true,
-				},
-			},
-			{
-				breakpoint: 768,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					initialSlide: 2,
-					adaptiveHeight: true,
-				},
-			},
-			{
-				breakpoint: 576,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-					adaptiveHeight: true,
-				},
-			},
-		],
-	};
-	const slider = React.useRef(null);
+	const swiperRef = useRef();
+
 	return (
-		<Container
+		<Box
+			id='reviews'
 			sx={{
-				minHeight: "100vh",
+				minHeight: { md: "100vh", xs: "auto" },
 				mt: { md: 0, xs: 9 },
+				width: { md: "100%", xs: "100vw" },
 				mb: 4,
-				overflow: "hidden",
+				overflowX: "hidden !important",
+				p: 2,
 			}}>
 			<Grid
 				container
@@ -102,35 +71,59 @@ const Reviews = () => {
 								<Box sx={{ my: 2 }}>
 									<ButtonGroup disableElevation variant='contained'>
 										<Button
+											onClick={() => swiperRef.current?.slidePrev()}
 											className='button border'
 											sx={{
 												borderRadius: "15px 0 0 15px ",
 												backgroundColor: "transparent",
 												border: "2px solid",
 												fontWeight: "bold",
-											}}
-											onClick={() => slider?.current?.slickPrev()}>
+											}}>
 											<ArrowBackIcon sx={{ mr: 1 }} />
 											Prev
 										</Button>
 										<Box sx={{ border: "1px solid white" }} />
 										<Button
+											onClick={() => swiperRef.current?.slideNext()}
 											className='button border'
 											sx={{
 												borderRadius: " 0 15px 15px 0",
 												backgroundColor: "transparent",
 												border: "2px solid",
 												fontWeight: "bold",
-											}}
-											onClick={() => slider?.current?.slickNext()}>
+											}}>
 											Next
 											<ArrowForwardIcon sx={{ ml: 1 }} />
 										</Button>
 									</ButtonGroup>
 								</Box>
-								<Slider ref={slider} {...settings}>
+								<Swiper
+									onBeforeInit={(swiper) => {
+										swiperRef.current = swiper;
+									}}
+									loop={true}
+									autoHeight={true}
+									autoplay={{ delay: 4000 }}
+									grabCursor={true}
+									slidesPerView={3}
+									spaceBetween={30}
+									pagination={{
+										clickable: true,
+									}}
+									breakpoints={{
+										300: {
+											slidesPerView: 1,
+										},
+										550: {
+											slidesPerView: 2,
+										},
+										900: {
+											slidesPerView: 3,
+										},
+									}}
+									className='mySwiper'>
 									{reviews?.map((review) => (
-										<Box key={review?._id}>
+										<SwiperSlide key={review?._id}>
 											<Card
 												className='color-text border'
 												sx={{
@@ -155,6 +148,7 @@ const Reviews = () => {
 													className='border'
 													style={{
 														width: "90px",
+														height: "90px",
 														marginTop: -40,
 														borderRadius: "50%",
 														border: "5px solid",
@@ -187,25 +181,24 @@ const Reviews = () => {
 													{review?.userReview}
 												</Typography>
 											</Card>
-										</Box>
+										</SwiperSlide>
 									))}
-								</Slider>
-								<Link to='addreview' style={{ textDecoration: "none" }}>
-									<Button
-										variant='contained'
-										className='button border'
-										sx={{
-											px: 3,
-											fontWeight: "bold",
-											borderRadius: "25px",
-											backgroundColor: "transparent",
-											border: "2px solid",
-											my: 3.7,
-										}}>
-										<RateReviewIcon sx={{ mr: 1.5 }} />
-										Leave A Review
-									</Button>
-								</Link>
+								</Swiper>
+								<Button
+									onClick={handleOpen}
+									variant='contained'
+									className='button border'
+									sx={{
+										px: 3,
+										fontWeight: "bold",
+										borderRadius: "25px",
+										backgroundColor: "transparent",
+										border: "2px solid",
+										my: 3.7,
+									}}>
+									<RateReviewIcon sx={{ mr: 1.5 }} />
+									Leave A Review
+								</Button>
 							</>
 						) : (
 							<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
@@ -221,7 +214,8 @@ const Reviews = () => {
 					</Container>
 				</>
 			</Grid>
-		</Container>
+			{open && <AddReview open={open} setOpen={setOpen} />}
+		</Box>
 	);
 };
 export default Reviews;

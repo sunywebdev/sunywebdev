@@ -1,11 +1,11 @@
 import {
 	Button,
-	Container,
 	Grid,
 	TextField,
 	Typography,
 	CircularProgress,
 	Backdrop,
+	Box,
 } from "@mui/material";
 import axios from "axios";
 import React, { useRef, useState } from "react";
@@ -49,8 +49,15 @@ const Contact = () => {
 			});
 	};
 	return (
-		<Container
-			sx={{ minHeight: "100vh", mt: { md: 0, xs: 9 }, overflow: "auto" }}>
+		<Box
+			id='contact'
+			sx={{
+				minHeight: { md: "100vh", xs: "auto" },
+				mt: { md: 0, xs: 9 },
+				mb: 4,
+				overflowX: "hidden",
+				p: 2,
+			}}>
 			<Grid
 				container
 				direction='column'
@@ -280,7 +287,7 @@ const Contact = () => {
 				open={submitting}>
 				<CircularProgress color='inherit' />
 			</Backdrop>
-		</Container>
+		</Box>
 	);
 };
 

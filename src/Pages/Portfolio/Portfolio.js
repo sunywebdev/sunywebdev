@@ -5,8 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { Container, Grid } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, Grid } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -21,7 +20,15 @@ const Portfolio = () => {
 			.then((data) => setProjects(data?.sort((a, b) => a.sort - b.sort)));
 	}, []);
 	return (
-		<Container sx={{ minHeight: "100vh", mt: { md: 0, xs: 9 }, mb: 4 }}>
+		<Box
+			id='portfolio'
+			sx={{
+				minHeight: { md: "100vh", xs: "auto" },
+				mt: { md: 0, xs: 9 },
+				mb: 4,
+				overflowX: "hidden",
+				p: 2,
+			}}>
 			<Grid
 				container
 				direction='column'
@@ -189,7 +196,7 @@ const Portfolio = () => {
 				<GitHubIcon sx={{ mr: 1.5 }} />
 				Explore More GitHub Repos
 			</Button>
-		</Container>
+		</Box>
 	);
 };
 

@@ -1,16 +1,17 @@
-import { Container, Grid, Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import { Grid, Typography, Box } from "@mui/material";
 import React from "react";
 import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const About = () => {
 	return (
-		<Container
+		<Box
+			id='about'
 			sx={{
-				minHeight: "100vh",
+				minHeight: { md: "100vh", xs: "auto" },
 				mt: { md: 0, xs: 9 },
 				mb: 4,
-				overflow: "auto",
+				overflowX: "hidden",
+				p: 2,
 			}}>
 			<Grid
 				container
@@ -280,7 +281,7 @@ const About = () => {
 					</Grid>
 				</Grid>
 			</Grid>
-		</Container>
+		</Box>
 	);
 };
 

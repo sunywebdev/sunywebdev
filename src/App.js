@@ -38,7 +38,9 @@ function App() {
 	React.useEffect(() => {
 		let timerId = setTimeout(() => {
 			if (!poojects) {
-				window.location.reload();
+				fetch(`${process.env.REACT_APP_SERVER_API}/projects`)
+					.then((res) => res.json())
+					.then((data) => setProjects(data));
 			}
 		}, 5000);
 		// Clear the timeout when the component unmounts

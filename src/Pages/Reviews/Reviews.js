@@ -37,10 +37,10 @@ const Reviews = () => {
 			id='reviews'
 			sx={{
 				overflowX: "hidden",
-				px: { md: 5, xs: 2 },
+				px: { xl: 9, md: 5, xs: 2 },
 				width: { md: "100%", xs: "100vw" },
-				minHeight: { md: "100vh", xs: "auto" },
-				mt: 5,
+				minHeight: { xl: "auto", md: "100vh", xs: "auto" },
+				mt: 7,
 			}}>
 			<Box sx={{ textAlign: "left" }}>
 				<Typography

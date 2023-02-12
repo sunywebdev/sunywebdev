@@ -7,11 +7,11 @@ const About = () => {
 			id='about'
 			sx={{
 				overflowX: "hidden",
-				px: { md: 5, xs: 2 },
-				minHeight: "100vh",
+				px: { xl: 9, md: 5, xs: 2 },
+				minHeight: { xl: "auto", md: "100vh", xs: "auto" },
 				display: "grid",
 				placeItems: "center",
-				mt: { md: 0, xs: 5}
+				mt: { xl: 7, md: 0, xs: 5 },
 			}}>
 			<Grid container spacing={2}>
 				<Grid item md={8} xs={12} sx={{ textAlign: "left" }}>
@@ -58,7 +58,7 @@ const About = () => {
 					md={4}
 					xs={12}
 					sx={{
-						img: { width: { md: "90%", xs: "70%" } },
+						img: { width: { xl: "350px", md: "90%", xs: "70%" } },
 					}}>
 					<img
 						className=' border'

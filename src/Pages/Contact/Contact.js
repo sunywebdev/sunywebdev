@@ -54,11 +54,11 @@ const Contact = () => {
 			id='contact'
 			sx={{
 				overflowX: "hidden",
-				px: { md: 5, xs: 2 },
-				minHeight: "100vh",
+				px: { xl: 9, md: 5, xs: 2 },
+				minHeight: { xl: "auto", md: "100vh", xs: "auto" },
 				display: "grid",
 				placeItems: "center",
-				mt: { md: 0, xs: 5 },
+				my: { xl: 7, md: 0, xs: 5 },
 			}}>
 			<Grid container spacing={2} sx={{ my: 3 }}>
 				<Grid item xs={12}>

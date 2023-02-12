@@ -31,11 +31,11 @@ const Portfolio = () => {
 			id='portfolio'
 			sx={{
 				overflowX: "hidden",
-				px: { md: 5, xs: 2 },
-				minHeight: "100vh",
+				px: { xl: 9, md: 5, xs: 2 },
+				minHeight: { xl: "auto", md: "100vh", xs: "auto" },
 				display: "grid",
 				placeItems: "center",
-				mt: { md: 0, xs: 5 },
+				mt: { xl: 7, md: 0, xs: 5 },
 			}}>
 			<Grid container spacing={3} sx={{ my: 2 }}>
 				<Grid item xs={12}>

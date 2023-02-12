@@ -31,7 +31,7 @@ const Skills = () => {
 							<Typography
 								variant='h5'
 								component='div'
-								className='color-text'
+								className='color-text subTitle'
 								gutterBottom>
 								Some of my skills and expertise.
 							</Typography>

@@ -56,7 +56,7 @@ const Reviews = () => {
 				<Typography
 					variant='h5'
 					component='div'
-					className='color-text'
+					className='color-text subTitle'
 					gutterBottom>
 					What my clients say about me.
 				</Typography>
@@ -139,7 +139,7 @@ const Reviews = () => {
 											alignItems: "center",
 										}}>
 										<Rating
-											className='color-theme'
+											style={{ color: "#FFB34A" }}
 											name='half-rating-read'
 											defaultValue={review?.star || 5}
 											precision={0.1}

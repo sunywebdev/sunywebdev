@@ -76,7 +76,7 @@ const Contact = () => {
 						<Typography
 							variant='h5'
 							component='div'
-							className='color-text'
+							className='color-text subTitle'
 							gutterBottom>
 							Have a project in mind? Let's talk about it.
 						</Typography>

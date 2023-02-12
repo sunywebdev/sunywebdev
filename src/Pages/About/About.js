@@ -29,7 +29,7 @@ const About = () => {
 						<Typography
 							variant='h5'
 							component='div'
-							className='color-text'
+							className='color-text subTitle'
 							gutterBottom>
 							Who am I?
 						</Typography>

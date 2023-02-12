@@ -60,8 +60,8 @@ const Home = () => {
 						Hello!
 					</Typography>
 					<Typography variant='h5' component='div' gutterBottom>
-						I'm <b className='color-theme'>Shoyeb Mohammed Suny</b>. I'm a MERN
-						Stack Web Developer from Chattogram, Bangladesh!
+						I'm <b className='color-theme'>Shoyeb Mohammed Suny</b>. <br /> I'm
+						a MERN Stack Web Developer from Chattogram, Bangladesh!
 					</Typography>
 					<Button
 						onClick={() =>

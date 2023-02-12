@@ -53,7 +53,7 @@ const Portfolio = () => {
 						<Typography
 							variant='h5'
 							component='div'
-							className='color-text'
+							className='color-text subTitle'
 							gutterBottom>
 							Check out some of my works.
 						</Typography>
@@ -78,7 +78,7 @@ const Portfolio = () => {
 										flexDirection: "column",
 										borderRadius: "7px",
 										backgroundColor: "transparent",
-										border: "2px solid",
+										boxShadow: "3px 3px 7px -2px #000000 !important",
 									}}>
 									<Box
 										sx={{
@@ -158,6 +158,7 @@ const Portfolio = () => {
 												alignItems: "center",
 												justifyContent: "center",
 												border: "2px solid",
+												cursor: "pointer",
 											}}
 											size='small'>
 											<InfoIcon sx={{ mr: 0.7 }} /> Details

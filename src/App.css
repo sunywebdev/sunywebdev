@@ -86,3 +86,11 @@ pre {
 	background-color: #eee;
 	width: 100%;
 }
+.subTitle:after {
+	content: "";
+	display: block;
+	position: relative;
+	width: 7%;
+	border: 2px solid var(--text-color) !important;
+	margin-top: 8px;
+}

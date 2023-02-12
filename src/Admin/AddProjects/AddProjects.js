@@ -110,6 +110,7 @@ const AddProjects = () => {
 	const { register, handleSubmit, reset } = useForm();
 	const onSubmit = ({
 		projectName,
+		projectType,
 		projectDetails,
 		feature1,
 		feature2,
@@ -127,6 +128,7 @@ const AddProjects = () => {
 	}) => {
 		const data = {
 			projectName,
+			projectType,
 			projectDetails,
 			feature1,
 			feature2,
@@ -207,6 +209,15 @@ const AddProjects = () => {
 											id='outlined-basic'
 											label='Enter Project Name'
 											{...register("projectName", { required: true })}
+										/>
+									</Grid>
+									<Grid item md={12} xs={2}>
+										<TextField
+											className='color-theme'
+											sx={{ width: "100%" }}
+											id='outlined-basic'
+											label='Project Type'
+											{...register("projectType", { required: true })}
 										/>
 									</Grid>
 									<Grid item md={6} xs={12}>

@@ -27,7 +27,7 @@ const SwitchThumb = styled("span")(
 	({ theme }) => `
   position: absolute;
   display: block;
-  background-color: ${theme.palette.mode === "dark" ? "#003892" : "#fff"};
+  background-color: ${theme.palette.mode === "dark" ? "#1D1D1D" : "#fff"};
   width: 30px;
   height: 30px;
   border-radius: 16px;
@@ -111,10 +111,10 @@ export default function ThemeChanger() {
 	useEffect(() => {
 		if (dark) {
 			setDark(true);
-			setBg("#0F0826");
-			setText("#FF014F");
+			setBg("#1D1D1D");
+			setText("#08FDD8");
 			setNormal("#fff");
-			setBorder("#FF014F");
+			setBorder("#08FDD8");
 		} else {
 			setDark(false);
 			setBg("#fff");

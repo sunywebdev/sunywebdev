@@ -24,7 +24,7 @@ const Particle = () => {
 				params={{
 					particles: {
 						number: {
-							value: 33,
+							value: 25,
 							density: {
 								enable: true,
 								value_area: 1000,
@@ -35,7 +35,7 @@ const Particle = () => {
 						},
 						move: {
 							enable: true,
-							speed: 1,
+							speed: 0.7,
 							out_mode: "out",
 						},
 						shape: {
@@ -50,12 +50,12 @@ const Particle = () => {
 							value: "#000000",
 						},
 						size: {
-							value: 30,
+							value: 35,
 							random: false,
 							anim: {
 								enable: true,
-								speed: 4,
-								size_min: 10,
+								speed: 0.5,
+								size_min: 9,
 								sync: true,
 							},
 						},

@@ -7,13 +7,6 @@ import AddProjects from "./Admin/AddProjects/AddProjects";
 import AllReviews from "./Admin/AllReviews/AllReviews";
 import AllProjects from "./Admin/AllProjects/AllProjects";
 import AllMails from "./Admin/AllMails/AllMails";
-/* import AddReview from "./Pages/AddReview/AddReview";
-import Reviews from "./Pages/Reviews/Reviews";
-import Home from "./Pages/Home/Home";
-import Blogs from "./Pages/Blogs/Blogs";
-import About from "./Pages/About/About";
-import Portfolio from "./Pages/Portfolio/Portfolio";
-import Contact from "./Pages/Contact/Contact"; */
 import SingleProject from "./Pages/Portfolio/SingleProject";
 import AuthProvider from "./context/AuthProvider";
 import Login from "./Shared/Login/Login";
@@ -31,6 +24,9 @@ AOS.init();
 function App() {
 	const [poojects, setProjects] = React.useState(null);
 	React.useEffect(() => {
+		window.onbeforeunload = function () {
+			window.scrollTo(0, 0);
+		};
 		fetch(`${process.env.REACT_APP_SERVER_API}/projects`)
 			.then((res) => res.json())
 			.then((data) => setProjects(data));
@@ -55,13 +51,6 @@ function App() {
 					<Routes>
 						<Route path='/' element={<Navbar />}>
 							<Route exact path='/' element={<HomePage />} />
-							{/* <Route path='/home' element={<Home />} />
-							<Route path='/about' element={<About />} />
-							<Route path='/portfolio' element={<Portfolio />} />
-							<Route path='/reviews' element={<Reviews />} />
-							<Route path='/blogs' element={<Blogs />} />
-							<Route path='/reviews/addreview' element={<AddReview />} />
-							<Route path='/contact' element={<Contact />} /> */}
 							<Route path='/portfolio/:id' element={<SingleProject />} />
 							<Route path='/login' element={<Login />} />
 							<Route path='/resetpassword' element={<ResetPass />} />

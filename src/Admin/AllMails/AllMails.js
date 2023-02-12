@@ -73,6 +73,9 @@ const AllMails = () => {
 									Email
 								</TableCell>
 								<TableCell className='color-theme' align='left'>
+									Phone
+								</TableCell>
+								<TableCell className='color-theme' align='left'>
 									Rec Time
 								</TableCell>
 								<TableCell className='color-theme' align='left'>
@@ -100,6 +103,9 @@ const AllMails = () => {
 										</TableCell>
 										<TableCell align='left color-text '>
 											{mail?.userEmail}
+										</TableCell>
+										<TableCell align='left color-text '>
+											{mail?.phone}
 										</TableCell>
 										<TableCell align='left color-text '>
 											{mail?.submitTime || "N/A"}
@@ -130,6 +136,8 @@ const AllMails = () => {
 						) : (
 							<TableHead sx={{ th: { fontWeight: "bold" } }}>
 								<TableRow>
+									<TableCell align='left color-text '>N/A</TableCell>
+									<TableCell align='left color-text '>N/A</TableCell>
 									<TableCell align='left color-text '>N/A</TableCell>
 									<TableCell align='left color-text '>N/A</TableCell>
 									<TableCell align='left color-text '>N/A</TableCell>

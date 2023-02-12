@@ -68,7 +68,9 @@
 .activeButton {
 	background-color: transparent !important;
 	color: var(--text-color) !important;
-	border: 1px solid var(--text-color) !important;
+	border: 2px solid var(--text-color) !important;
+	border-radius: 5px;
+	box-shadow: 3px 3px 7px -2px #000000 !important;
 }
 
 .activeButton .MuiListItemIcon-root {

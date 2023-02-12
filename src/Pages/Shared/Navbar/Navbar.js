@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import { Outlet, Link, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link as DomLink } from "react-router-dom";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import HomeIcon from "@mui/icons-material/Home";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
@@ -20,6 +20,8 @@ import useAuth from "../../../context/useAuth";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import image from "../../Home/Shoyeb Mohammed Suny.png";
 import ThemeChanger from "../../../Shared/Login/ThemeChanger";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import { Link } from "react-scroll";
 
 const drawerWidth = 190;
 
@@ -83,97 +85,94 @@ function Navbar(props) {
 						flexWrap: "wrap",
 						alignContent: "space-around",
 					}}>
-					<a
+					<Link
+						activeClass='activeButton'
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						href='#home'>
-						<ListItem
-							button
-							className={location?.hash.includes("#home") && "activeButton"}>
+						smooth
+						spy
+						to='home'>
+						<ListItem button>
 							<HomeIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Home
 						</ListItem>
-					</a>
-					<a
+					</Link>
+					<Link
+						activeClass='activeButton'
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						href='#about'>
-						<ListItem
-							button
-							className={location?.hash.includes("#about") && "activeButton"}>
+						smooth
+						spy
+						to='about'>
+						<ListItem button>
 							<PersonOutlineIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							About
 						</ListItem>
-					</a>
-					{location?.pathname.includes("/portfolio") ? (
-						<Link
-							className='color-theme'
-							style={{
-								textDecoration: "none",
-								fontWeight: "bold",
-								fontSize: "15px",
-							}}
-							to='/#portfolio'>
-							<ListItem
-								button
-								className={
-									location?.pathname.includes("/portfolio") && "activeButton"
-								}>
-								<LaptopChromebookIcon
-									sx={{ mr: 1.5, my: 0.7 }}
-									fontSize='medium'
-								/>
-								Portfolio
-							</ListItem>
-						</Link>
-					) : (
-						<a
-							className='color-theme'
-							style={{
-								textDecoration: "none",
-								fontWeight: "bold",
-								fontSize: "15px",
-							}}
-							href='#portfolio'>
-							<ListItem
-								button
-								className={
-									location?.hash.includes("#portfolio") && "activeButton"
-								}>
-								<LaptopChromebookIcon
-									sx={{ mr: 1.5, my: 0.7 }}
-									fontSize='medium'
-								/>
-								Portfolio
-							</ListItem>
-						</a>
-					)}
-					<a
+					</Link>
+					<Link
+						activeClass='activeButton'
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						href='#reviews'>
-						<ListItem
-							button
-							className={location?.hash.includes("#reviews") && "activeButton"}>
+						smooth
+						spy
+						to='skills'>
+						<ListItem button>
+							<EngineeringIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
+							Skills
+						</ListItem>
+					</Link>
+
+					<Link
+						activeClass='activeButton'
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						smooth
+						spy
+						to='portfolio'>
+						<ListItem button>
+							<LaptopChromebookIcon
+								sx={{ mr: 1.5, my: 0.7 }}
+								fontSize='medium'
+							/>
+							Portfolio
+						</ListItem>
+					</Link>
+
+					<Link
+						activeClass='activeButton'
+						className='color-theme'
+						style={{
+							textDecoration: "none",
+							fontWeight: "bold",
+							fontSize: "15px",
+						}}
+						smooth
+						spy
+						to='reviews'>
+						<ListItem button>
 							<ReviewsOutlinedIcon
 								sx={{ mr: 1.5, my: 0.7 }}
 								fontSize='medium'
 							/>
 							Reviews
 						</ListItem>
-					</a>
+					</Link>
 					{/* 				<Link
 						className='color-theme'
 						style={{
@@ -187,23 +186,24 @@ function Navbar(props) {
 							Blogs
 						</ListItem>
 					</Link> */}
-					<a
+					<Link
+						activeClass='activeButton'
 						className='color-theme'
 						style={{
 							textDecoration: "none",
 							fontWeight: "bold",
 							fontSize: "15px",
 						}}
-						href='#contact'>
-						<ListItem
-							button
-							className={location?.hash.includes("#contact") && "activeButton"}>
+						smooth
+						spy
+						to='contact'>
+						<ListItem button>
 							<ContactPageIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 							Contact
 						</ListItem>
-					</a>
+					</Link>
 					{admin && (
-						<Link
+						<DomLink
 							className='color-theme'
 							style={{
 								textDecoration: "none",
@@ -219,7 +219,7 @@ function Navbar(props) {
 								<DashboardIcon sx={{ mr: 1.5, my: 0.7 }} fontSize='medium' />
 								Dashboard
 							</ListItem>
-						</Link>
+						</DomLink>
 					)}
 				</Box>
 			</Box>

@@ -111,6 +111,7 @@ const EditProject = () => {
 	const { register, handleSubmit, reset } = useForm({
 		defaultValues: {
 			projectName: "",
+			projectType: "",
 			projectDetails: "",
 			feature1: "",
 			feature2: "",
@@ -143,6 +144,7 @@ const EditProject = () => {
 	const onSubmit = ({
 		projectName,
 		projectDetails,
+		projectType,
 		feature1,
 		feature2,
 		feature3,
@@ -163,6 +165,7 @@ const EditProject = () => {
 	}) => {
 		const data = {
 			projectName,
+			projectType,
 			projectDetails,
 			feature1,
 			feature2,
@@ -238,6 +241,15 @@ const EditProject = () => {
 											shrink: true,
 										}}
 										{...register("projectName", { required: true })}
+									/>
+								</Grid>
+								<Grid item md={12} xs={2}>
+									<TextField
+										className='color-theme'
+										sx={{ width: "100%" }}
+										id='outlined-basic'
+										label='Project Type'
+										{...register("projectType", { required: true })}
 									/>
 								</Grid>
 								<Grid item md={6} xs={12}>

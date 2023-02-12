@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import CircularProgress from "@mui/material/CircularProgress";
 import InfoIcon from "@mui/icons-material/Info";
 import LanguageIcon from "@mui/icons-material/Language";
+import SingleProject from "./SingleProject";
 
 const Portfolio = () => {
 	const [projects, setProjects] = React.useState([]);
@@ -19,167 +20,165 @@ const Portfolio = () => {
 			.then((res) => res.json())
 			.then((data) => setProjects(data?.sort((a, b) => a.sort - b.sort)));
 	}, []);
+	const [open, setOpen] = React.useState(false);
+	const [id, setId] = React.useState("");
+	const handleOpen = (id) => {
+		setOpen(true);
+		setId(id);
+	};
+
 	return (
 		<Box
 			id='portfolio'
 			sx={{
-				minHeight: { md: "100vh", xs: "auto" },
-				mt: { md: 0, xs: 9 },
-				mb: 4,
 				overflowX: "hidden",
-				p: 2,
+				px: { md: 5, xs: 2 },
+				minHeight: "100vh",
+				display: "grid",
+				placeItems: "center",
+				mt: { md: 0, xs: 5 },
 			}}>
-			<Grid
-				container
-				direction='column'
-				alignItems='center'
-				justifyContent='center'
-				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
-				<Typography
-					className='color-theme'
-					sx={{ mb: 0, mt: 0.5, fontWeight: 900 }}
-					variant='h3'
-					component='div'
-					gutterBottom>
-					PORTFOLIO
-				</Typography>
-				<Typography
-					className='color-text'
-					sx={{ mb: 4 }}
-					variant='h5'
-					component='div'
-					gutterBottom>
-					Check out some of my works.
-				</Typography>
-				<Grid container spacing={3} sx={{ mb: 2 }}>
-					{projects?.length > 0 ? (
-						<>
-							{projects?.map((project) => (
-								<Grid
-									key={project?._id}
-									item
-									md={4}
-									sm={6}
-									xs={12}
-									style={{ display: "grid" }}>
-									<Card
-										className='color-text cardShadow'
+			<Grid container spacing={3} sx={{ my: 2 }}>
+				<Grid item xs={12}>
+					<Box sx={{ textAlign: "left" }}>
+						<Typography
+							component='div'
+							className='color-theme'
+							sx={{
+								fontWeight: 900,
+								fontSize: { md: "5.5rem", xs: "3.7rem" },
+								lineHeight: 1,
+							}}>
+							PORTFOLIO
+						</Typography>
+						<Typography
+							variant='h5'
+							component='div'
+							className='color-text'
+							gutterBottom>
+							Check out some of my works.
+						</Typography>
+					</Box>
+				</Grid>
+				{projects?.length > 0 ? (
+					<>
+						{projects?.map((project) => (
+							<Grid
+								key={project?._id}
+								item
+								md={4}
+								sm={6}
+								xs={12}
+								style={{ display: "grid" }}>
+								<Card
+									className='color-text border'
+									sx={{
+										display: "flex",
+										justifyContent: "space-between",
+										alignItems: "center",
+										flexDirection: "column",
+										borderRadius: "7px",
+										backgroundColor: "transparent",
+										border: "2px solid",
+									}}>
+									<Box
 										sx={{
 											display: "flex",
-											justifyContent: "space-between",
-											alignItems: "center",
-											p: 1.5,
-											flexDirection: {
-												md: "column",
-												sm: "column",
-												xs: "column",
-												borderRadius: "15px",
-												backgroundColor: "transparent",
-											},
+											flexDirection: "column",
+											width: "100%",
 										}}>
-										<Box sx={{ display: "flex", flexDirection: "column" }}>
-											<CardMedia
-												className='border'
-												sx={{
-													maxHeight: "350px",
-													maxWidth: "350px",
-													borderRadius: "15px",
-													border: "3px solid ",
-												}}
-												component='img'
-												image={project?.projectPhoto1}
-												alt=''
-											/>
-											<CardContent sx={{ flex: "1 0 auto", textAlign: "left" }}>
-												<Typography
-													component='div'
-													variant='h5'
-													className='color-theme'
-													sx={{
-														fontWeight: "bold",
-														my: 1,
-													}}>
-													{project?.projectName}
-												</Typography>
-												<Typography
-													component='div'
-													variant='body'
-													sx={{ my: 1 }}>
-													<b className='color-theme'>Technologies Used:</b>{" "}
-													{project?.techUsed}
-												</Typography>
-												<Typography
-													variant='subtitle1'
-													component='div'
-													sx={{ textAlign: "justify" }}>
-													<b className='color-theme'>Project Details:</b>{" "}
-													{project?.projectDetails.slice(0, 110)} .......
-												</Typography>
-											</CardContent>
-										</Box>
-										<Box
+										<CardMedia
+											className='border'
 											sx={{
+												width: "100% !important",
+												borderRadius: "7px 7px 0 0",
+												borderBottom: "2px solid ",
+											}}
+											component='img'
+											image={project?.projectPhoto1}
+											alt=''
+										/>
+										<CardContent sx={{ py: "8px !important" }}>
+											<Typography
+												component='div'
+												variant='h5'
+												className='color-theme'
+												sx={{
+													fontWeight: "bold",
+												}}>
+												{project?.projectName}
+											</Typography>
+											<Typography component='div' variant='body1'>
+												{project?.projectType}
+											</Typography>
+											{/* 	<Typography component='div' variant='body' sx={{ my: 1 }}>
+												<b className='color-theme'>Technologies Used:</b>{" "}
+												{project?.techUsed}
+											</Typography>
+											<Typography
+												variant='subtitle1'
+												component='div'
+												sx={{ textAlign: "justify" }}>
+												<b className='color-theme'>Project Details:</b>{" "}
+												{project?.projectDetails.slice(0, 110)} .......
+											</Typography> */}
+										</CardContent>
+									</Box>
+									<CardActions sx={{ alignItems: "flex-start" }}>
+										<Box
+											variant='contained'
+											className='button border'
+											sx={{
+												backgroundColor: "transparent",
+												borderRadius: "5px",
+												lineHeight: 0,
+												py: 0.5,
+												px: 1,
 												display: "flex",
 												alignItems: "center",
-												pl: 1,
-												pb: 1,
-											}}>
-											<CardActions sx={{ justifyContent: "space-around" }}>
-												<Box>
-													<Button
-														variant='contained'
-														className='button border'
-														sx={{
-															px: 1.5,
-															fontWeight: "bold",
-															borderRadius: "25px",
-															backgroundColor: "transparent",
-															border: "2px solid",
-														}}
-														size='small'
-														onClick={() =>
-															window.open(`${project?.liveLink}`, "_blank")
-														}>
-														<LanguageIcon sx={{ mr: 1 }} /> Live
-													</Button>
-												</Box>
-												<Box>
-													<Link
-														to={`/portfolio/${project?._id}`}
-														style={{ textDecoration: "none" }}>
-														<Button
-															variant='contained'
-															className='button border'
-															sx={{
-																px: 1.5,
-																fontWeight: "bold",
-																borderRadius: "25px",
-																backgroundColor: "transparent",
-																border: "2px solid",
-															}}
-															size='small'>
-															<InfoIcon sx={{ mr: 1 }} /> Details
-														</Button>
-													</Link>
-												</Box>
-											</CardActions>
+												justifyContent: "center",
+												cursor: "pointer",
+												border: "2px solid",
+											}}
+											onClick={() =>
+												window.open(`${project?.liveLink}`, "_blank")
+											}>
+											<LanguageIcon sx={{ mr: 0.7 }} /> Live
 										</Box>
-									</Card>
-								</Grid>
-							))}
-						</>
-					) : (
-						<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
-							{Array.from({ length: 5 }).map((_, idx) => (
-								<CircularProgress
-									key={idx}
-									sx={{ mx: 0.5 }}
-									className='color-theme'
-								/>
-							))}
-						</Grid>
-					)}
-				</Grid>
+										<Box
+											onClick={() => handleOpen(project?._id)}
+											variant='contained'
+											className='button border'
+											sx={{
+												backgroundColor: "transparent",
+												borderRadius: "5px",
+												lineHeight: 0,
+												py: 0.5,
+												px: 1,
+												display: "flex",
+												alignItems: "center",
+												justifyContent: "center",
+												border: "2px solid",
+											}}
+											size='small'>
+											<InfoIcon sx={{ mr: 0.7 }} /> Details
+										</Box>
+									</CardActions>
+								</Card>
+							</Grid>
+						))}
+					</>
+				) : (
+					<Grid item md={12} xs={12} sx={{ mx: "auto" }}>
+						{Array.from({ length: 5 }).map((_, idx) => (
+							<CircularProgress
+								key={idx}
+								sx={{ mx: 0.5 }}
+								className='color-theme'
+							/>
+						))}
+					</Grid>
+				)}
 			</Grid>
 			<Button
 				onClick={() => window.open("https://github.com/sunywebdev", "_blank")}
@@ -190,12 +189,13 @@ const Portfolio = () => {
 					fontWeight: "bold",
 					border: "2px solid",
 					backgroundColor: "transparent",
-					borderRadius: "25px",
+					borderRadius: "7px",
 				}}
 				variant='contained'>
 				<GitHubIcon sx={{ mr: 1.5 }} />
 				Explore More GitHub Repos
 			</Button>
+			{open && <SingleProject open={open} setOpen={setOpen} id={id} />}
 		</Box>
 	);
 };

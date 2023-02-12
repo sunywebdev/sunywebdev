@@ -9,7 +9,6 @@ import SmsIcon from "@mui/icons-material/Sms";
 import EmailIcon from "@mui/icons-material/Email";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import image from "./Shoyeb Mohammed Suny.png";
-import { animations } from "react-animation";
 
 const Home = () => {
 	return (
@@ -17,12 +16,12 @@ const Home = () => {
 			id='home'
 			className='color-text'
 			sx={{
-				minHeight: { md: "100vh", xs: "auto" },
-				mt: { md: 0, xs: 9 },
-				my: "auto",
+				mt: { md: 0, xs: 5 },
 				overflowX: "hidden",
-				animation: animations.popIn,
-				p: 2,
+				px: { md: 5, xs: 2 },
+				minHeight: "100vh",
+				display: "grid",
+				placeItems: "center",
 			}}>
 			<Grid
 				container
@@ -30,7 +29,7 @@ const Home = () => {
 				alignItems='center'
 				alignContent='center'
 				justifyContent='space-evenly'
-				sx={{ minHeight: { md: "100vh", xs: "70vh" } }}>
+				sx={{ minHeight: "100vh" }}>
 				<Grid
 					item
 					md={4}
